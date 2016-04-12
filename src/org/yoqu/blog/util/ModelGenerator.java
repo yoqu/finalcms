@@ -9,7 +9,7 @@ import org.yoqu.blog.config.AppConfig;
 import javax.sql.DataSource;
 
 /**
- * Created by yoqu on 2016/4/4 0004.
+ * Created by yoqu on 2016/4/4
  */
 public class ModelGenerator {
     public static DataSource getDataSource(){
