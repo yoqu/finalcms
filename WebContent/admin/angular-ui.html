@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--================================================================================
+	Item Name: Materialize - Material Design Admin Template
+	Version: 3.1
+	Author: GeeksLabs
+	Author URL: http://www.themeforest.net/user/geekslabs
+================================================================================ -->
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
+  <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
+  <title>Angular UI  | Materialize - Material Design Admin Template</title>
+
+  <!-- Favicons-->
+  <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+  <!-- Favicons-->
+  <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
+  <!-- For iPhone -->
+  <meta name="msapplication-TileColor" content="#00bcd4">
+  <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+  <!-- For Windows Phone -->
+
+
+  <!-- CORE CSS-->
+  <link href="css/materialize.min.css" tppabs="http://demo.geekslabs.com/materialize/v3.1/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="css/style.min.css" tppabs="http://demo.geekslabs.com/materialize/v3.1/css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+
+
+  <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+  <link href="js/plugins/prism/prism.css" tppabs="http://demo.geekslabs.com/materialize/v3.1/js/plugins/prism/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" tppabs="http://demo.geekslabs.com/materialize/v3.1/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="js/plugins/chartist-js/chartist.min.css" tppabs="http://demo.geekslabs.com/materialize/v3.1/js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+</head>
+
+<body ng-app="materializeApp" ng-controller="BodyController">
+  <!-- Start Page Loading -->
+  <div id="loader-wrapper">
+      <div id="loader"></div>        
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+  </div>
+  <!-- End Page Loading -->
+
+  <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+  <!-- START HEADER -->
+  <header id="header" class="page-topbar">
+        <!-- start header nav-->
+        <div class="navbar-fixed">
+            <nav class="navbar-color">
+                <div class="nav-wrapper">
+                    <ul class="left">                      
+                      <li><h1 class="logo-wrapper"><a href="index.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/index.html" class="brand-logo darken-1"><img src="images/materialize-logo.png" tppabs="http://demo.geekslabs.com/materialize/v3.1/images/materialize-logo.png" alt="materialize logo"></a> <span class="logo-text">Materialize</span></h1></li>
+                    </ul>
+                    <div class="header-search-wrapper hide-on-med-and-down">
+                        <i class="mdi-action-search"></i>
+                        <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize"/>
+                    </div>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light translation-button"  data-activates="translation-dropdown"><img src="images/flag-icons/United-States.png" tppabs="http://demo.geekslabs.com/materialize/v3.1/images/flag-icons/United-States.png" alt="USA" /></a>
+                        </li>
+                        <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen"><i class="mdi-action-settings-overscan"></i></a>
+                        </li>
+                        <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light notification-button" data-activates="notifications-dropdown"><i class="mdi-social-notifications"><small class="notification-badge">5</small></i>
+                        
+                        </a>
+                        </li>                        
+                        <li><a href="#" data-activates="chat-out" class="waves-effect waves-block waves-light chat-collapse"><i class="mdi-communication-chat"></i></a>
+                        </li>
+                    </ul>
+                    <!-- translation-button -->
+                    <ul id="translation-dropdown" class="dropdown-content">
+                      <li>
+                        <a href="#!"><img src="images/flag-icons/United-States.png" tppabs="http://demo.geekslabs.com/materialize/v3.1/images/flag-icons/United-States.png" alt="English" />  <span class="language-select">English</span></a>
+                      </li>
+                      <li>
+                        <a href="#!"><img src="images/flag-icons/France.png" tppabs="http://demo.geekslabs.com/materialize/v3.1/images/flag-icons/France.png" alt="French" />  <span class="language-select">French</span></a>
+                      </li>
+                      <li>
+                        <a href="#!"><img src="images/flag-icons/China.png" tppabs="http://demo.geekslabs.com/materialize/v3.1/images/flag-icons/China.png" alt="Chinese" />  <span class="language-select">Chinese</span></a>
+                      </li>
+                      <li>
+                        <a href="#!"><img src="images/flag-icons/Germany.png" tppabs="http://demo.geekslabs.com/materialize/v3.1/images/flag-icons/Germany.png" alt="German" />  <span class="language-select">German</span></a>
+                      </li>
+                      
+                    </ul>
+                    <!-- notifications-dropdown -->
+                    <ul id="notifications-dropdown" class="dropdown-content">
+                      <li>
+                        <h5>NOTIFICATIONS <span class="new badge">5</span></h5>
+                      </li>
+                      <li class="divider"></li>
+                      <li>
+                        <a href="#!"><i class="mdi-action-add-shopping-cart"></i> A new order has been placed!</a>
+                        <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">2 hours ago</time>
+                      </li>
+                      <li>
+                        <a href="#!"><i class="mdi-action-stars"></i> Completed the task</a>
+                        <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">3 days ago</time>
+                      </li>
+                      <li>
+                        <a href="#!"><i class="mdi-action-settings"></i> Settings updated</a>
+                        <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">4 days ago</time>
+                      </li>
+                      <li>
+                        <a href="#!"><i class="mdi-editor-insert-invitation"></i> Director meeting started</a>
+                        <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">6 days ago</time>
+                      </li>
+                      <li>
+                        <a href="#!"><i class="mdi-action-trending-up"></i> Generate monthly report</a>
+                        <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">1 week ago</time>
+                      </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- end header nav-->
+  </header>
+  <!-- END HEADER -->
+
+  <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+  <!-- START MAIN -->
+  <div id="main">
+    <!-- START WRAPPER -->
+    <div class="wrapper">
+
+      <!-- START LEFT SIDEBAR NAV-->
+      <aside id="left-sidebar-nav">
+        <ul id="slide-out" class="side-nav fixed leftside-navigation">
+            <li class="user-details cyan darken-2">
+            <div class="row">
+                <div class="col col s4 m4 l4">
+                    <img src="images/avatar.jpg" tppabs="http://demo.geekslabs.com/materialize/v3.1/images/avatar.jpg" alt="" class="circle responsive-img valign profile-image">
+                </div>
+                <div class="col col s8 m8 l8">
+                    <ul id="profile-dropdown" class="dropdown-content">
+                        <li><a href="#"><i class="mdi-action-face-unlock"></i> Profile</a>
+                        </li>
+                        <li><a href="#"><i class="mdi-action-settings"></i> Settings</a>
+                        </li>
+                        <li><a href="#"><i class="mdi-communication-live-help"></i> Help</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="mdi-action-lock-outline"></i> Lock</a>
+                        </li>
+                        <li><a href="#"><i class="mdi-hardware-keyboard-tab"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">John Doe<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                    <p class="user-roal">Administrator</p>
+                </div>
+            </div>
+            </li>
+            <li class="bold"><a href="index.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Dashboard</a>
+            </li>
+            <li class="no-padding">
+                <ul class="collapsible collapsible-accordion">
+                    <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> Layouts</a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a href="layout-fullscreen.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/layout-fullscreen.html">Full Screen</a>
+                                </li>
+                                <li><a href="layout-horizontal-menu.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/layout-horizontal-menu.html">Horizontal Menu</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li class="bold"><a href="app-email.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/app-email.html" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Mailbox <span class="new badge">4</span></a>
+            </li>
+            <li class="bold"><a href="app-calendar.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/app-calendar.html" class="waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i> Calender</a>
+            </li>
+            <li class="no-padding">
+                <ul class="collapsible collapsible-accordion">
+                    <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-invert-colors"></i> CSS</a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a href="css-typography.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/css-typography.html">Typography</a>
+                                </li>
+                                <li><a href="css-icons.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/css-icons.html">Icons</a>
+                                </li>
+                                <li><a href="css-animations.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/css-animations.html">Animations</a>
+                                </li>
+                                <li><a href="css-shadow.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/css-shadow.html">Shadow</a>
+                                </li>
+                                <li><a href="css-media.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/css-media.html">Media</a>
+                                </li>
+                                <li><a href="css-sass.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/css-sass.html">Sass</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-image-palette"></i> UI Elements</a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a href="ui-alerts.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/ui-alerts.html">Alerts</a>
+                                </li>
+                                <li><a href="ui-buttons.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/ui-buttons.html">Buttons</a>
+                                </li>
+                                <li><a href="ui-badges.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/ui-badges.html">Badges</a>
+                                </li>
+                                <li><a href="ui-breadcrumbs.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/ui-breadcrumbs.html">Breadcrumbs</a>
+                                </li>
+                                <li><a href="ui-collections.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/ui-collections.html">Collections</a>
+                                </li>
+                                <li><a href="ui-collapsibles.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/ui-collapsibles.html">Collapsibles</a>
+                                </li>
+                                <li><a href="ui-tabs.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/ui-tabs.html">Tabs</a>
+                                </li>
+                                <li><a href="ui-navbar.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/ui-navbar.html">Navbar</a>
+                                </li>
+                                <li><a href="ui-pagination.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/ui-pagination.html">Pagination</a>
+                                </li>
+                                <li><a href="ui-preloader.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/ui-preloader.html">Preloader</a>
+                                </li>
+                                <li><a href="ui-toasts.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/ui-toasts.html">Toasts</a>
+                                </li>
+                                <li><a href="ui-tooltip.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/ui-tooltip.html">Tooltip</a>
+                                </li>
+                                <li><a href="ui-waves.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/ui-waves.html">Waves</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-av-queue"></i> Advanced UI <span class="new badge"></span></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a href="advanced-ui-chips.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/advanced-ui-chips.html">Chips</a>
+                                </li>
+                                <li><a href="advanced-ui-cards.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/advanced-ui-cards.html">Cards</a>
+                                </li>
+                                <li><a href="advanced-ui-modals.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/advanced-ui-modals.html">Modals</a>
+                                </li>
+                                <li><a href="advanced-ui-media.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/advanced-ui-media.html">Media</a>
+                                </li>
+                                <li><a href="advanced-ui-range-slider.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/advanced-ui-range-slider.html">Range Slider</a>
+                                </li>
+                                <li><a href="advanced-ui-sweetalert.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/advanced-ui-sweetalert.html">SweetAlert</a>
+                                </li>
+                                <li><a href="advanced-ui-nestable.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/advanced-ui-nestable.html">Shortable & Nestable</a>
+                                </li>
+                                <li><a href="advanced-ui-translation.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/advanced-ui-translation.html">Language Translation</a>
+                                </li>
+                                <li><a href="advanced-ui-highlight.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/advanced-ui-highlight.html">Highlight</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="bold"><a href="app-widget.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/app-widget.html" class="waves-effect waves-cyan"><i class="mdi-device-now-widgets"></i> Widgets</a>
+                    </li>
+                    <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-editor-border-all"></i> Tables</a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a href="table-basic.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/table-basic.html">Basic Tables</a>
+                                </li>
+                                <li><a href="table-data.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/table-data.html">Data Tables</a>
+                                </li>
+                                <li><a href="table-jsgrid.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/table-jsgrid.html">jsGrid</a>
+                                </li>
+                                <li><a href="table-editable.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/table-editable.html">Editable Table</a>
+                                </li>
+                                <li><a href="table-floatThead.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/table-floatThead.html">floatThead</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-editor-insert-comment"></i> Forms <span class="new badge"></span></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a href="form-elements.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/form-elements.html">Form Elements</a>
+                                </li>
+                                <li><a href="form-layouts.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/form-layouts.html">Form Layouts</a>
+                                </li>
+                                <li><a href="form-validation.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/form-validation.html">Form Validations</a>
+                                </li>
+                                <li><a href="form-masks.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/form-masks.html">Form Masks</a>
+                                </li>
+                                <li><a href="form-file-uploads.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/form-file-uploads.html">File Uploads</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-social-pages"></i> Pages</a>
+                        <div class="collapsible-body">
+                            <ul>                                        
+                                <li><a href="page-contact.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/page-contact.html">Contact Page</a>
+                                </li>
+                                <li><a href="page-todo.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/page-todo.html">ToDos</a>
+                                </li>
+                                <li><a href="page-blog-1.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/page-blog-1.html">Blog Type 1</a>
+                                </li>
+                                <li><a href="page-blog-2.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/page-blog-2.html">Blog Type 2</a>
+                                </li>
+                                <li><a href="page-404.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/page-404.html">404</a>
+                                </li>
+                                <li><a href="page-500.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/page-500.html">500</a>
+                                </li>
+                                <li><a href="page-blank.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/page-blank.html">Blank</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-action-shopping-cart"></i> eCommers</a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a href="eCommerce-products-page.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/eCommerce-products-page.html">Products Page</a>
+                                </li>                                        
+                                <li><a href="eCommerce-pricing.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/eCommerce-pricing.html">Pricing Table</a>
+                                </li>
+                                <li><a href="eCommerce-invoice.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/eCommerce-invoice.html">Invoice</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-image-image"></i> Medias</a>
+                        <div class="collapsible-body">
+                            <ul>                                        
+                                <li><a href="media-gallary-page.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/media-gallary-page.html">Gallery Page</a>
+                                </li>
+                                <li><a href="media-hover-effects.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/media-hover-effects.html">Image Hover Effects</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-action-account-circle"></i> User</a>
+                        <div class="collapsible-body">
+                            <ul>     
+                                <li><a href="user-profile-page.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/user-profile-page.html">User Profile</a>
+                                </li>                                   
+                                <li><a href="user-login.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/user-login.html">Login</a>
+                                </li>                                        
+                                <li><a href="user-register.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/user-register.html">Register</a>
+                                </li>
+                                <li><a href="user-forgot-password.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/user-forgot-password.html">Forgot Password</a>
+                                </li>
+                                <li><a href="user-lock-screen.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/user-lock-screen.html">Lock Screen</a>
+                                </li>                                        
+                                
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-editor-insert-chart"></i> Charts</a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a href="charts-chartjs.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/charts-chartjs.html">Chart JS</a>
+                                </li>
+                                <li><a href="charts-chartist.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/charts-chartist.html">Chartist</a>
+                                </li>
+                                <li><a href="charts-morris.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/charts-morris.html">Morris Charts</a>
+                                </li>
+                                <li><a href="charts-xcharts.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/charts-xcharts.html">xCharts</a>
+                                </li>
+                                <li><a href="charts-flotcharts.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/charts-flotcharts.html">Flot Charts</a>
+                                </li>
+                                <li><a href="charts-sparklines.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/charts-sparklines.html">Sparkline Charts</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li class="li-hover"><div class="divider"></div></li>
+            <li class="li-hover"><p class="ultra-small margin more-text">MORE</p></li>
+            <li class="active"><a href="angular-ui.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/angular-ui.html"><i class="mdi-action-verified-user"></i> Angular UI  <span class="new badge"></span></a>
+            </li>
+            <li><a href="css-grid.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/css-grid.html"><i class="mdi-image-grid-on"></i> Grid</a>
+            </li>
+            <li><a href="css-color.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/css-color.html"><i class="mdi-editor-format-color-fill"></i> Color</a>
+            </li>
+            <li><a href="css-helpers.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/css-helpers.html"><i class="mdi-communication-live-help"></i> Helpers</a>
+            </li>
+            <li><a href="changelogs.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/changelogs.html"><i class="mdi-action-swap-vert-circle"></i> Changelogs</a>
+            </li>                    
+            <li class="li-hover"><div class="divider"></div></li>
+            <li class="li-hover"><p class="ultra-small margin more-text">Daily Sales</p></li>
+            <li class="li-hover">
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <div class="sample-chart-wrapper">                            
+                            <div class="ct-chart ct-golden-section" id="ct2-chart"></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
+        </aside>
+      <!-- END LEFT SIDEBAR NAV-->
+
+      <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+      <!-- START CONTENT -->
+      <section id="content">
+        
+        <!--breadcrumbs start-->
+        <div id="breadcrumbs-wrapper">
+            <!-- Search for small screen -->
+            <div class="header-search-wrapper grey hide-on-large-only">
+                <i class="mdi-action-search active"></i>
+                <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize">
+            </div>
+          <div class="container">
+            <div class="row">
+              <div class="col s12 m12 l12">
+                <h5 class="breadcrumbs-title">Angular UI</h5>
+                <ol class="breadcrumbs">
+                    <li><a href="index.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/index.html">Dashboard</a></li>
+                    <li><a href="#">Pages</a></li>
+                    <li class="active">Angular UI</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--breadcrumbs end-->
+        
+
+        <!--start container-->
+        <div class="container">
+          <div class="section">
+
+            <p class="caption">Ready to use number of Angular directives, which makes sure that the components in materialize.js, which are mainly initialized on document ready, are handled by Angular in the right way.</p>
+            <div class="divider"></div>
+            <!--Input-field-->
+            <div id="angular-input-field" class="section">
+              <h4 class="header">Input Fields</h4>
+              <pre><code class="language-markup">&lt;input-field&gt;</pre></code>
+              <div class="row">
+                <div class="col s12 m4 l3">
+                  <p>Materialize uses the class <code>.input-field</code> to manage animating labels and input-fields. But that doesn't work properly when angular dynamically creates element</p>
+                  <p>Instead of adding the class <code>.input-field</code>, use the <code class="language-html"><div input-field></div></code> input-field directive. This way it still works when angular dynamically creates it.</p>
+                </div>
+                <div class="col s12 m8 l9">
+                    <div input-field>
+                        <input type="text" ng-model="inputText" value="Check me...">
+                        <label>Input label</label>
+                        <p>You wrote: {{ inputText }}</p>
+                    </div>
+                    <div input-field>
+                        <textarea ng-model="inputTextarea" class="materialize-textarea" value="Check me too..."></textarea>
+                        <label>Textarea</label>
+                        <p>You wrote: {{ inputTextarea }}</p>
+                    </div>
+                    
+                    <div class="row">
+<pre><code class="language-markup">
+&lt;div input-field&gt;
+    &lt;input type="text" ng-model="dummyInputs.inputFieldInput" length="150"&gt;
+    &lt;label&gt;Input label&lt;/label&gt;
+&lt;/div&gt;
+&lt;div input-field&gt;
+    &lt;textarea ng-model="dummyInputs.textAreaInput" class="materialize-textarea"&gt;&lt;/textarea&gt;
+    &lt;label&gt;Textarea&lt;/label&gt;
+&lt;/div&gt;
+</code></pre>
+        </div>
+<div class="row">
+<p>You can also use it as an element instead of an attribute.</p>
+<pre><code class="language-markup">
+&lt;input-field&gt;
+    &lt;input type="text" ng-model="dummyInputs.inputFieldInput"&gt;
+    &lt;label&gt;Input label&lt;/label&gt;
+&lt;/input-field&gt;
+    &lt;input-field&gt;
+    &lt;textarea ng-model="dummyInputs.textAreaInput" class="materialize-textarea"&gt;&lt;/textarea&gt;
+    &lt;label&gt;Textarea&lt;/label&gt;
+&lt;/input-field&gt;</code></pre>
+</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="divider"></div>
+            <!--Input-field-->
+            <div id="angular-input-date" class="section">
+              <h4 class="header">Input Date</h4>
+              <pre><code class="language-markup">&lt;Input-date&gt;</pre></code>
+              <div class="row">
+                <div class="col s12 m4 l3">
+                  <p>The below example is where there are values in all the options, but all the options are optional. </p>
+                  <p>The attributes <code class=" language-markup" data-language="markup">min</code> and <code class=" language-markup" data-language="markup">max</code> can be any value representing a date. It should be in a format recognised by <a href="javascript:if(confirm('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'" tppabs="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" title="Date - JavaScript | MDN">Date Constructor</a>.</p>
+                </div>
+                <div class="col s12 m8 l9">
+                    <label for="inputCreated">Input date</label>
+                    <input input-date
+                        type="text"
+                        name="created"
+                        id="inputCreated"
+                        ng-model="currentTime"
+                        container="body"
+                        format="dd/mm/yyyy"
+                        months-full="{{ month }}"
+                        months-short="{{ monthShort }}"
+                        weekdays-full="{{ weekdaysFull }}"
+                        weekdays-short="{{ weekdaysShort }}"
+                        weekdays-letter="{{ weekdaysLetter }}"
+                        disable="disable"
+                        min="{{ minDate }}"
+                        max="{{ maxDate }}"
+                        today="today"
+                        clear="clear"
+                        close="close"
+                        select-years="15"
+                        on-start="onStart()"
+                        on-render="onRender()"
+                        on-open="onOpen()"
+                        on-close="onClose()"
+                        on-set="onSet()"
+                        on-stop="onStop()" />
+                    
+                    <div class="row">
+            <p>The code in the HTML</p>
+<pre class=" language-markup"><code class=" language-markup" ng-non-bindable="" data-language="markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><a class="token tag-id" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/elements/label  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/elements/label'" tppabs="http://docs.webplatform.org/wiki/html/elements/label" target="_blank">label</a></span> <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/for  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/for'" tppabs="http://docs.webplatform.org/wiki/html/attributes/for" target="_blank">for</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>inputCreated<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Input date<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><a class="token tag-id" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/elements/label  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/elements/label'" tppabs="http://docs.webplatform.org/wiki/html/elements/label" target="_blank">label</a></span><span class="token punctuation">&gt;</span></span><span class="token lf">
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><a class="token tag-id" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/elements/input  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/elements/input'" tppabs="http://docs.webplatform.org/wiki/html/elements/input" target="_blank">input</a></span> <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/input-date  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/input-date'" tppabs="http://docs.webplatform.org/wiki/html/attributes/input-date" target="_blank">input-date</a>
+    <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/type  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/type'" tppabs="http://docs.webplatform.org/wiki/html/attributes/type" target="_blank">type</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span>
+    <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/name  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/name'" tppabs="http://docs.webplatform.org/wiki/html/attributes/name" target="_blank">name</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>created<span class="token punctuation">"</span></span>
+    <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/id  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/id'" tppabs="http://docs.webplatform.org/wiki/html/attributes/id" target="_blank">id</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>inputCreated<span class="token punctuation">"</span></span>
+    <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/ng-model  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/ng-model'" tppabs="http://docs.webplatform.org/wiki/html/attributes/ng-model" target="_blank">ng-model</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>currentTime<span class="token punctuation">"</span></span>
+    <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/container  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/container'" tppabs="http://docs.webplatform.org/wiki/html/attributes/container" target="_blank">container</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>body<span class="token punctuation">"</span></span>
+    <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/format  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/format'" tppabs="http://docs.webplatform.org/wiki/html/attributes/format" target="_blank">format</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dd/mm/yyyy<span class="token punctuation">"</span></span>
+    <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/months-full  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/months-full'" tppabs="http://docs.webplatform.org/wiki/html/attributes/months-full" target="_blank">months-full</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{{ month }}<span class="token punctuation">"</span></span>
+    <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/months-short  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/months-short'" tppabs="http://docs.webplatform.org/wiki/html/attributes/months-short" target="_blank">months-short</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{{ monthShort }}<span class="token punctuation">"</span></span>
+    <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/weekdays-full  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/weekdays-full'" tppabs="http://docs.webplatform.org/wiki/html/attributes/weekdays-full" target="_blank">weekdays-full</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{{ weekdaysFull }}<span class="token punctuation">"</span></span>
+    <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/weekdays-short  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/weekdays-short'" tppabs="http://docs.webplatform.org/wiki/html/attributes/weekdays-short" target="_blank">weekdays-short</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{{ weekdaysShort }}<span class="token punctuation">"</span></span>
+    <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/weekdays-letter  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/weekdays-letter'" tppabs="http://docs.webplatform.org/wiki/html/attributes/weekdays-letter" target="_blank">weekdays-letter</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{{ weekdaysLetter }}<span class="token punctuation">"</span></span>
+    <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/disable  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/disable'" tppabs="http://docs.webplatform.org/wiki/html/attributes/disable" target="_blank">disable</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>disable<span class="token punctuation">"</span></span>
+    <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/min  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/min'" tppabs="http://docs.webplatform.org/wiki/html/attributes/min" target="_blank">min</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{{ minDate }}<span class="token punctuation">"</span></span>
+    <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/max  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/max'" tppabs="http://docs.webplatform.org/wiki/html/attributes/max" target="_blank">max</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{{ maxDate }}<span class="token punctuation">"</span></span>
+    <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/today  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/today'" tppabs="http://docs.webplatform.org/wiki/html/attributes/today" target="_blank">today</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>today<span class="token punctuation">"</span></span>
+    <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/clear  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/clear'" tppabs="http://docs.webplatform.org/wiki/html/attributes/clear" target="_blank">clear</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>clear<span class="token punctuation">"</span></span>
+    <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/close  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/close'" tppabs="http://docs.webplatform.org/wiki/html/attributes/close" target="_blank">close</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>close<span class="token punctuation">"</span></span>
+    <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/select-years  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/select-years'" tppabs="http://docs.webplatform.org/wiki/html/attributes/select-years" target="_blank">select-years</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>15<span class="token punctuation">"</span></span>
+    <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/on-start  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/on-start'" tppabs="http://docs.webplatform.org/wiki/html/attributes/on-start" target="_blank">on-start</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>onStart()<span class="token punctuation">"</span></span>
+    <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/on-render  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/on-render'" tppabs="http://docs.webplatform.org/wiki/html/attributes/on-render" target="_blank">on-render</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>onRender()<span class="token punctuation">"</span></span>
+    <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/on-open  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/on-open'" tppabs="http://docs.webplatform.org/wiki/html/attributes/on-open" target="_blank">on-open</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>onOpen()<span class="token punctuation">"</span></span>
+    <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/on-close  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/on-close'" tppabs="http://docs.webplatform.org/wiki/html/attributes/on-close" target="_blank">on-close</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>onClose()<span class="token punctuation">"</span></span>
+    <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/on-set  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/on-set'" tppabs="http://docs.webplatform.org/wiki/html/attributes/on-set" target="_blank">on-set</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>onSet()<span class="token punctuation">"</span></span>
+    <a class="token attr-name" href="javascript:if(confirm('http://docs.webplatform.org/wiki/html/attributes/on-stop  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://docs.webplatform.org/wiki/html/attributes/on-stop'" tppabs="http://docs.webplatform.org/wiki/html/attributes/on-stop" target="_blank">on-stop</a><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>onStop()<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span></code></pre>
+            <p>And the JavaScript in the controller</p>
+            <pre class=" language-javascript"><code class=" language-javascript" data-language="javascript"><span class="token keyword">var</span> currentTime <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token lf">
+</span>$scope<span class="token punctuation">.</span>currentTime <span class="token operator">=</span> currentTime<span class="token punctuation">;</span><span class="token lf">
+</span>$scope<span class="token punctuation">.</span>month <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Januar'</span><span class="token punctuation">,</span> <span class="token string">'February'</span><span class="token punctuation">,</span> <span class="token string">'March'</span><span class="token punctuation">,</span> <span class="token string">'April'</span><span class="token punctuation">,</span> <span class="token string">'May'</span><span class="token punctuation">,</span> <span class="token string">'June'</span><span class="token punctuation">,</span> <span class="token string">'July'</span><span class="token punctuation">,</span> <span class="token string">'August'</span><span class="token punctuation">,</span> <span class="token string">'September'</span><span class="token punctuation">,</span> <span class="token string">'October'</span><span class="token punctuation">,</span> <span class="token string">'November'</span><span class="token punctuation">,</span> <span class="token string">'December'</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token lf">
+</span>$scope<span class="token punctuation">.</span>monthShort <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Jan'</span><span class="token punctuation">,</span> <span class="token string">'Feb'</span><span class="token punctuation">,</span> <span class="token string">'Mar'</span><span class="token punctuation">,</span> <span class="token string">'Apr'</span><span class="token punctuation">,</span> <span class="token string">'May'</span><span class="token punctuation">,</span> <span class="token string">'Jun'</span><span class="token punctuation">,</span> <span class="token string">'Jul'</span><span class="token punctuation">,</span> <span class="token string">'Aug'</span><span class="token punctuation">,</span> <span class="token string">'Sep'</span><span class="token punctuation">,</span> <span class="token string">'Oct'</span><span class="token punctuation">,</span> <span class="token string">'Nov'</span><span class="token punctuation">,</span> <span class="token string">'Dec'</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token lf">
+</span>$scope<span class="token punctuation">.</span>weekdaysFull <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Sunday'</span><span class="token punctuation">,</span> <span class="token string">'Monday'</span><span class="token punctuation">,</span> <span class="token string">'Tuesday'</span><span class="token punctuation">,</span> <span class="token string">'Wednesday'</span><span class="token punctuation">,</span> <span class="token string">'Thursday'</span><span class="token punctuation">,</span> <span class="token string">'Friday'</span><span class="token punctuation">,</span> <span class="token string">'Saturday'</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token lf">
+</span>$scope<span class="token punctuation">.</span>weekdaysLetter <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'S'</span><span class="token punctuation">,</span> <span class="token string">'M'</span><span class="token punctuation">,</span> <span class="token string">'T'</span><span class="token punctuation">,</span> <span class="token string">'W'</span><span class="token punctuation">,</span> <span class="token string">'T'</span><span class="token punctuation">,</span> <span class="token string">'F'</span><span class="token punctuation">,</span> <span class="token string">'S'</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token lf">
+</span>$scope<span class="token punctuation">.</span>disable <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token lf">
+</span>$scope<span class="token punctuation">.</span>today <span class="token operator">=</span> <span class="token string">'Today'</span><span class="token punctuation">;</span><span class="token lf">
+</span>$scope<span class="token punctuation">.</span>clear <span class="token operator">=</span> <span class="token string">'Clear'</span><span class="token punctuation">;</span><span class="token lf">
+</span>$scope<span class="token punctuation">.</span>close <span class="token operator">=</span> <span class="token string">'Close'</span><span class="token punctuation">;</span><span class="token lf">
+</span><span class="token keyword">var</span> days <span class="token operator">=</span> <span class="token number">15</span><span class="token punctuation">;</span><span class="token lf">
+</span>$scope<span class="token punctuation">.</span>minDate <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>$scope<span class="token punctuation">.</span>currentTime<span class="token punctuation">.</span><span class="token function">getTime<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token punctuation">(</span> <span class="token number">1000</span> <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">*</span><span class="token number">24</span> <span class="token operator">*</span> days <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toISOString<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token lf">
+</span>$scope<span class="token punctuation">.</span>maxDate <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>$scope<span class="token punctuation">.</span>currentTime<span class="token punctuation">.</span><span class="token function">getTime<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span> <span class="token number">1000</span> <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">*</span><span class="token number">24</span> <span class="token operator">*</span> days <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toISOString<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token lf">
+</span>$scope<span class="token punctuation">.</span>onStart <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token lf">
+</span>    console<span class="token punctuation">.</span><span class="token function">log<span class="token punctuation">(</span></span><span class="token string">'onStart'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token lf">
+</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token lf">
+</span>$scope<span class="token punctuation">.</span>onRender <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token lf">
+</span>    console<span class="token punctuation">.</span><span class="token function">log<span class="token punctuation">(</span></span><span class="token string">'onRender'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token lf">
+</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token lf">
+</span>$scope<span class="token punctuation">.</span>onOpen <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token lf">
+</span>    console<span class="token punctuation">.</span><span class="token function">log<span class="token punctuation">(</span></span><span class="token string">'onOpen'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token lf">
+</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token lf">
+</span>$scope<span class="token punctuation">.</span>onClose <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token lf">
+</span>    console<span class="token punctuation">.</span><span class="token function">log<span class="token punctuation">(</span></span><span class="token string">'onClose'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token lf">
+</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token lf">
+</span>$scope<span class="token punctuation">.</span>onSet <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token lf">
+</span>    console<span class="token punctuation">.</span><span class="token function">log<span class="token punctuation">(</span></span><span class="token string">'onSet'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token lf">
+</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token lf">
+</span>$scope<span class="token punctuation">.</span>onStop <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token lf">
+</span>    console<span class="token punctuation">.</span><span class="token function">log<span class="token punctuation">(</span></span><span class="token string">'onStop'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token lf">
+</span><span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+        </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="divider"></div>
+            <!--material-select-->
+            <div id="angular-material-select" class="section">
+              <h4 class="header">Material select</h4>
+              <pre><code class="language-markup">&lt;material-select&gt;</pre></code>
+              <div class="row">
+                <div class="col s12 m4 l3">
+                  <p>Add the material-select as an attribute to the select where you want material-select. Not needed if you add the class browser-default. It doesn't support changing content within the select, add the class browser-default if you want that.</p>
+                  <p>If you add the attribute <code class="  language-markup" data-language="markup">watch</code>, then the material-select will re-initialize whenever something changes in the content within the select. <br>
+                    That includes if the number of list elements change. <br>
+                    But beware, while the implementation works, it is very heavy in computation, so tread lightly. </p>
+                </div>
+                <div class="col s12 m8 l9">
+                    <div class="row">
+                        <div class="section col s4">
+                            <select class="" ng-model="select.value1" material-select watch>
+                                <option ng-repeat="value in select.choices">{{value}}</option>
+                            </select>
+                        </div>
+                        <div class="section col s4">
+                            <h5>You selected: <b>{{select.value1}}</b></h5>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+<pre><code class="language-markup" ng-non-bindable>
+&lt;select class="" ng-model="select.value1" material-select watch&gt;
+    &lt;option ng-repeat="value in select.choices"&gt;{{value}}&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+        </div>
+        <div class="row">
+            <h5>Using class browser-default</h5>
+            <div class="section col s4">
+                <select class="browser-default" ng-model="select.value2">
+                    <option ng-repeat="value in select.choices">{{value}}</option>
+                </select>
+            </div>
+            <div class="section col s4">
+                <h5>You selected: <b>{{select.value2}}</b></h5>
+            </div>
+        </div>
+        <div class="row">
+<pre><code class="language-markup" ng-non-bindable>
+&lt;select class="browser-default" ng-model="select.value2"&gt;
+    &lt;option ng-repeat="value in select.choices"&gt;{{value}}&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+        </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="divider"></div>
+            <!--Collapsible-->
+            <div id="angular-collapsible" class="section">
+              <h4 class="header">Collapsible</h4>
+              <div class="row">
+                <div class="col s12 m4 l3">
+                  <p>The collapsible below is populated using ng-repeat, just to show that it is possible. You can also just manually put in the content. </p>
+            <p>In the below, the popout class is added, which makes a "Google inbox" effect. Just remove the popout class to get a normal accordion. </p>
+            <p>Since this is just a wrapper for materializes collapsible, <a href="javascript:if(confirm('http://demo.geekslabs.com/materialize/v3.1/ui-accordions.html  \n\n该文件无法用 Teleport Ultra 下载, 因为 服务器报告该文件未找到。  \n\n你想在服务器上打开它?'))window.location='http://demo.geekslabs.com/materialize/v3.1/ui-accordions.html'" tppabs="http://demo.geekslabs.com/materialize/v3.1/ui-accordions.html">all their customization</a> can be used. </p>
+            <p>If you add the attribute <code class=" language-markup" data-language="markup">watch</code>, then the collapsible will re-initialize whenever something changes in the content within the collapsible. <br />
+                That includes if the number of list elements change. <br />
+                But beware, while the implementation works, it is very heavy in computation, so tread lightly. </p>
+                </div>
+                <div class="col s12 m8 l9">
+                    <a class="btn waves-effect waves-light" ng-init="showCollapsible = true" ng-click="showCollapsible = !showCollapsible">Show/hide the below collapsible</a>
+                    <div ng-controller="CollapsibleController" ng-if="showCollapsible">
+                        <ul class="collapsible popout" data-collapsible="accordion" watch>
+                            <li ng-repeat="single in collapsibleElements">
+                                <div class="collapsible-header"><i class="{{single.icon}}"></i>{{single.title}}</div>
+                                <div class="collapsible-body"><p>{{single.content}}</p></div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="row">
+            <p>The code in the HTML</p>
+<pre><code class="language-markup" ng-non-bindable>&lt;ul class="collapsible popout" data-collapsible="accordion" watch&gt;
+    &lt;li ng-repeat="single in collapsibleElements"&gt;
+        &lt;div class="collapsible-header"&gt;&lt;i class="{{single.icon}}"&gt;&lt;/i&gt;{{single.title}}&lt;/div&gt;
+        &lt;div class="collapsible-body"&gt;&lt;p&gt;{{single.content}}&lt;/p&gt;&lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+            <p>And the JavaScript in the controller</p>
+<pre><code class="language-javascript">$scope.collapsibleElements = [{
+        icon: 'mdi-image-filter-drama',
+        title: 'First',
+        content: 'Lorem ipsum dolor sit amet.'
+    },{
+        icon: 'mdi-maps-place',
+        title: 'Second',
+        content: 'Lorem ipsum dolor sit amet.'
+    },{
+        icon: 'mdi-social-whatshot',
+        title: 'Third',
+        content: 'Lorem ipsum dolor sit amet.'
+    }
+];</code></pre>
+
+        </div>
+                </div>
+              </div>
+            </div>
+            
+            
+            <div class="divider"></div>
+            <!--Toasts-->
+            <div id="angular-toasts" class="section">
+              <h4 class="header">Toasts</h4>
+              
+              <div class="row">
+                <div class="col s12 m4 l3">
+                  <p>Materializes toast is a global function. Using this directive you can call a toast using a custom event (in the below click), and show a message determined by a variable in the scope. <br />
+                    The message is specified through the message attribute, and the duration is set though the duration attribute (defaults to 3000ms if not set).</p>
+                </div>
+                <div class="col s12 m8 l9">
+                    <div class="row">
+            <div class="col s4" input-field>
+                <input id="message" type="text" ng-model="dummyInputs.message" ng-init="dummyInputs.message = 'I\'m a message'">
+                <label for="message">Message</label>
+            </div>
+            <div class="col s2" input-field>
+                <input id="toastDuration" type="text" ng-model="dummyInputs.duration" ng-init="dummyInputs.duration = 1000">
+                <label for="toastDuration">Toast duration</label>
+            </div>
+            <div class="input-field col s4">
+                <a class="waves-effect waves-light btn" message="{{dummyInputs.message}}" duration="{{dummyInputs.duration}}" toast='click'>Toast!</a>
+            </div>
+        </div>
+        <div class="row">
+<pre><code class="language-markup" ng-non-bindable>&lt;div class="row"&gt;
+    &lt;div class="col s4" input-field&gt;
+        &lt;input id="message" type="text" ng-model="dummyInputs.message" ng-init="dummyInputs.message = 'I\'m a message'"&gt;
+        &lt;label for="message"&gt;Message&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="col s2" input-field&gt;
+        &lt;input id="toastDuration" type="text" ng-model="dummyInputs.duration" ng-init="dummyInputs.duration = 1000"&gt;
+        &lt;label for="toastDuration"&gt;Toast duration&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="input-field col s4"&gt;
+        &lt;a class="waves-effect waves-light btn" message="{{dummyInputs.message}}" duration="{{dummyInputs.duration}}" toast='click'&gt;Toast!&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+                </div>
+              </div>
+            </div>
+        
+        <div class="divider"></div>
+            <!--Tooltip-->
+            <div id="angular-tooltip" class="section">
+              <h4 class="header">Tooltip</h4>
+              
+              <div class="row">
+                <div class="col s12 m4 l3">
+                  <p>The tooltipped attribute in the below makes sure that the jQuery plugin is run.<br />
+                You can set attributes on the tag, matching the names of the options in the materializeCSS's version.</p>
+                </div>
+                <div class="col s12 m8 l9">
+                    <div class="row">
+                        <div class="col s4" ng-init="showTooltip = true">
+                            <a class="btn waves-effect waves-light" ng-click="showTooltip = !showTooltip" style="margin-bottom: 10px;">Toggle Buttons</a>
+                        </div>
+                        <div class="col s8" ng-if="showTooltip">
+                            <!-- data-position can be : bottom, top, left, or right -->
+                            <!-- data-delay controls delay before tooltip shows (in milliseconds)-->
+                            <a tooltipped class="btn col s4 offset-s4 l2 offset-l1" data-position="bottom" data-delay="50" data-tooltip="I am tooltip"> Bottom</a>
+                            <a tooltipped class="btn col s4 offset-s4 l2 offset-l1" data-position="top" data-delay="150" data-tooltip="I am tooltip"> Top</a>
+                            <a tooltipped class="btn col s4 offset-s4 l2 offset-l1" data-position="left" data-delay="250" data-tooltip="I am tooltip"> Left</a>
+                            <a tooltipped class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="550" data-tooltip="I am tooltip"> Right</a>
+                        </div>
+                    </div>
+        <div class="row">
+
+<pre><code class="language-markup" ng-non-bindable>&lt;div class="col s8" ng-if="showTooltip"&gt;
+    &lt;!-- data-position can be : bottom, top, left, or right --&gt;
+    &lt;!-- data-delay controls delay before tooltip shows (in milliseconds)--&gt;
+    &lt;a tooltipped class="btn col s4 offset-s4 l2 offset-l1" data-position="bottom" data-delay="50" data-tooltip="I am tooltip"&gt; Bottom&lt;/a&gt;
+    &lt;a tooltipped class="btn col s4 offset-s4 l2 offset-l1" data-position="top" data-delay="150" data-tooltip="I am tooltip"&gt; Top&lt;/a&gt;
+    &lt;a tooltipped class="btn col s4 offset-s4 l2 offset-l1" data-position="left" data-delay="250" data-tooltip="I am tooltip"&gt; Left&lt;/a&gt;
+    &lt;a tooltipped class="btn col s4 offset-s4 l2 offset-l1" data-position="right" data-delay="550" data-tooltip="I am tooltip"&gt; Right&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        
+                </div>
+              </div>
+            </div>
+            
+            <div class="divider"></div>
+            <!--Pushpin-->
+            <div id="angular-pushpin" class="section">
+              <h4 class="header">Pushpin</h4>
+              
+              <div class="row">
+                <div class="col s12 m4 l3">
+                  <p>The <code class=" language-markup" data-language="markup">pushpin</code> attribute allows you to pin a particular element to the top of the page.</p>
+                  <p>You can use the <code class=" language-markup" data-language="markup">pushpin-top</code> attribute to define distance in pixels from the top of the page where the element becomes fixed. The <code class=" language-markup" data-language="markup">pushpin-offset</code> attribute can be used to offset the distance from the top. The <code class=" language-markup" data-language="markup">pushpin-bottom</code> attribute can be used to set the distance in pixels from the top of the page where the elements stops being fixed.</p>
+                </div>
+                <div class="col s12 m8 l9">
+                    <div class="row">
+<pre><code class="language-markup" ng-non-bindable>
+&lt;div class=&quot;sidebar&quot; pushpin pushpin-top=&quot;0&quot; pushpin-offset=&quot;0&quot; pushpin-bottom=&quot;Infinity&quot;&gt;
+  &lt;ul id=&quot;sidebarMenu&quot; class=&quot;menu&quot;&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+    &lt;li&gt;Item 4&lt;/li&gt;
+    &lt;li&gt;Item 5&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        
+                </div>
+              </div>
+            </div>
+            
+            <div class="divider"></div>
+            <!--Dropdown-->
+            <div id="angular-dropdown" class="section">
+              <h4 class="header">Dropdown</h4>
+              
+              <div class="row">
+                <div class="col s12 m4 l3">
+                  <p>The dropdown attribute in the below makes sure that the jQuery plugin is run.</p>
+                  <p>You can set attributes on the tag, matching the names of the options in the materialize CSS's version.</p>
+                </div>
+                <div class="col s12 m8 l9">
+                    <div class="row">
+                        <!-- Dropdown Trigger -->
+                        <a class='dropdown-button btn' href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true">
+                            This is a dropdown
+                        </a>
+        
+                        <!-- Dropdown Structure -->
+                        <ul id='demoDropdown' class='dropdown-content'>
+                            <li><a href="javascript:void(0);">Link 1</a></li>
+                            <li><a href="javascript:void(0);">Link 2</a></li>
+                            <li><a href="javascript:void(0);">Link 3</a></li>
+                            <li><a href="javascript:void(0);">Link 4</a></li>
+                            <li><a href="javascript:void(0);">Link 5</a></li>
+                        </ul>
+                    </div>
+                    <div class="row">
+<pre><code class="language-markup" ng-non-bindable>
+&lt;!-- Dropdown Trigger --&gt;
+&lt;a class='dropdown-button btn' href='javascript:void(0);' data-activates='demoDropdown' dropdown data-hover="true"&gt;
+    This is a dropdown
+&lt;/a&gt;
+
+&lt;!-- Dropdown Structure --&gt;
+&lt;ul id='demoDropdown' class='dropdown-content'&gt;
+    &lt;li&gt;&lt;a href="javascript:void(0);"&gt;Link 1&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="javascript:void(0);"&gt;Link 2&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="javascript:void(0);"&gt;Link 3&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="javascript:void(0);"&gt;Link 4&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="javascript:void(0);"&gt;Link 5&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        </div>
+        
+                </div>
+              </div>
+            </div>
+            
+            <div class="divider"></div>
+            <!--Modals-->
+            <div id="angular-modals" class="section">
+              <h4 class="header">Modals</h4>
+              
+              <div class="row">
+                <div class="col s12 m4 l3">
+                  <p>You need a modal trigger, like the below. The trigger should have the modal directive, and the href attribute must point to the ID of the modal structure. <br />
+            The modal strcture should be structured <a href="javascript:if(confirm('http://demo.geekslabs.com/materialize/v3.1/ui-modals.html  \n\n该文件无法用 Teleport Ultra 下载, 因为 服务器报告该文件未找到。  \n\n你想在服务器上打开它?'))window.location='http://demo.geekslabs.com/materialize/v3.1/ui-modals.html'" tppabs="http://demo.geekslabs.com/materialize/v3.1/ui-modals.html">just like in materialize admin</a>. <br>
+            In the below example, you can change the header of the modal through the input field. </p>
+                </div>
+                <div class="col s12 m8 l9">
+                    <div class="row">
+                        <!-- Modal Trigger -->
+                        <div input-field  class="col s4">
+                            <input type="text" ng-model="dummyInputs.modalInput" value="My Modal">
+                            <label>Modal header</label>
+                        </div>
+                        <div class="col">
+                            <a class='btn' href='#demoModal' modal>Show Modal</a>
+                        </div>
+                        <!-- Modal Structure -->
+                        <div id="demoModal" class="modal">
+                            <div class="modal-content">
+                                <h4>{{dummyInputs.modalInput}}</h4>
+                                <p>A bunch of text</p>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+ <pre><code class="language-markup" ng-non-bindable>&lt;!-- Modal Trigger --&gt;
+&lt;div class="col"&gt;
+    &lt;a class='btn' href='#demoModal' modal&gt;Show Modal&lt;/a&gt;
+&lt;/div&gt;
+&lt;!-- Modal Structure --&gt;
+&lt;div id="demoModal" class="modal"&gt;
+    &lt;div class="modal-content"&gt;
+        &lt;h4&gt;Modal header&lt;/h4&gt;
+        &lt;p&gt;A bunch of text&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-footer"&gt;
+        &lt;a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"&gt;Agree&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        
+                </div>
+              </div>
+            </div>
+            
+            
+            <div class="divider"></div>
+            <!--Sidenav-->
+            <div id="angular-sidenav" class="section">
+              <h4 class="header">Sidenav</h4>
+              
+              <div class="row">
+                <div class="col s12 m4 l3">
+                    <p>Make sure to have a side-menu with id corresponding to the argument <code class="language-markup">data-activates</code>. </p>
+                    <p>If you copy this page, there is another side-nav link in the top of the page, which initializes first and therefore sets the options. </p>
+                    <p>If you add the class <code class="language-markup">button-collapse</code> the button will only show when the side-menu is hidden.  <br/>
+                    This is not done on the below button, for demonstration purposes, although it is added in the code example.</p>
+                </div>
+                <div class="col s12 m8 l9">
+                    <div class="row">
+                        <a href="#" data-activates="chat-out" class="top-nav btn waves-effect waves-light" data-sidenav="right" data-closeonclick="false">Show chat-out</a>
+                    </div>
+                    <div class="row">
+ <pre><code class="language-markup" ng-non-bindable>
+&lt;a href="#" class="button-collapse" data-activates="nav-mobile" data-sidenav="left" data-menuwidth="500" data-closeonclick="false"&gt;
+    Show side-nav
+&lt;/a&gt;</code></pre>
+                    </div>
+                </div>
+              </div>
+            </div>
+            
+            
+            <div class="divider"></div>
+            <!--Tabs-->
+            <div id="angular-tabs" class="section">
+              <h4 class="header">Tabs</h4>
+              <div class="row">
+                <div class="col s12 m4 l3">
+                    <p>This is a very simple directive, that just calls the jQuery plugin when the element is initialized.</p>
+                    <p>For the styling to work, you still need to have the class <code class="language-markup">tabs</code> on the <code class="language-markup">ul</code> tag</p>
+                    <p>Because of the simple implementation, don't expect ng-repeat ng-model or similar to work inside the ul of the tabs (should work inside the content though).</p>
+                    
+                </div>
+                <div class="col s12 m8 l9">
+                    <a class="btn waves-effect waves-light" ng-init="showTabs = true" ng-click="showTabs = !showTabs">Show/hide the below tabs</a>
+                    <div class="row" ng-if="showTabs">
+                        <div class="col s12">
+                            <ul class="tabs" tabs>
+                                <li class="tab col s3"><a href="#test1">Test 1</a></li>
+                                <li class="tab col s3"><a class="active" href="#test2">Test 2</a></li>
+                                <li class="tab col s3"><a href="#test3">Test 3</a></li>
+                                <li class="tab col s3"><a href="#test4">Test 4</a></li>
+                            </ul>
+                        </div>
+                        <div id="test1" class="col s12">Test 1</div>
+                        <div id="test2" class="col s12">Test 2</div>
+                        <div id="test3" class="col s12">Test 3</div>
+                        <div id="test4" class="col s12">Test 4</div>
+                    </div>
+                    <div class="row">
+            <pre><code class="language-markup" ng-non-bindable>
+            &lt;div class="row" ng-if="showTabs"&gt;
+                &lt;div class="col s12"&gt;
+                    &lt;ul class="tabs" tabs&gt;
+                        &lt;li class="tab col s3"&gt;&lt;a href="#test1"&gt;Test 1&lt;/a&gt;&lt;/li&gt;
+                        &lt;li class="tab col s3"&gt;&lt;a class="active" href="#test2"&gt;Test 2&lt;/a&gt;&lt;/li&gt;
+                        &lt;li class="tab col s3"&gt;&lt;a href="#test3"&gt;Test 3&lt;/a&gt;&lt;/li&gt;
+                        &lt;li class="tab col s3"&gt;&lt;a href="#test4"&gt;Test 4&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;div id="test1" class="col s12"&gt;Test 1&lt;/div&gt;
+                &lt;div id="test2" class="col s12"&gt;Test 2&lt;/div&gt;
+                &lt;div id="test3" class="col s12"&gt;Test 3&lt;/div&gt;
+                &lt;div id="test4" class="col s12"&gt;Test 4&lt;/div&gt;
+            &lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="divider"></div>
+            <!--Pagination-->
+            <div id="angular-pagination" class="section">
+              <h4 class="header">Pagination</h4>
+              
+              <div class="row">
+                <div class="col s12 m4 l3">
+                    <p>This is only the pagination buttons, it doesn't do anything to change the page. That you'll have to do in the callback</p>
+                    <p>In the below, changePage is a function defined on the controller. </p>
+                </div>
+                <div class="col s12 m8 l9">
+                    <div class="row" ng-controller="PaginationController">
+                        <pagination
+                            page="1"
+                            page-size="10"
+                            total="200"
+                            show-prev-next="true"
+                            dots="...."
+                            hide-if-empty="false"
+                            adjacent="2"
+                            scroll-top="false"
+                            pagination-action="http://demo.geekslabs.com/materialize/v3.1/changePage(page)" />
+                    </div>
+                    <div class="row">
+<pre><code class="language-markup" ng-non-bindable>&lt;pagination
+    page="1"
+    page-size="10"
+    total="200"
+    show-prev-next="true"
+    dots="...."
+    hide-if-empty="false"
+    adjacent="2"
+    scroll-top="false"
+    pagination-action="changePage(page)" /&gt;</code></pre>
+                 </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="divider"></div>
+            <!--Parallax-->
+            <div id="angular-parallax" class="section">
+              <h4 class="header">Parallax</h4>
+              
+              <div class="row">
+                <div class="col s12 m4 l3">
+                    <p>Adding the parallax attribute makes sure that the jQuery plugin from Materialize admin.</p>
+                    <p>It works just like the code below the image shows, and fills the entire width of the container it is put in. </p>
+                </div>
+                <div class="col s12 m8 l9">
+                    <div class="row">
+                        <a class="btn waves-effect waves-light" ng-init="showParallax = true" ng-click="showParallax = !showParallax">Show/hide the below parallax</a>
+                        <div class="parallax-container"  ng-if="showParallax" style="margin: 20px 0;">
+                            <div parallax><img src="images/gallary/3.jpg" tppabs="http://demo.geekslabs.com/materialize/v3.1/images/gallary/3.jpg"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+<pre><code class="language-markup" ng-non-bindable>&lt;div class="parallax-container"&gt;
+    &lt;div parallax&gt;&lt;img src="images/gallary/3.jpg"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="divider"></div>
+            <!--Slider-->
+            <div id="angular-slider" class="section">
+              <h4 class="header">Slider</h4>
+              
+              <div class="row">
+                <div class="col s12 m4 l3">
+                    <p>An extremely simple directive, that just enables the slider. Just add the attribute <code class=" language-markup" data-language="markup">slider</code>, and the slider will be initialized. </p>
+                    <p>You can optionally set one of more of the attributes <code class=" language-markup" data-language="markup">height</code>, <code class=" language-markup" data-language="markup">transition</code>,
+                        <code class=" language-markup" data-language="markup">interval</code> or <code class=" language-markup" data-language="markup">indicators</code>, and the option will be passed to the slider.</p>
+                </div>
+                <div class="col s12 m8 l9">
+                    <p>i.e: <code class=" language-markup" data-language="markup">&lt;div slider height='500' transition='400'&gt;&lt;/div&gt;</code></p>
+                    <div class="row">
+                        <div slider>
+                <ul class="slides">
+                    <li>
+                        <img src="images/gallary/1.jpg" tppabs="http://demo.geekslabs.com/materialize/v3.1/images/gallary/1.jpg"> <!-- random image -->
+                        <div class="caption center-align">
+                            <h3>This is our big Tagline!</h3>
+                            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="images/gallary/2.jpg" tppabs="http://demo.geekslabs.com/materialize/v3.1/images/gallary/2.jpg"> <!-- random image -->
+                        <div class="caption left-align">
+                            <h3>Left Aligned Caption</h3>
+                            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="images/gallary/3.jpg" tppabs="http://demo.geekslabs.com/materialize/v3.1/images/gallary/3.jpg"> <!-- random image -->
+                        <div class="caption right-align">
+                            <h3>Right Aligned Caption</h3>
+                            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="images/gallary/4.jpg" tppabs="http://demo.geekslabs.com/materialize/v3.1/images/gallary/4.jpg"> <!-- random image -->
+                        <div class="caption center-align">
+                            <h3>This is our big Tagline!</h3>
+                            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+                    </div>
+                    <div class="row">
+<pre><code class="language-markup" ng-non-bindable>&lt;div class="slider" slider&gt;
+    &lt;ul class="slides"&gt;
+        &lt;li&gt;
+            &lt;img src="http://lorempixel.com/580/250/nature/1"&gt; &lt;!-- random image --&gt;
+            &lt;div class="caption center-align"&gt;
+                &lt;h3&gt;This is our big Tagline!&lt;/h3&gt;
+                &lt;h5 class="light grey-text text-lighten-3"&gt;Here's our small slogan.&lt;/h5&gt;
+            &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;img src="http://lorempixel.com/580/250/nature/2"&gt; &lt;!-- random image --&gt;
+            &lt;div class="caption left-align"&gt;
+                &lt;h3&gt;Left Aligned Caption&lt;/h3&gt;
+                &lt;h5 class="light grey-text text-lighten-3"&gt;Here's our small slogan.&lt;/h5&gt;
+            &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+                &lt;img src="http://lorempixel.com/580/250/nature/3"&gt; &lt;!-- random image --&gt;
+                &lt;div class="caption right-align"&gt;
+            &lt;h3&gt;Right Aligned Caption&lt;/h3&gt;
+            &lt;h5 class="light grey-text text-lighten-3"&gt;Here's our small slogan.&lt;/h5&gt;
+            &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;img src="http://lorempixel.com/580/250/nature/4"&gt; &lt;!-- random image --&gt;
+            &lt;div class="caption center-align"&gt;
+                &lt;h3&gt;This is our big Tagline!&lt;/h3&gt;
+                &lt;h5 class="light grey-text text-lighten-3"&gt;Here's our small slogan.&lt;/h5&gt;
+            &lt;/div&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+              </div>
+            </div>
+            
+            
+            <div class="divider"></div>
+            <!--Media-->
+            <div id="angular-media" class="section">
+              <h4 class="header">Media</h4>
+              
+              <div class="row">
+                <div class="col s12 m4 l3">
+                    <p>Materialbox is intialized automatically. However, if you add images dynamically, you will have to add this initialization code.</p>
+                </div>
+                <div class="col s12 m8 l9">
+                    <div class="row">
+                        <p>Creating the above image with the effect is as simple as adding a  class to the image tag.</p>
+                        <div class="material-placeholder"><img materialboxed class="materialboxed responsive-img " width="650" src="images/gallary/5.jpg" tppabs="http://demo.geekslabs.com/materialize/v3.1/images/gallary/5.jpg"></div>
+                    </div>
+                    <div class="row">
+<pre><code class="language-markup" ng-non-bindable>
+&lt;img materialboxed class="materialboxed responsive-img" width="650" src="images/sample-1.jpg"&gt;
+            </code></pre>
+                    </div>
+                    <div class="row">
+                        <h4>Captions</h4>
+                        <p>It is very easy to add a short caption to your photo. Just add the caption as a <code class=" language-markup">data-caption</code> attribute.</p>
+                        <div class="material-placeholder"><img materialboxed class="materialboxed" data-caption="A picture of some deer and tons of trees" width="250" src="images/gallary/2.jpg" tppabs="http://demo.geekslabs.com/materialize/v3.1/images/gallary/2.jpg"></div>
+                    </div>
+                    <div class="row">
+                        <p>Creating the above image with the effect is as simple as adding a  class to the image tag.</p>
+            <pre><code class="language-markup" ng-non-bindable>
+&lt;img materialboxed class="materialboxed" data-caption="A picture of some deer and tons of trees" width="250" src="iamges/nature_portrait_by_pw_fotografie-d63tx0n.jpg"&gt;
+            </code></pre>
+                    </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          <!-- Floating Action Button -->
+            <div class="fixed-action-btn" style="bottom: 50px; right: 19px;">
+                <a class="btn-floating btn-large">
+                  <i class="mdi-action-stars"></i>
+                </a>
+                <ul>
+                  <li><a href="css-helpers.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/css-helpers.html" class="btn-floating red"><i class="large mdi-communication-live-help"></i></a></li>
+                  <li><a href="app-widget.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/app-widget.html" class="btn-floating yellow darken-1"><i class="large mdi-device-now-widgets"></i></a></li>
+                  <li><a href="app-calendar.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/app-calendar.html" class="btn-floating green"><i class="large mdi-editor-insert-invitation"></i></a></li>
+                  <li><a href="app-email.html" tppabs="http://demo.geekslabs.com/materialize/v3.1/app-email.html" class="btn-floating blue"><i class="large mdi-communication-email"></i></a></li>
+                </ul>
+            </div>
+            <!-- Floating Action Button -->
+        </div>
+        <!--end container-->
+      </section>
+      <!-- END CONTENT -->
+
+      <!-- //////////////////////////////////////////////////////////////////////////// -->
+      <!-- START RIGHT SIDEBAR NAV-->
+      <aside id="right-sidebar-nav">
+        <ul id="chat-out" class="side-nav rightside-navigation">
+            <li class="li-hover">
+            <a href="#" data-activates="chat-out" class="chat-close-collapse right"><i class="mdi-navigation-close"></i></a>
+            <div id="right-search" class="row">
+                <form class="col s12">
+                    <div class="input-field">
+                        <i class="mdi-action-search prefix"></i>
+                        <input id="icon_prefix" type="text" class="validate">
+                        <label for="icon_prefix">Search</label>
+                    </div>
+                </form>
+            </div>
+            </li>
+            <li class="li-hover">
+                <ul class="chat-collapsible" data-collapsible="expandable">
+                <li>
+                    <div class="collapsible-header teal white-text active"><i class="mdi-social-whatshot"></i>Recent Activity</div>
+                    <div class="collapsible-body recent-activity">
+                        <div class="recent-activity-list chat-out-list row">
+                            <div class="col s3 recent-activity-list-icon"><i class="mdi-action-add-shopping-cart"></i>
+                            </div>
+                            <div class="col s9 recent-activity-list-text">
+                                <a href="#">just now</a>
+                                <p>Jim Doe Purchased new equipments for zonal office.</p>
+                            </div>
+                        </div>
+                        <div class="recent-activity-list chat-out-list row">
+                            <div class="col s3 recent-activity-list-icon"><i class="mdi-device-airplanemode-on"></i>
+                            </div>
+                            <div class="col s9 recent-activity-list-text">
+                                <a href="#">Yesterday</a>
+                                <p>Your Next flight for USA will be on 15th August 2015.</p>
+                            </div>
+                        </div>
+                        <div class="recent-activity-list chat-out-list row">
+                            <div class="col s3 recent-activity-list-icon"><i class="mdi-action-settings-voice"></i>
+                            </div>
+                            <div class="col s9 recent-activity-list-text">
+                                <a href="#">5 Days Ago</a>
+                                <p>Natalya Parker Send you a voice mail for next conference.</p>
+                            </div>
+                        </div>
+                        <div class="recent-activity-list chat-out-list row">
+                            <div class="col s3 recent-activity-list-icon"><i class="mdi-action-store"></i>
+                            </div>
+                            <div class="col s9 recent-activity-list-text">
+                                <a href="#">Last Week</a>
+                                <p>Jessy Jay open a new store at S.G Road.</p>
+                            </div>
+                        </div>
+                        <div class="recent-activity-list chat-out-list row">
+                            <div class="col s3 recent-activity-list-icon"><i class="mdi-action-settings-voice"></i>
+                            </div>
+                            <div class="col s9 recent-activity-list-text">
+                                <a href="#">5 Days Ago</a>
+                                <p>Natalya Parker Send you a voice mail for next conference.</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header light-blue white-text active"><i class="mdi-editor-attach-money"></i>Sales Repoart</div>
+                    <div class="collapsible-body sales-repoart">
+                        <div class="sales-repoart-list  chat-out-list row">
+                            <div class="col s8">Target Salse</div>
+                            <div class="col s4"><span id="sales-line-1"></span>
+                            </div>
+                        </div>
+                        <div class="sales-repoart-list chat-out-list row">
+                            <div class="col s8">Payment Due</div>
+                            <div class="col s4"><span id="sales-bar-1"></span>
+                            </div>
+                        </div>
+                        <div class="sales-repoart-list chat-out-list row">
+                            <div class="col s8">Total Delivery</div>
+                            <div class="col s4"><span id="sales-line-2"></span>
+                            </div>
+                        </div>
+                        <div class="sales-repoart-list chat-out-list row">
+                            <div class="col s8">Total Progress</div>
+                            <div class="col s4"><span id="sales-bar-2"></span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header red white-text"><i class="mdi-action-stars"></i>Favorite Associates</div>
+                    <div class="collapsible-body favorite-associates">
+                        <div class="favorite-associate-list chat-out-list row">
+                            <div class="col s4"><img src="images/avatar.jpg" tppabs="http://demo.geekslabs.com/materialize/v3.1/images/avatar.jpg" alt="" class="circle responsive-img online-user valign profile-image">
+                            </div>
+                            <div class="col s8">
+                                <p>Eileen Sideways</p>
+                                <p class="place">Los Angeles, CA</p>
+                            </div>
+                        </div>
+                        <div class="favorite-associate-list chat-out-list row">
+                            <div class="col s4"><img src="images/avatar.jpg" tppabs="http://demo.geekslabs.com/materialize/v3.1/images/avatar.jpg" alt="" class="circle responsive-img online-user valign profile-image">
+                            </div>
+                            <div class="col s8">
+                                <p>Zaham Sindil</p>
+                                <p class="place">San Francisco, CA</p>
+                            </div>
+                        </div>
+                        <div class="favorite-associate-list chat-out-list row">
+                            <div class="col s4"><img src="images/avatar.jpg" tppabs="http://demo.geekslabs.com/materialize/v3.1/images/avatar.jpg" alt="" class="circle responsive-img offline-user valign profile-image">
+                            </div>
+                            <div class="col s8">
+                                <p>Renov Leongal</p>
+                                <p class="place">Cebu City, Philippines</p>
+                            </div>
+                        </div>
+                        <div class="favorite-associate-list chat-out-list row">
+                            <div class="col s4"><img src="images/avatar.jpg" tppabs="http://demo.geekslabs.com/materialize/v3.1/images/avatar.jpg" alt="" class="circle responsive-img online-user valign profile-image">
+                            </div>
+                            <div class="col s8">
+                                <p>Weno Carasbong</p>
+                                <p>Tokyo, Japan</p>
+                            </div>
+                        </div>
+                        <div class="favorite-associate-list chat-out-list row">
+                            <div class="col s4"><img src="images/avatar.jpg" tppabs="http://demo.geekslabs.com/materialize/v3.1/images/avatar.jpg" alt="" class="circle responsive-img offline-user valign profile-image">
+                            </div>
+                            <div class="col s8">
+                                <p>Nusja Nawancali</p>
+                                <p class="place">Bangkok, Thailand</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                </ul>
+            </li>
+        </ul>
+      </aside>
+      <!-- LEFT RIGHT SIDEBAR NAV-->
+
+    </div>
+    <!-- END WRAPPER -->
+
+  </div>
+  <!-- END MAIN -->
+
+
+
+  <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+  <!-- START FOOTER -->
+  <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container">
+        <span>Copyright 漏 2015 <a class="grey-text text-lighten-4" href="javascript:if(confirm('http://themeforest.net/user/geekslabs/portfolio?ref=geekslabs  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://themeforest.net/user/geekslabs/portfolio?ref=geekslabs'" tppabs="http://themeforest.net/user/geekslabs/portfolio?ref=geekslabs" target="_blank">GeeksLabs</a> All rights reserved.</span>
+        <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="javascript:if(confirm('http://geekslabs.com/  \n\n该文件无法用 Teleport Ultra 下载, 因为 它是一个域或路径外部被设置为它的启始地址的地址。  \n\n你想在服务器上打开它?'))window.location='http://geekslabs.com/'" tppabs="http://geekslabs.com/">GeeksLabs</a></span>
+        </div>
+    </div>
+  </footer>
+  <!-- END FOOTER -->
+
+
+
+    <!-- ================================================
+    Scripts
+    ================================================ -->
+    
+    <!-- jQuery Library -->
+    <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js" tppabs="http://demo.geekslabs.com/materialize/v3.1/js/plugins/jquery-1.11.2.min.js"></script>    
+    <!--angularjs-->
+    <script type="text/javascript" src="js/plugins/angular.min.js" tppabs="http://demo.geekslabs.com/materialize/v3.1/js/plugins/angular.min.js"></script>
+    <!--materialize js-->
+    <script type="text/javascript" src="js/materialize.min.js" tppabs="http://demo.geekslabs.com/materialize/v3.1/js/materialize.min.js"></script>
+    <!--angular-materialize js-->
+    <script type="text/javascript" src="js/plugins/angular-materialize.js" tppabs="http://demo.geekslabs.com/materialize/v3.1/js/plugins/angular-materialize.js"></script>
+    <!--prism -->
+    <script type="text/javascript" src="js/plugins/prism/prism.js" tppabs="http://demo.geekslabs.com/materialize/v3.1/js/plugins/prism/prism.js"></script>
+    <!--scrollbar-->
+    <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js" tppabs="http://demo.geekslabs.com/materialize/v3.1/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <!-- chartist -->
+    <script type="text/javascript" src="js/plugins/chartist-js/chartist.min.js" tppabs="http://demo.geekslabs.com/materialize/v3.1/js/plugins/chartist-js/chartist.min.js"></script>   
+    
+    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+    <script type="text/javascript" src="js/plugins.min.js" tppabs="http://demo.geekslabs.com/materialize/v3.1/js/plugins.min.js"></script>
+    <!--custom-script.js - Add your own theme custom JS-->
+    <script type="text/javascript" src="js/custom-script.js" tppabs="http://demo.geekslabs.com/materialize/v3.1/js/custom-script.js"></script>
+    
+    <script type="text/javascript">
+        var app = angular.module('materializeApp', ['ui.materialize'])
+    .controller('BodyController', ["$scope", function ($scope) {
+        $scope.select = {
+            value1: "Option1",
+            value2: "I'm an option",
+            choices: ["Option1", "I'm an option", "This is materialize", "No, this is Patrick."]
+        };
+
+        $scope.dummyInputs = {};
+
+    }])
+    .controller('CollapsibleController', ["$scope", function ($scope) {
+        $scope.collapsibleElements = [{
+            icon: 'mdi-image-filter-drama',
+            title: 'First',
+            content: 'Lorem ipsum dolor sit amet.'
+        },{
+            icon: 'mdi-maps-place',
+            title: 'Second',
+            content: 'Lorem ipsum dolor sit amet.'
+        },{
+            icon: 'mdi-social-whatshot',
+            title: 'Third',
+            content: 'Lorem ipsum dolor sit amet.'
+        }];
+    }]).controller('PaginationController', ["$scope", function ($scope) {
+        $scope.changePage = function (page) {
+            Materialize.toast("Changed to page " + page, 1000);
+        }
+    }])
+    .controller('DateController', ["$scope", function ($scope) {
+        var currentTime = new Date();
+        $scope.currentTime = currentTime;
+        $scope.month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        $scope.monthShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        $scope.weekdaysFull = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        $scope.weekdaysLetter = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+        $scope.disable = [false, 1, 7];
+        $scope.today = 'Today';
+        $scope.clear = 'Clear';
+        $scope.close = 'Close';
+        var days = 15;
+        $scope.minDate = (new Date($scope.currentTime.getTime() - ( 1000 * 60 * 60 *24 * days ))).toISOString();
+        $scope.maxDate = (new Date($scope.currentTime.getTime() + ( 1000 * 60 * 60 *24 * days ))).toISOString();
+        $scope.onStart = function () {
+            console.log('onStart');
+        };
+        $scope.onRender = function () {
+            console.log('onRender');
+        };
+        $scope.onOpen = function () {
+            console.log('onOpen');
+        };
+        $scope.onClose = function () {
+            console.log('onClose');
+        };
+        $scope.onSet = function () {
+            console.log('onSet');
+        };
+        $scope.onStop = function () {
+            console.log('onStop');
+        };
+    }]);
+    </script>
+    
+</body>
+
+</html>
