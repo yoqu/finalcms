@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="fincalcms:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/fincalcms_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="fincalcms/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="fincalcms" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="jfinal-2.2-bin-with-src" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
