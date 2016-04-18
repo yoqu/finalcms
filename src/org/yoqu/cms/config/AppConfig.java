@@ -4,8 +4,10 @@ import com.jfinal.config.*;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
-import org.yoqu.cms.controller.AdminController;
+import org.yoqu.cms.controller.DashBoardController;
+import org.yoqu.cms.controller.UserController;
 import org.yoqu.cms.controller.HelloController;
+import org.yoqu.cms.model._MappingKit;
 //import org.yoqu.cms.model._MappingKit;
 
 public class AppConfig extends JFinalConfig
@@ -23,11 +25,10 @@ public class AppConfig extends JFinalConfig
     public void configRoute(Routes me)
     {
         // TODO Auto-generated method stub
-        me.add("/admin", AdminController.class);
+        me.add("/admin", UserController.class);
         me.add("/hello", HelloController.class);
-
+        me.add("/admin/dashboard", DashBoardController.class);
         //admin..
-
     }
 
     @Override
@@ -38,7 +39,7 @@ public class AppConfig extends JFinalConfig
         me.add(c3p0Plugin);
         ActiveRecordPlugin activeRecordPlugin =new ActiveRecordPlugin(c3p0Plugin);
         me.add(activeRecordPlugin);
-       // _MappingKit.mapping(activeRecordPlugin);
+        _MappingKit.mapping(activeRecordPlugin);
     }
 
     @Override

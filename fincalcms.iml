@@ -27,5 +27,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="jfinal-2.2-bin-with-src" level="project" />
     <orderEntry type="library" name="jetty-server-8.1.8" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>
