@@ -1,13 +1,13 @@
-package org.yoqu.cms.controller;
+package org.yoqu.cms.admincontroller;
 
 import com.jfinal.aop.Before;
+import com.jfinal.aop.Clear;
 import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
-import com.jfinal.ext.interceptor.GET;
 import com.jfinal.ext.interceptor.POST;
-import com.jfinal.plugin.activerecord.Db;
 import org.json.JSONException;
 import org.yoqu.cms.Constant.Constant;
+import org.yoqu.cms.core.AuthManager;
 import org.yoqu.cms.core.JSONUtil;
 import org.yoqu.cms.model.Role;
 import org.yoqu.cms.model.User;
@@ -21,23 +21,23 @@ import java.util.List;
 public class UserController extends Controller {
 
     public void index() {
-        System.out.println("test");
-        //renderText("123");
         render("/admin/login.html");
     }
 
+    @Clear
     public void login() {
-        System.out.println("login");
         render("/admin/login.html");
     }
 
+    @Clear
     public void register() {
-
+        render("/admin/register.html");
     }
 
     //dologin operate.
     @Before(POST.class)
-    public void dologin() {
+    @Clear
+    public void doLogin() {
         User user = getModel(User.class);
         List<User> users = User.dao.finduserByNamePasswordOrName(user.getName(), user.getPassword());
         if (users.size() == 1) {
@@ -46,7 +46,7 @@ public class UserController extends Controller {
             getSession().setAttribute(Constant.ONLINE_USER, user);
             try {
                 renderJson(JSONUtil.writeSuccess());
-                setCookie(Constant.ONLINE_USER,user.getId().toString(),100000);
+                setCookie(Constant.ONLINE_USER, user.getId().toString(), 100000);
                 redirect("/admin/dashboard");
             } catch (JSONException e) {
                 JSONUtil.writeJSONError(this);
@@ -62,6 +62,7 @@ public class UserController extends Controller {
         }
     }
 
+    @Clear
     public void doRegister() {
         User user = getModel(User.class);
         List<User> users = User.dao.finduserByNamePasswordOrName(user.getName());
@@ -75,9 +76,9 @@ public class UserController extends Controller {
         }
         user.setCreateDate(new Date());
         user.setLastDate(new Date());
-        Role role=Role.dao.findAdminRole();
+        Role role = Role.dao.findAdminRole();
         user.setRole(role.getId());
-        if(user.save()){
+        if (user.save()) {
             try {
                 renderJson(JSONUtil.writeSuccess());
             } catch (JSONException e) {
@@ -85,4 +86,5 @@ public class UserController extends Controller {
             }
         }
     }
+
 }

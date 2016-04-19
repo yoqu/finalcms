@@ -1,4 +1,4 @@
-package org.yoqu.cms.controller;
+package org.yoqu.cms.admincontroller;
 
 import com.jfinal.core.Controller;
 
