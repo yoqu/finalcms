@@ -25,8 +25,21 @@ public class InjectManager {
         SystemVariable.use();//初始化参数
     }
 
-    public static void injectVariable(Controller controller) {
+
+    public static void injectCommonVariable(Controller controller) {
         injectSystemVariable(controller);//inject System Variable..
+        injectOtherVariable(controller);
+    }
+
+    public static void injectPersonalVariable(Controller controller){
+        injectOnlineUser(controller);//inject system Online User variable..
+    }
+
+    private static void injectOtherVariable(Controller controller) {
+        //inject site url.
+        StringBuffer url = controller.getRequest().getRequestURL();
+        String tempContextUrl = url.delete(url.length() - controller.getRequest().getRequestURI().length(), url.length()).append(controller.getRequest().getServletContext().getContextPath()).append("/").toString();
+        controller.setAttr(Constant.SITE_URL, tempContextUrl);
     }
 
     /**
@@ -45,7 +58,7 @@ public class InjectManager {
     }
 
     private static void injectOnlineUser(Controller controller) {
-        controller.setAttr(Constant.ONLINE_USER,controller.getSessionAttr(Constant.ONLINE_USER));
+        controller.setAttr(Constant.ONLINE_USER, controller.getSessionAttr(Constant.ONLINE_USER));
     }
 
     public static void injectAnnotation(Method method, Controller controller) {

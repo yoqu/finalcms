@@ -9,7 +9,6 @@ import org.yoqu.cms.core.util.SiteTitle;
 public class DashBoardController extends Controller {
     @SiteTitle("主页面板")
     public void index(){
-//        setAttr("site_title","主页面板");
         render("/admin/dashboard.html");
     }
 }

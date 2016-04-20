@@ -19,4 +19,7 @@ public class Role extends BaseRole<Role> {
         } else
             return null;
     }
+    public List<Role> findAllRole(){
+        return dao.find("select * from role");
+    }
 }

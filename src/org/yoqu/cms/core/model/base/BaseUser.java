@@ -25,6 +25,38 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 		return get("name");
 	}
 
+	public void setAvatar(java.lang.String avatar) {
+		set("avatar", avatar);
+	}
+
+	public java.lang.String getAvatar() {
+		return get("avatar");
+	}
+
+	public void setNickname(java.lang.String nickname) {
+		set("nickname", nickname);
+	}
+
+	public java.lang.String getNickname() {
+		return get("nickname");
+	}
+
+	public void setPhone(java.lang.String phone) {
+		set("phone", phone);
+	}
+
+	public java.lang.String getPhone() {
+		return get("phone");
+	}
+
+	public void setEmail(java.lang.String email) {
+		set("email", email);
+	}
+
+	public java.lang.String getEmail() {
+		return get("email");
+	}
+
 	public void setPassword(java.lang.String password) {
 		set("password", password);
 	}
@@ -49,12 +81,12 @@ public abstract class BaseUser<M extends BaseUser<M>> extends Model<M> implement
 		return get("lastDate");
 	}
 
-	public void setRole(java.lang.Integer role) {
-		set("role", role);
+	public void setRid(java.lang.Integer rid) {
+		set("rid", rid);
 	}
 
-	public java.lang.Integer getRole() {
-		return get("role");
+	public java.lang.Integer getRid() {
+		return get("rid");
 	}
 
 	public void setIsDelete(java.lang.Integer isDelete) {

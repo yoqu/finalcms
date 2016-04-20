@@ -24,7 +24,7 @@ public class AuthManager implements Interceptor {
     }
 
     /**
-     * MD5加密处理
+     * MD5加密处理字符串
      *
      * @param str 待加密字符串
      * @return 加密后的结果
@@ -54,36 +54,36 @@ public class AuthManager implements Interceptor {
         return hs.toUpperCase();
     }
 
+    /**
+     * 对user进行认证，认证通过返回认证后的user对象，否则返回null;
+     *
+     * @param user
+     * @return
+     */
+    public static User userAuth(User user) {
+        String newPassword = encryptionString(user.getPassword());
+        List<User> users = User.dao.finduserByNamePasswordOrName(user.getName(), newPassword);
+        if (users.size() == 1)
+            return users.get(0);
+        else {
+            return null;
+        }
+    }
+
     @Override
     public void intercept(Invocation inv) {
         String uri = inv.getActionKey();
         if (uri.startsWith("/admin")) {//compare user access back-end page or front page.
+            InjectManager.injectCommonVariable(inv.getController());//inject Common Variable into controller.
+            InjectManager.injectAnnotation(inv.getMethod(), inv.getController());//inject
             if (webServiceAuth(inv.getController())) {
-                //inject variable to back-end web page.
-                InjectManager.injectVariable(inv.getController());
+                InjectManager.injectPersonalVariable(inv.getController());//inject user variable into page.
                 inv.invoke();
-                InjectManager.injectAnnotation(inv.getMethod(), inv.getController());
             } else {
                 inv.getController().redirect("/admin/user/login");
             }
         } else {
             inv.invoke();
-        }
-    }
-
-
-    /**
-     * 对user进行认证，认证通过返回认证后的user对象，否则返回null;
-     * @param user
-     * @return
-     */
-    public static User userAuth(User user){
-        String newPassword = encryptionString(user.getPassword());
-        List<User> users = User.dao.finduserByNamePasswordOrName(user.getName(), newPassword);
-        if(users.size()==0)
-            return users.get(0);
-        else{
-            return null;
         }
     }
 

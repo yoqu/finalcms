@@ -82,7 +82,7 @@ public class UserController extends Controller {
         user.setCreateDate(new Date());
         user.setLastDate(new Date());
         Role role = Role.dao.findAdminRole();
-        user.setRole(role.getId());
+        user.setRid(role.getId());
         if (user.save()) {
             try {
                 renderJson(JSONUtil.writeSuccess());

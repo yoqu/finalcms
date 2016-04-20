@@ -2,6 +2,7 @@ package org.yoqu.cms.core.config;
 
 import com.jfinal.config.Routes;
 import org.yoqu.cms.core.admincontroller.DashBoardController;
+import org.yoqu.cms.core.admincontroller.People;
 import org.yoqu.cms.core.admincontroller.UserController;
 
 import java.util.HashMap;
@@ -22,6 +23,7 @@ public class AdminRoutes extends Routes {
     public void initPaths() {
         paths.put(basePath + "user", UserController.class);
         paths.put(basePath + "dashboard", DashBoardController.class);
+        paths.put(basePath+"people", People.class);
     }
 
     public AdminRoutes() {
