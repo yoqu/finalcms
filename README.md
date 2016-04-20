@@ -19,11 +19,13 @@
 1. 下载源代码
 2. 使用idea打开项目(项目使用idea 15.05的版本)
 3. 主菜单的run选项卡设置
+![选项卡设置](https://raw.githubusercontent.com/yoqu/finalcms/master/docs/pictrues/menu_editconfiruration.png)
 4. 设置标红地方的参数
+![runConfiguration](https://raw.githubusercontent.com/yoqu/finalcms/master/docs/pictrues/runConfiguration.png)
 
 ### 导入数据到数据库
 1. 项目中docs目录包含finalcms.sql文件，将其导入你的数据库中，数据库使用的是mysql。
-2. 在res目录的DataBaseConfig.txt文件中配置数据库
+2. 在res目录的database_config.txt文件中配置数据库链接信息
 
 ### last
 * 快捷键shift + F10运行项目.

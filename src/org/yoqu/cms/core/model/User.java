@@ -1,9 +1,12 @@
 package org.yoqu.cms.core.model;
+import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Page;
 import org.yoqu.cms.core.Constant.Constant;
 import org.yoqu.cms.core.Constant.SystemVariable;
 import org.yoqu.cms.core.model.base.BaseUser;
+import org.yoqu.cms.core.util.SqlHandle;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -32,6 +35,15 @@ public class User extends BaseUser<User> {
 		return paginate(pageNumber, Integer.parseInt(SystemVariable.get(Constant.PAGE_SIZE).trim()),"select *","from user where is_delete=0 order by createDate desc");
 	}
 
+	public void softDelete(int uid) throws SQLException {
+		SqlHandle sqlHandle=new SqlHandle(SqlHandle.OPERATES[3],"user");
+		sqlHandle.OPERATEFILED("id",uid);
+		try {
+		Db.queryNumber(sqlHandle.toString());
+		}catch (Exception ex){
+			throw new SQLException(ex.getMessage());
+		}
+	}
 	@Override
 	public String toString() {
 		return "ID:"+getId()+"Name: "+getName()+" Password: "+getPassword()+" createDate: "+getCreateDate()+" lastDate:"+getLastDate()+"role: "+getRole();

@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by yoqu on 2016/4/20 0020.
  */
-public class People extends Controller {
+public class PeopleController extends Controller {
 
     @SiteTitle("用户管理")
     public void index() {
@@ -41,5 +41,10 @@ public class People extends Controller {
         user.setIsDelete(0);
         user.save();
         render("/admin/people/people.html");
+    }
+
+    public void doDelete(){
+        Integer uid = Integer.getInteger(getPara("id").trim());
+        User.dao.softDelete(uid);
     }
 }
