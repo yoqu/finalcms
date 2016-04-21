@@ -2,6 +2,7 @@ package org.yoqu.cms.core.admincontroller;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
+import com.jfinal.core.JFinal;
 import com.jfinal.ext.interceptor.POST;
 import com.jfinal.plugin.activerecord.Page;
 import org.yoqu.cms.core.intercepter.AuthManager;
@@ -21,7 +22,6 @@ public class PeopleController extends Controller {
     public void index() {
         int page = getPara("page") != null ? Integer.parseInt(getPara("page")) : 1;
         Page<User> users = User.dao.findUserByPage(page);
-
         setAttr("userList", users);
         render("/admin/people/people.html");
     }

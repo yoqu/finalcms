@@ -22,18 +22,22 @@
 ![选项卡设置](https://raw.githubusercontent.com/yoqu/finalcms/master/docs/pictrues/menu_editconfiruration.png)
 4. 设置标红地方的参数
 ![runConfiguration](https://raw.githubusercontent.com/yoqu/finalcms/master/docs/pictrues/runConfiguration.png)
+>启动类为 __org.yoqu.cms.core.config.StartFinalCMS__
 
 #### 导入数据到数据库
 1. 项目中docs目录包含finalcms.sql文件，将其导入你的数据库中，数据库使用的是mysql。
 2. 在res目录的database_config.txt文件中配置数据库链接信息
 
-#### last
+#### 最后
 * 快捷键shift + F10运行项目.
 * 浏览器输入localhost即可访问.
 
 ##FAQ
-* **问**：数据库字段修改如何同步到项目中
-* **答**：运行核心util包中的ModelGenerator类重新生成（不推荐用户改动系统核心包）
+>* **问**：数据库字段修改如何同步到项目中
+ * **答**：运行核心util包中的ModelGenerator类重新生成（不推荐用户改动系统核心包）
+*********
+* **问**：运行项目显示80端口被占用.
+* **答**：1.关闭占用80端口的应用程序 2.在核心包的config包下StartFinalCMS类中修改START_PORT修改为你想要的启动端口
 
 ##关于
 项目发起者: _yoqu_
