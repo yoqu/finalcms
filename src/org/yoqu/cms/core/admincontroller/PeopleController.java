@@ -2,12 +2,13 @@ package org.yoqu.cms.core.admincontroller;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
-import com.jfinal.core.JFinal;
 import com.jfinal.ext.interceptor.POST;
 import com.jfinal.plugin.activerecord.Page;
+import org.json.JSONException;
 import org.yoqu.cms.core.intercepter.AuthManager;
 import org.yoqu.cms.core.model.Role;
 import org.yoqu.cms.core.model.User;
+import org.yoqu.cms.core.util.JSONUtil;
 import org.yoqu.cms.core.util.SiteTitle;
 
 import java.util.Date;
@@ -33,6 +34,18 @@ public class PeopleController extends Controller {
         render("create.html");
     }
 
+    @SiteTitle("修改用户")
+    public void edit() {
+        Integer id = getParaToInt("id");
+        if (id == null) {
+            render("/admin/404.html");
+            return;
+        }
+        User user = User.dao.findById(id);
+        setAttr("user", user);
+        render("/admin/people/edit.html");
+    }
+
     @Before(POST.class)
     public void doCreate() {
         User user = getModel(User.class);
@@ -44,12 +57,30 @@ public class PeopleController extends Controller {
         render("/admin/people/people.html");
     }
 
+    @Before(POST.class)
+    public void doUpdate() {
+        Integer uid = getParaToInt("id");
+        User user = User.dao.findById(uid);
+        user.setCreateDate(new Date());
+        user.setPassword(AuthManager.encryptionString(user.getPassword()));
+        user.setLastDate(user.getCreateDate());
+        user.setIsDelete(0);
+        user.save();
+        render("/admin/people/people.html");
+    }
+
+    @Before(POST.class)
     public void doDelete() {
-        Integer uid = Integer.getInteger(getPara("id").trim());
+        Integer uid = getParaToInt("id");
         try {
             User.dao.softDelete(uid);
+            renderJson(JSONUtil.writeSuccess().toString());
         } catch (Exception ex) {
-            renderText("删除错误");
+            try {
+                renderJson(JSONUtil.writeFailInformation("删除用户出错").toString());
+            } catch (JSONException e) {
+                renderText("{result:'json error'}");
+            }
         }
     }
 }

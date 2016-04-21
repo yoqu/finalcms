@@ -8,6 +8,7 @@ import org.yoqu.cms.core.config.InjectManager;
 import org.yoqu.cms.core.model.User;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -63,9 +64,12 @@ public class AuthManager implements Interceptor {
     public static User userAuth(User user) {
         String newPassword = encryptionString(user.getPassword());
         List<User> users = User.dao.finduserByNamePasswordOrName(user.getName(), newPassword);
-        if (users.size() == 1)
-            return users.get(0);
-        else {
+        if (users.size() == 1) {
+            user=users.get(0);
+            user.setLastDate(new Date());//用户认证通过修改用户最后一次登录时间
+            user.update();
+            return user;
+        } else {
             return null;
         }
     }

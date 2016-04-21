@@ -1,4 +1,10 @@
 <#include "/admin/layout/layout_header.html"/>
+<@head>
+<!--自定义head-->
+<link href="${site_url}admin/js/plugins/sweetalert/sweetalert.css" type="text/css"
+      rel="stylesheet" media="screen,projection">
+<link rel="stylesheet" href="${site_url}admin/js/plugins/animate-css/animate.css" type="text/css">
+</@head>
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- START CONTENT -->
 <section id="content">
@@ -50,7 +56,7 @@
                         </thead>
                         <tbody>
                         <#list userList.getList() as user>
-                            <tr>
+                            <tr id="${user.id}">
                                 <td>${user.id}</td>
                                 <td>${user.name}</td>
                                 <td>${user.email}</td>
@@ -60,7 +66,8 @@
                                 <td>
                                     <span class="edit"><a href="#" title="编辑"><i class="mdi-image-edit"></i></a></span>
                                 <span class="delete">
-                                    <a href="#" title="编辑"><i class="mdi-action-delete"></i></a></span>
+                                    <a href="#" title="删除" onclick="deleteUser(${user.id})"><i
+                                            class="mdi-action-delete"></i></a></span>
                                 </td>
                             </tr>
                         </#list>
@@ -91,7 +98,6 @@
                     </ul>
                 </div>
             </div>
-
         </div>
     </div>
     </div>
@@ -100,3 +106,59 @@
 <!-- END CONTENT -->
 
 <#include "/admin/layout/layout_footer.html" />
+<@script>
+<script type="text/javascript" src="${site_url}admin/js/plugins/sweetalert/sweetalert.min.js"
+        tppabs="utf8sweetalert.min.js"></script>
+<script>
+    function deleteUser(id) {
+        swal({
+                    title: "是否删除?",
+                    type: "info",
+                    showCancelButton: true,
+                    cancelButtonText: "取消",
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "删除",
+                    closeOnConfirm: false,
+                    showLoaderOnConfirm: true,
+                },
+                function () {
+                    setTimeout(function () {
+                    }, 2000);
+                    var deleteUrl = "${site_url}admin/people/doDelete";
+                    $.ajax({
+                        type: 'post',
+                        url: deleteUrl,
+                        complete: function (XMLHttpRequest, status) {
+                            if (status == 'timeout') { //超时,status还有success,error等值的情况
+                                swal("请求超时");
+                            }
+                        },
+                        timeout: 600000,
+                        data: {id: id},
+                        crossDomain: true,
+                        dataType: 'json',
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            if (textStatus == "error") {
+                                swal("系统错误");
+                            }
+                        },
+                        success: function (data) {
+                            console.log(data);
+                            if (data['result'] == "SUCCESS") {
+                                swal.close();
+                                Materialize.toast('删除成功', 4000);
+                                $("tr#" + id).addClass("animated infinite rotateOutDownRight");
+                                setTimeout(function () {
+                                    $("tr#" + id).fadeOut();
+                                },550);
+                            } else {
+                                swal.close();
+                                Materialize.toast('删除失败', 4000)
+                            }
+                        }
+                    });
+                });
+
+    }
+</script>
+</@script>
