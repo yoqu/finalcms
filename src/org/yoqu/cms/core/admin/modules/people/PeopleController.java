@@ -5,11 +5,11 @@ import com.jfinal.core.Controller;
 import com.jfinal.ext.interceptor.POST;
 import com.jfinal.plugin.activerecord.Page;
 import org.json.JSONException;
-import org.yoqu.cms.core.admin.intercepter.AuthManager;
+import org.yoqu.cms.core.admin.modules.user.AuthManagerInterceptor;
 import org.yoqu.cms.core.model.Role;
 import org.yoqu.cms.core.model.User;
-import org.yoqu.cms.core.util.SiteTitle;
 import org.yoqu.cms.core.util.JSONUtil;
+import org.yoqu.cms.core.util.SiteTitle;
 
 import java.util.Date;
 import java.util.List;
@@ -52,7 +52,7 @@ public class PeopleController extends Controller {
     public void doCreate() {
         User user = getModel(User.class);
         user.setCreateDate(new Date());
-        user.setPassword(AuthManager.encryptionString(user.getPassword()));
+        user.setPassword(AuthManagerInterceptor.encryptionString(user.getPassword()));
         user.setLastDate(user.getCreateDate());
         user.setIsDelete(0);
         user.save();
@@ -64,7 +64,7 @@ public class PeopleController extends Controller {
         Integer uid = getParaToInt("id");
         User user = User.dao.findById(uid);
         user.setCreateDate(new Date());
-        user.setPassword(AuthManager.encryptionString(user.getPassword()));
+        user.setPassword(AuthManagerInterceptor.encryptionString(user.getPassword()));
         user.setLastDate(user.getCreateDate());
         user.setIsDelete(0);
         user.save();

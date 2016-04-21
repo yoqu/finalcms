@@ -1,4 +1,4 @@
-package org.yoqu.cms.core.admin.intercepter;
+package org.yoqu.cms.core.admin.modules.user;
 
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by yoqu on 2016/4/19 0019.
  */
-public class AuthManager implements Interceptor {
+public class AuthManagerInterceptor implements Interceptor {
 
     public static boolean webServiceAuth(Controller controller) {
         if (controller.getSessionAttr(Constant.ONLINE_USER) != null) {

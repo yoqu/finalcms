@@ -6,7 +6,6 @@ import com.jfinal.core.Controller;
 import com.jfinal.ext.interceptor.POST;
 import org.json.JSONException;
 import org.yoqu.cms.core.config.Constant;
-import org.yoqu.cms.core.admin.intercepter.AuthManager;
 import org.yoqu.cms.core.model.Role;
 import org.yoqu.cms.core.model.User;
 import org.yoqu.cms.core.util.JSONUtil;
@@ -42,7 +41,7 @@ public class UserController extends Controller {
     @Clear
     public void doLogin() {
         User user = getModel(User.class);
-        user = AuthManager.userAuth(user);//user 登录认证
+        user = AuthManagerInterceptor.userAuth(user);//user 登录认证
         if (user != null) {
             getSession().setAttribute(Constant.ONLINE_USER, user);
             try {
