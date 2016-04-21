@@ -1,14 +1,9 @@
-package org.yoqu.cms.core.config;
+package org.yoqu.cms.core.admin.config;
 
-import com.jfinal.aop.Interceptor;
-import com.jfinal.aop.Invocation;
 import com.jfinal.core.Controller;
-import com.jfinal.kit.Prop;
-import com.jfinal.kit.PropKit;
 import com.jfinal.log.Log;
-import com.jfinal.plugin.ehcache.CacheKit;
-import org.yoqu.cms.core.Constant.Constant;
-import org.yoqu.cms.core.Constant.SystemVariable;
+import org.yoqu.cms.core.config.Constant;
+import org.yoqu.cms.core.admin.Constant.SystemVariable;
 import org.yoqu.cms.core.util.SiteTitle;
 
 import java.lang.reflect.Method;

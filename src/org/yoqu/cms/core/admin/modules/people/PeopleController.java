@@ -1,15 +1,15 @@
-package org.yoqu.cms.core.admincontroller;
+package org.yoqu.cms.core.admin.modules.people;
 
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.ext.interceptor.POST;
 import com.jfinal.plugin.activerecord.Page;
 import org.json.JSONException;
-import org.yoqu.cms.core.intercepter.AuthManager;
+import org.yoqu.cms.core.admin.intercepter.AuthManager;
 import org.yoqu.cms.core.model.Role;
 import org.yoqu.cms.core.model.User;
-import org.yoqu.cms.core.util.JSONUtil;
 import org.yoqu.cms.core.util.SiteTitle;
+import org.yoqu.cms.core.util.JSONUtil;
 
 import java.util.Date;
 import java.util.List;

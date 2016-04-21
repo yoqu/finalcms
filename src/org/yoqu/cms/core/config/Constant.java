@@ -1,4 +1,4 @@
-package org.yoqu.cms.core.Constant;
+package org.yoqu.cms.core.config;
 
 /**
  * Created by yoqu on 2016/4/4 0004.

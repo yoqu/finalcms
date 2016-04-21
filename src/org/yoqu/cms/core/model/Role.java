@@ -1,6 +1,6 @@
 package org.yoqu.cms.core.model;
 
-import org.yoqu.cms.core.Constant.Constant;
+import org.yoqu.cms.core.config.Constant;
 import org.yoqu.cms.core.model.base.BaseRole;
 
 import java.util.List;

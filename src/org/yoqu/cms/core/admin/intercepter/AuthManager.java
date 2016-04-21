@@ -1,10 +1,10 @@
-package org.yoqu.cms.core.intercepter;
+package org.yoqu.cms.core.admin.intercepter;
 
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
 import com.jfinal.core.Controller;
-import org.yoqu.cms.core.Constant.Constant;
-import org.yoqu.cms.core.config.InjectManager;
+import org.yoqu.cms.core.config.Constant;
+import org.yoqu.cms.core.admin.config.InjectManager;
 import org.yoqu.cms.core.model.User;
 
 import java.security.NoSuchAlgorithmException;

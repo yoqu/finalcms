@@ -2,7 +2,6 @@ package org.yoqu.cms.core.config;
 
 import com.jfinal.core.JFinal;
 import com.jfinal.kit.PathKit;
-import com.jfinal.server.ServerFactory;
 
 /**
  * Created by yoqu on 2016/4/21 0021.

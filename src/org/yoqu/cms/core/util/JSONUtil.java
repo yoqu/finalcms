@@ -3,7 +3,7 @@ package org.yoqu.cms.core.util;
 import com.jfinal.core.Controller;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.yoqu.cms.core.Constant.Constant;
+import org.yoqu.cms.core.config.Constant;
 
 /**
  * Created by yoqu on 2016/4/18 0018.

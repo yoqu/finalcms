@@ -2,12 +2,10 @@ package org.yoqu.cms.core.model;
 
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Page;
-import org.yoqu.cms.core.Constant.Constant;
-import org.yoqu.cms.core.Constant.SystemVariable;
+import org.yoqu.cms.core.config.Constant;
+import org.yoqu.cms.core.admin.Constant.SystemVariable;
 import org.yoqu.cms.core.model.base.BaseUser;
-import org.yoqu.cms.core.util.SqlHandle;
 
-import java.sql.SQLException;
 import java.util.List;
 
 /**

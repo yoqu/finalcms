@@ -1,19 +1,16 @@
-package org.yoqu.cms.core.admincontroller;
+package org.yoqu.cms.core.admin.modules.user;
 
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
 import com.jfinal.ext.interceptor.POST;
-import org.eclipse.jetty.util.security.Credential;
 import org.json.JSONException;
-import org.yoqu.cms.core.Constant.Constant;
-import org.yoqu.cms.core.intercepter.AuthManager;
-import org.yoqu.cms.core.util.JSONUtil;
+import org.yoqu.cms.core.config.Constant;
+import org.yoqu.cms.core.admin.intercepter.AuthManager;
 import org.yoqu.cms.core.model.Role;
 import org.yoqu.cms.core.model.User;
-import sun.security.provider.MD5;
+import org.yoqu.cms.core.util.JSONUtil;
 
-import java.security.MessageDigest;
 import java.util.Date;
 import java.util.List;
 

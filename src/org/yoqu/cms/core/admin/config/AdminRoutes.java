@@ -1,9 +1,9 @@
-package org.yoqu.cms.core.config;
+package org.yoqu.cms.core.admin.config;
 
 import com.jfinal.config.Routes;
-import org.yoqu.cms.core.admincontroller.DashBoardController;
-import org.yoqu.cms.core.admincontroller.PeopleController;
-import org.yoqu.cms.core.admincontroller.UserController;
+import org.yoqu.cms.core.admin.modules.dashboard.DashBoardController;
+import org.yoqu.cms.core.admin.modules.people.PeopleController;
+import org.yoqu.cms.core.admin.modules.user.UserController;
 
 import java.util.HashMap;
 import java.util.Map;

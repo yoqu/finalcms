@@ -1,6 +1,6 @@
 package test;
 
-import org.yoqu.cms.core.admincontroller.DashBoardController;
+import org.yoqu.cms.core.admin.modules.dashboard.DashBoardController;
 import org.yoqu.cms.core.util.SiteTitle;
 
 import java.lang.reflect.Method;

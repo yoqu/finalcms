@@ -1,4 +1,4 @@
-package org.yoqu.cms.core.admincontroller;
+package org.yoqu.cms.core.admin.modules.dashboard;
 
 import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
