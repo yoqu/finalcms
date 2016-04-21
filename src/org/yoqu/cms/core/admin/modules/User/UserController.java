@@ -5,6 +5,7 @@ import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
 import com.jfinal.ext.interceptor.POST;
 import org.json.JSONException;
+import org.yoqu.cms.core.config.AuthManagerInterceptor;
 import org.yoqu.cms.core.config.Constant;
 import org.yoqu.cms.core.model.Role;
 import org.yoqu.cms.core.model.User;

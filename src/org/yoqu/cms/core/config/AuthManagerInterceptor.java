@@ -1,4 +1,4 @@
-package org.yoqu.cms.core.admin.modules.user;
+package org.yoqu.cms.core.config;
 
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;

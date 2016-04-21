@@ -32,7 +32,6 @@
     <link href="${site_url}admin/js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
     <#macro head>
         <#nested>
-
 </head>
 
 <body>
@@ -81,22 +80,21 @@
                         </div>
                         <div class="col col s8 m8 l8">
                             <ul id="profile-dropdown" class="dropdown-content">
-                                <li><a href="#"><i class="mdi-action-face-unlock"></i> Profile</a>
+                                <li><a href="#"><i class="mdi-action-face-unlock"></i> 资料</a>
                                 </li>
-                                <li><a href="#"><i class="mdi-action-settings"></i> Settings</a>
+                                <li><a href="#"><i class="mdi-action-settings"></i> 设置</a>
                                 </li>
-                                <li><a href="#"><i class="mdi-communication-live-help"></i> Help</a>
+                                <li><a href="#"><i class="mdi-communication-live-help"></i> 帮助</a>
                                 </li>
                                 <li class="divider"></li>
-                                <li><a href="#"><i class="mdi-action-lock-outline"></i> Lock</a>
                                 </li>
-                                <li><a href="#"><i class="mdi-hardware-keyboard-tab"></i> Logout</a>
+                                <li><a href="#"><i class="mdi-hardware-keyboard-tab"></i> 退出</a>
                                 </li>
                             </ul>
                             <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#"
-                               data-activates="profile-dropdown">John Doe<i
+                               data-activates="profile-dropdown">${online_user.nickname}<i
                                     class="mdi-navigation-arrow-drop-down right"></i></a>
-                            <p class="user-roal">Administrator</p>
+                            <p class="user-roal">${online_user.role.name}</p>
                         </div>
                     </div>
                 </li>

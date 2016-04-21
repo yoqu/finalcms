@@ -5,7 +5,7 @@ import com.jfinal.core.Controller;
 import com.jfinal.ext.interceptor.POST;
 import com.jfinal.plugin.activerecord.Page;
 import org.json.JSONException;
-import org.yoqu.cms.core.admin.modules.user.AuthManagerInterceptor;
+import org.yoqu.cms.core.config.AuthManagerInterceptor;
 import org.yoqu.cms.core.model.Role;
 import org.yoqu.cms.core.model.User;
 import org.yoqu.cms.core.util.JSONUtil;

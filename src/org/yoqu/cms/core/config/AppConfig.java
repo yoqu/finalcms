@@ -5,7 +5,6 @@ import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import org.yoqu.cms.core.admin.config.AdminRoutes;
-import org.yoqu.cms.core.admin.modules.user.AuthManagerInterceptor;
 import org.yoqu.cms.core.model._MappingKit;
 
 public class AppConfig extends JFinalConfig {
@@ -20,6 +19,7 @@ public class AppConfig extends JFinalConfig {
     @Override
     public void configRoute(Routes me) {
         me.add(new AdminRoutes("admin"));
+        //me.add("/admin/login", UserController.class);
         //admin..
     }
 
