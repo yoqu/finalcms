@@ -9,34 +9,9 @@
     <bookmark url="file://$PROJECT_DIR$/src/test/javaTest.java" line="12" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b2ffaa2-413d-497e-b1ce-c2d061059214" name="Default" comment="更新ReadMe，添加SqlHandle类">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/yoqu/cms/core/admincontroller/DashBoardController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/yoqu/cms/core/admincontroller/HelloController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/yoqu/cms/core/admincontroller/PeopleController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/yoqu/cms/core/admincontroller/UserController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/org/yoqu/cms/core/config/ConfigConstant.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/fincalcms_war_exploded/WEB-INF/classes/org/yoqu/cms/core/admincontroller/UserController.class" afterPath="$PROJECT_DIR$/out/artifacts/fincalcms_war_exploded/WEB-INF/classes/org/yoqu/cms/core/admincontroller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/org/yoqu/cms/core/admincontroller/UserController.class" afterPath="$PROJECT_DIR$/web/WEB-INF/classes/org/yoqu/cms/core/admincontroller/UserController.class" />
+    <list default="true" id="9b2ffaa2-413d-497e-b1ce-c2d061059214" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jfinal_demo.log" afterPath="$PROJECT_DIR$/jfinal_demo.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/fincalcms_war_exploded/admin/css/custom/custom.min.css" afterPath="$PROJECT_DIR$/out/artifacts/fincalcms_war_exploded/admin/css/custom/custom.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/fincalcms_war_exploded/admin/people/create.html" afterPath="$PROJECT_DIR$/out/artifacts/fincalcms_war_exploded/admin/people/create.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/yoqu/cms/core/config/AppConfig.java" afterPath="$PROJECT_DIR$/src/org/yoqu/cms/core/config/AppConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/yoqu/cms/core/config/StartFinalCms.java" afterPath="$PROJECT_DIR$/src/org/yoqu/cms/core/config/StartFinalCms.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/yoqu/cms/core/model/Role.java" afterPath="$PROJECT_DIR$/src/org/yoqu/cms/core/model/Role.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/yoqu/cms/core/model/User.java" afterPath="$PROJECT_DIR$/src/org/yoqu/cms/core/model/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/yoqu/cms/core/util/JSONUtil.java" afterPath="$PROJECT_DIR$/src/org/yoqu/cms/core/util/JSONUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/yoqu/cms/core/util/ModelGenerator.java" afterPath="$PROJECT_DIR$/src/org/yoqu/cms/core/util/ModelGenerator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/javaTest.java" afterPath="$PROJECT_DIR$/src/test/javaTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/admin/layout/layout_header.html" afterPath="$PROJECT_DIR$/web/admin/layout/layout_header.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/org/yoqu/cms/core/Constant/Constant.java" afterPath="$PROJECT_DIR$/src/org/yoqu/cms/core/config/Constant.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/org/yoqu/cms/core/Constant/SystemVariable.java" afterPath="$PROJECT_DIR$/src/org/yoqu/cms/core/admin/Constant/SystemVariable.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/org/yoqu/cms/core/admincontroller/DashBoardController.java" afterPath="$PROJECT_DIR$/src/org/yoqu/cms/core/admin/modules/dashboard/DashBoardController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/org/yoqu/cms/core/admincontroller/PeopleController.java" afterPath="$PROJECT_DIR$/src/org/yoqu/cms/core/admin/modules/people/PeopleController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/org/yoqu/cms/core/admincontroller/UserController.java" afterPath="$PROJECT_DIR$/src/org/yoqu/cms/core/admin/modules/User/UserController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/org/yoqu/cms/core/config/AdminRoutes.java" afterPath="$PROJECT_DIR$/src/org/yoqu/cms/core/admin/config/AdminRoutes.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/org/yoqu/cms/core/config/InjectManager.java" afterPath="$PROJECT_DIR$/src/org/yoqu/cms/core/admin/config/InjectManager.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/org/yoqu/cms/core/intercepter/AuthManager.java" afterPath="$PROJECT_DIR$/src/org/yoqu/cms/core/admin/intercepter/AuthManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <list id="76b7477c-9cea-45d8-9fb9-b088566a4137" name="Rejected commit: Default" comment="增加认证类，用于认证后台用户登录状态" />
     <ignored path="fincalcms.iws" />
@@ -70,14 +45,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SystemVariable.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SystemVariable.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/yoqu/cms/core/admin/Constant/SystemVariable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6">
+            <state vertical-scroll-proportion="0.0">
               <caret line="21" column="42" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
               <folding>
                 <element signature="e#662#663#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="MultiMarkdownFxPreviewEditor">
+            <state />
+          </provider>
+          <provider editor-type-id="split-provider[text-editor;MultiMarkdownPreviewEditor]">
+            <state split_layout="FIRST">
+              <first_editor vertical-scroll-proportion="0.5194085">
+                <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+                <folding />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -137,7 +128,6 @@
         <option value="$PROJECT_DIR$/src/org/yoqu/cms/core/util/SqlHandle.java" />
         <option value="$PROJECT_DIR$/src/org/yoqu/cms/core/config/StartFinalCms.java" />
         <option value="$PROJECT_DIR$/src/org/yoqu/cms/core/config/StartFinalCMS.java" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/web/admin/404.html" />
         <option value="$PROJECT_DIR$/web/admin/layout/layout_footer.html" />
         <option value="$PROJECT_DIR$/web/admin/dashboard.html" />
@@ -154,6 +144,7 @@
         <option value="$PROJECT_DIR$/web/admin/layout/layout_header.html" />
         <option value="$PROJECT_DIR$/src/org/yoqu/cms/core/config/AdminRoutes.java" />
         <option value="$PROJECT_DIR$/src/org/yoqu/cms/core/admin/config/AdminRoutes.java" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -1097,7 +1088,7 @@
       <workItem from="1461113655320" duration="26221000" />
       <workItem from="1461150767340" duration="2958000" />
       <workItem from="1461201449491" duration="504000" />
-      <workItem from="1461203746046" duration="17359000" />
+      <workItem from="1461203746046" duration="17554000" />
     </task>
     <task id="LOCAL-00001" summary="修改readme">
       <created>1460539558347</created>
@@ -1123,11 +1114,17 @@
       <option name="project" value="LOCAL" />
       <updated>1461158666120</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="更新ReadMe">
+      <created>1461228643397</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1461228643397</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89208000" />
+    <option name="totallyTimeSpent" value="89403000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1154,10 +1151,10 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32475883" sideWeight="0.4968017" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2489339" sideWeight="0.49441788" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2489339" sideWeight="0.49441788" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24920128" sideWeight="0.50558215" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32583067" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3290461" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1188,7 +1185,8 @@
     <MESSAGE value="更新用户登录认证方式，使用MD5加密认证&#10;添加系统变量到模板渲染中。" />
     <MESSAGE value="完成人员界面加载和创建人员加载&#10;" />
     <MESSAGE value="更新ReadMe，添加SqlHandle类" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新ReadMe，添加SqlHandle类" />
+    <MESSAGE value="更新ReadMe" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新ReadMe" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1345,20 +1343,6 @@
         <state vertical-scroll-proportion="0.19966722">
           <caret line="147" column="34" selection-start-line="147" selection-start-column="34" selection-end-line="147" selection-end-column="34" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="MultiMarkdownFxPreviewEditor">
-        <state />
-      </provider>
-      <provider editor-type-id="split-provider[text-editor;MultiMarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor vertical-scroll-proportion="0.5504587">
-            <caret line="30" column="7" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
-            <folding />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -1603,11 +1587,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/yoqu/cms/core/admin/Constant/SystemVariable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6">
+        <state vertical-scroll-proportion="0.0">
           <caret line="21" column="42" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
           <folding>
             <element signature="e#662#663#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="MultiMarkdownFxPreviewEditor">
+        <state />
+      </provider>
+      <provider editor-type-id="split-provider[text-editor;MultiMarkdownPreviewEditor]">
+        <state split_layout="FIRST">
+          <first_editor vertical-scroll-proportion="0.5194085">
+            <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
