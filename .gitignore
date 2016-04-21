@@ -1,4 +1,5 @@
 # compile files ignore
+*.class
 out/
 .idea/
 /web/WEB-INF/classes/

@@ -1,5 +1,6 @@
 package org.yoqu.cms.core.admincontroller;
 
+import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
 import org.yoqu.cms.core.util.SiteTitle;
 
@@ -8,7 +9,13 @@ import org.yoqu.cms.core.util.SiteTitle;
  */
 public class DashBoardController extends Controller {
     @SiteTitle("主页面板")
-    public void index(){
+    public void index() {
         render("/admin/dashboard.html");
+    }
+
+    //配置admin页面
+    @ActionKey("/admin")
+    public void admin() {
+        redirect("admin/dashboard");
     }
 }
