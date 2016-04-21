@@ -19,21 +19,22 @@ public class PeopleController extends Controller {
 
     @SiteTitle("用户管理")
     public void index() {
-        int page=getPara("page")!=null?Integer.parseInt(getPara("page")):1;
-        Page<User> users=User.dao.findUserByPage(page);
+        int page = getPara("page") != null ? Integer.parseInt(getPara("page")) : 1;
+        Page<User> users = User.dao.findUserByPage(page);
 
-        setAttr("userList",users);
+        setAttr("userList", users);
         render("/admin/people/people.html");
     }
+
     @SiteTitle("添加用户")
-    public void create(){
+    public void create() {
         List<Role> roleList = Role.dao.findAllRole();
-        setAttr("roleList",roleList);
+        setAttr("roleList", roleList);
         render("create.html");
     }
 
     @Before(POST.class)
-    public void doCreate(){
+    public void doCreate() {
         User user = getModel(User.class);
         user.setCreateDate(new Date());
         user.setPassword(AuthManager.encryptionString(user.getPassword()));
@@ -43,8 +44,12 @@ public class PeopleController extends Controller {
         render("/admin/people/people.html");
     }
 
-    public void doDelete(){
+    public void doDelete() {
         Integer uid = Integer.getInteger(getPara("id").trim());
-        User.dao.softDelete(uid);
+        try {
+            User.dao.softDelete(uid);
+        } catch (Exception ex) {
+            renderText("删除错误");
+        }
     }
 }
