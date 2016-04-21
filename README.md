@@ -15,7 +15,7 @@
 
 
 ## 如何使用
-### 设置IDE
+#### 设置IDE
 1. 下载源代码
 2. 使用idea打开项目(项目使用idea 15.05的版本)
 3. 主菜单的run选项卡设置
@@ -23,14 +23,17 @@
 4. 设置标红地方的参数
 ![runConfiguration](https://raw.githubusercontent.com/yoqu/finalcms/master/docs/pictrues/runConfiguration.png)
 
-### 导入数据到数据库
+#### 导入数据到数据库
 1. 项目中docs目录包含finalcms.sql文件，将其导入你的数据库中，数据库使用的是mysql。
 2. 在res目录的database_config.txt文件中配置数据库链接信息
 
-### last
+#### last
 * 快捷键shift + F10运行项目.
 * 浏览器输入localhost即可访问.
+
 ##FAQ
+* **问**：数据库字段修改如何同步到项目中
+* **答**：运行核心util包中的ModelGenerator类重新生成（不推荐用户改动系统核心包）
 
 ##关于
 项目发起者: _yoqu_
