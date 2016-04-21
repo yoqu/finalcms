@@ -41,6 +41,8 @@ public class PeopleController extends Controller {
             render("/admin/404.html");
             return;
         }
+        List<Role> roleList = Role.dao.findAllRole();
+        setAttr("roleList", roleList);
         User user = User.dao.findById(id);
         setAttr("user", user);
         render("/admin/people/edit.html");

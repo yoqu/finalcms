@@ -1,6 +1,5 @@
-# compile files ignore
 *.class
 out/
 .idea/
-/web/WEB-INF/classes/
+web/WEB-INF/classes/
 jfinal_demo.log

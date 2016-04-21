@@ -92,4 +92,8 @@ public class UserController extends Controller {
         }
     }
 
+    public void doLogout(){
+        setSessionAttr(Constant.ONLINE_USER,null);
+        redirect("/admin/user/login");
+    }
 }

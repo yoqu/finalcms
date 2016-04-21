@@ -16,6 +16,6 @@ public class DashBoardController extends Controller {
     //配置admin页面
     @ActionKey("/admin")
     public void admin() {
-        redirect("admin/dashboard");
+        redirect("/admin/dashboard");
     }
 }

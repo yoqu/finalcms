@@ -1,5 +1,7 @@
 <#include "/admin/layout/layout_header.html"/>
-<@head></@head>
+<@head>
+<link rel="stylesheet" href="${site_url}admin/css/custom/custom.min.css" type="text/css">
+</@head>
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- START CONTENT -->
 <section id="content">
@@ -79,10 +81,13 @@
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
+                                        <i class="mdi-action-account-box prefix"></i>
                                         <select name="user.rid">
-                                            <option value="" disabled >用户角色</option>
+                                            <option value="" disabled>用户角色</option>
                                             <#list roleList as role>
-                                                <option value="${role.id}" <#if role.id==user.rid>selected</#if> >${role.name}</option>
+                                                <option value="${role.id}"
+                                                <#if role.id==user.rid>selected</#if>
+                                                >${role.name}</option>
                                             </#list>
                                         </select>
                                         <label>角色</label>
