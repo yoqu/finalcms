@@ -1,5 +1,7 @@
 package org.yoqu.cms.core.config;
 
+import org.yoqu.cms.core.admin.config.InjectManager;
+
 /**
  * Created by yoqu on 2016/4/4 0004.
  */
@@ -19,4 +21,7 @@ public class Constant {
     public static final String SITE_URL="site_url";
     public static final String PAGE_SIZE="page_size";
     /**********system variable end**********/
+
+    public static  InjectManager injectManager=null;
+
 }

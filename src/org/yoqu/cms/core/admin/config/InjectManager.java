@@ -21,16 +21,16 @@ public class InjectManager {
     }
 
 
-    public static void injectCommonVariable(Controller controller) {
+    public  void injectCommonVariable(Controller controller) {
         injectSystemVariable(controller);//inject System Variable..
         injectOtherVariable(controller);
     }
 
-    public static void injectPersonalVariable(Controller controller){
+    public  void injectPersonalVariable(Controller controller){
         injectOnlineUser(controller);//inject system Online User variable..
     }
 
-    private static void injectOtherVariable(Controller controller) {
+    private  void injectOtherVariable(Controller controller) {
         //inject site url.
         StringBuffer url = controller.getRequest().getRequestURL();
         String tempContextUrl = url.delete(url.length() - controller.getRequest().getRequestURI().length(), url.length()).append(controller.getRequest().getServletContext().getContextPath()).append("/").toString();
@@ -42,7 +42,7 @@ public class InjectManager {
      *
      * @param controller
      */
-    private static void injectSystemVariable(Controller controller) {
+    private  void injectSystemVariable(Controller controller) {
         if (firstLoad) {
             init();
             firstLoad = false;
@@ -52,11 +52,11 @@ public class InjectManager {
         }
     }
 
-    private static void injectOnlineUser(Controller controller) {
+    private  void injectOnlineUser(Controller controller) {
         controller.setAttr(Constant.ONLINE_USER, controller.getSessionAttr(Constant.ONLINE_USER));
     }
 
-    public static void injectAnnotation(Method method, Controller controller) {
+    public  void injectAnnotation(Method method, Controller controller) {
         if (method.isAnnotationPresent(SiteTitle.class)) {
             SiteTitle siteTitle = method.getAnnotation(SiteTitle.class);
             controller.setAttr(Constant.SITE_TITLE, siteTitle.value());

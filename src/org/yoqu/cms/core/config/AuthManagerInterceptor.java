@@ -6,6 +6,7 @@ import com.jfinal.core.Controller;
 import org.yoqu.cms.core.config.Constant;
 import org.yoqu.cms.core.admin.config.InjectManager;
 import org.yoqu.cms.core.model.User;
+import org.yoqu.cms.core.util.FinalProxy;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
@@ -16,6 +17,12 @@ import java.util.List;
  */
 public class AuthManagerInterceptor implements Interceptor {
 
+    /**
+     * 对用户进行登陆验证
+     *
+     * @param controller
+     * @return
+     */
     public static boolean webServiceAuth(Controller controller) {
         if (controller.getSessionAttr(Constant.ONLINE_USER) != null) {
             return true;
@@ -65,7 +72,7 @@ public class AuthManagerInterceptor implements Interceptor {
         String newPassword = encryptionString(user.getPassword());
         List<User> users = User.dao.finduserByNamePasswordOrName(user.getName(), newPassword);
         if (users.size() == 1) {
-            user=users.get(0);
+            user = users.get(0);
             user.setLastDate(new Date());//用户认证通过修改用户最后一次登录时间
             user.update();
             return user;
@@ -78,11 +85,11 @@ public class AuthManagerInterceptor implements Interceptor {
     public void intercept(Invocation inv) {
         String uri = inv.getActionKey();
         if (uri.startsWith("/admin")) {//compare user access back-end page or front page.
-            InjectManager.injectCommonVariable(inv.getController());//inject Common Variable into controller.
-            InjectManager.injectAnnotation(inv.getMethod(), inv.getController());//inject
+            Constant.injectManager.injectAnnotation(inv.getMethod(), inv.getController());//inject
+            Constant.injectManager.injectCommonVariable(inv.getController());
             if (webServiceAuth(inv.getController())) {
-                InjectManager.injectPersonalVariable(inv.getController());//inject user variable into page.
                 inv.invoke();
+                Constant.injectManager.injectPersonalVariable(inv.getController());//inject user variable into page.
             } else {
                 inv.getController().redirect("/admin/user/login");
             }
