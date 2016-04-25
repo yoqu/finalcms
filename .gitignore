@@ -1,5 +1,4 @@
 *.class
-out
-.idea
-web/WEB-INF/classes
+out/
+.idea/
 jfinal_demo.log
