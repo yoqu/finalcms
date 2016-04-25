@@ -41,5 +41,9 @@
 >* **问**：运行项目显示80端口被占用.
 * **答**：1.关闭占用80端口的应用程序 2.在核心包的config包下StartFinalCMS类中修改START_PORT修改为你想要的启动端口
 
+## 其他
+[Hook文档](https://raw.githubusercontent.com/yoqu/finalcms/master/docs/Hook文档.md)
+
+
 ##关于
 项目发起者: _yoqu_

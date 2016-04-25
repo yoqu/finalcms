@@ -97,7 +97,8 @@ public class UserController extends Controller {
         redirect("/admin/user/login");
     }
 
-    public void userControllerPageInject_Before() {
+    public void userControllerPageInject_Before(Controller controller) {
         LogKit.info("before method");
+        String stringurl = controller.getPara("text");
     }
 }

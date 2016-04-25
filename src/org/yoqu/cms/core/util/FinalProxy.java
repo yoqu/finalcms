@@ -26,7 +26,7 @@ public class FinalProxy implements Interceptor {
     private String invokeMethodName = null;
 
     //回调的参数..
-    private Object[] args=null;
+    private Object[] args = null;
 
     /**
      * 创建代理
@@ -69,15 +69,26 @@ public class FinalProxy implements Interceptor {
         return calssList;
     }
 
-
     private void doBefore() {
         for (Class one : deals) {
             try {
-                Method method = one.getMethod(StrKit.firstCharToLowerCase(one.getSimpleName()) + hookName, null);
-                Object object = com.jfinal.aop.Enhancer.enhance(one);
-                LogKit.info("Method Hook     : " + one.getName()+" > "+StrKit.firstCharToLowerCase(one.getSimpleName()) + hookName);
-
-                method.invoke(object);
+                Class[] parameterTypes = new Class[args.length];
+                for (int i = 0; i < args.length; i++) {
+                    if (args[i].getClass().getSuperclass().equals(Controller.class)) {
+                        parameterTypes[i] = args[i].getClass().getSuperclass();
+                    }
+                    else{
+                        parameterTypes[i]=args[i].getClass();
+                    }
+                }
+                Method method = one.getMethod(StrKit.firstCharToLowerCase(one.getSimpleName()) + hookName, parameterTypes);
+                if (method.getParameterCount() == args.length) {
+                    Object object = Enhancer.enhance(one);
+                    LogKit.info("Method Hook     : " + one.getName() + " > " + StrKit.firstCharToLowerCase(one.getSimpleName()) + hookName);
+                    method.invoke(object, args);
+                } else {
+                    LogKit.error("Method Hook parameter not match.");
+                }
             } catch (NoSuchMethodException e) {
                 e.printStackTrace();
             } catch (IllegalAccessException e) {
@@ -94,8 +105,8 @@ public class FinalProxy implements Interceptor {
         if (deals == null) {
             inv.invoke();
         }
-
-        if (inv.getMethod().getName().equals(invokeMethodName) && inv.getMethod().getParameterCount()==args.length) {
+        if (inv.getMethod().getName().equals(invokeMethodName)) {
+            args = inv.getArgs();
             doBefore();
             Controller controller = (Controller) inv.getArg(0);
         }
