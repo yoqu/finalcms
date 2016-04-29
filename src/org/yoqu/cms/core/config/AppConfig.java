@@ -17,7 +17,7 @@ public class AppConfig extends JFinalConfig {
         // set app dev Mode debug
         me.setDevMode(PropKit.getBoolean("devMode", false));
         FinalProxy finalProxy = new FinalProxy();
-        HookConstant.injectManager = (InjectManager) finalProxy.createProxy(InjectManager.class,"PageInject_Before");//初始化注入器，并调用注入方法时进行拦截
+        HookConstant.injectManager = (InjectManager) finalProxy.createProxy(InjectManager.class);//初始化注入器，并调用注入方法时进行拦截
     }
 
 

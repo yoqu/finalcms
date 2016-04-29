@@ -3,6 +3,7 @@ package org.yoqu.cms.core.config;
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
 import com.jfinal.core.Controller;
+import org.yoqu.cms.core.admin.modules.user.UserHook;
 import org.yoqu.cms.core.config.Constant;
 import org.yoqu.cms.core.admin.config.InjectManager;
 import org.yoqu.cms.core.model.User;
@@ -70,7 +71,7 @@ public class AuthManagerInterceptor implements Interceptor {
      */
     public static User userAuth(User user) {
         String newPassword = encryptionString(user.getPassword());
-        List<User> users = User.dao.finduserByNamePasswordOrName(user.getName(), newPassword);
+        List<User> users = UserHook.getInstance().finduserByNamePasswordOrName(user.getName(), newPassword);
         if (users.size() == 1) {
             user = users.get(0);
             user.setLastDate(new Date());//用户认证通过修改用户最后一次登录时间

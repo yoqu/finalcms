@@ -15,15 +15,7 @@ import java.util.List;
 
 public class User extends BaseUser<User> {
     public static final User dao = new User();
-    public List<User> finduserByNamePasswordOrName(String... parameters) {
-        if (parameters.length == 2) {
-            return find("select * from user where name=? and password=? and is_delete=0", parameters);
-        } else if (parameters.length == 1) {
-            return find("select * from user where name=? and is_delete=0", parameters);
-        } else if (parameters.length == 0) {
-            return find("select * from user where is_delete=0");
-        } else return null;
-    }
+
 
     public Role getRole() {
         return Role.dao.findById(getRid());
