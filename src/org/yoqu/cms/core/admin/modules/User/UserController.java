@@ -4,9 +4,7 @@ import com.jfinal.aop.Before;
 import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
 import com.jfinal.ext.interceptor.POST;
-import com.jfinal.kit.LogKit;
 import org.json.JSONException;
-import org.yoqu.cms.core.admin.config.Hook;
 import org.yoqu.cms.core.config.AuthManagerInterceptor;
 import org.yoqu.cms.core.config.Constant;
 import org.yoqu.cms.core.model.Role;
@@ -19,7 +17,7 @@ import java.util.List;
 /**
  * Created by yoqu on 2016/4/13 0013.
  */
-@Hook
+
 public class UserController extends Controller {
 
     public void index() {
@@ -97,8 +95,5 @@ public class UserController extends Controller {
         redirect("/admin/user/login");
     }
 
-    public void userControllerPageInject_Before(Controller controller) {
-        LogKit.info("before method");
-        String stringurl = controller.getPara("text");
-    }
+
 }

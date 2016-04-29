@@ -4,6 +4,7 @@ import com.jfinal.core.Controller;
 import com.jfinal.log.Log;
 import org.yoqu.cms.core.config.Constant;
 import org.yoqu.cms.core.admin.Constant.SystemVariable;
+import org.yoqu.cms.core.aop.Invoke;
 import org.yoqu.cms.core.util.SiteTitle;
 
 import java.lang.reflect.Method;
@@ -20,7 +21,7 @@ public class InjectManager {
         SystemVariable.use();//初始化参数
     }
 
-
+    @Invoke("PageInject_Before")
     public  void injectCommonVariable(Controller controller) {
         injectSystemVariable(controller);//inject System Variable..
         injectOtherVariable(controller);

@@ -1,15 +1,10 @@
 package org.yoqu.cms.core.util;
 
-import com.jfinal.log.Log;
-import org.yoqu.cms.core.admin.config.Hook;
-
 import java.io.File;
-import java.io.FileFilter;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.util.*;
-import java.util.regex.Pattern;
 
 /**
  * Created by yoqu on 2016/4/22 0022.

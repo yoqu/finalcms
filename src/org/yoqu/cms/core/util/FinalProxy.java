@@ -6,27 +6,25 @@ import com.jfinal.aop.Invocation;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.LogKit;
 import com.jfinal.kit.StrKit;
-import org.yoqu.cms.core.admin.config.Hook;
+import org.yoqu.cms.core.aop.Hook;
+import org.yoqu.cms.core.aop.Invoke;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Set;
 
-/**
- * 通过Cglib实现在方法调用前后向控制台输出两句字符串
- */
 public class FinalProxy implements Interceptor {
 
+    public static Set<Class<?>> hookClasses = null;
     //要执行的hook
-    private String hookName;
-    //要被执行的方法.
-    private Set<Class<?>> deals = null;
-
-    //被回调的方法名字
-    private String invokeMethodName = null;
-
+    private String[] hookName;
     //回调的参数..
     private Object[] args = null;
+
+    public static FinalProxy getInstance() {
+        return new FinalProxy();
+    }
 
     /**
      * 创建代理
@@ -35,9 +33,10 @@ public class FinalProxy implements Interceptor {
      * @param hookName
      * @return
      */
-    public Object createProxy(Class target, String hookName) {
+    public Object createProxy(Class target, String... hookName) {
         try {
-            deals = loadInvokes();
+            if (hookClasses == null)
+                hookClasses = loadInvokes();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
@@ -49,18 +48,6 @@ public class FinalProxy implements Interceptor {
         return Enhancer.enhance(target, this);
     }
 
-    /**
-     * 创建代理方法，如果没有invokeMethodName，那么默认对父类的所有方法实现代理方法
-     *
-     * @param target
-     * @param hookName
-     * @param invokeMethodName
-     * @return
-     */
-    public Object createProxy(Class target, String hookName, String invokeMethodName) {
-        this.invokeMethodName = invokeMethodName;
-        return createProxy(target, hookName);
-    }
 
     public Set<Class<?>> loadInvokes() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
         //开始递归扫描modules包,筛选使用Hook注解的Class
@@ -69,22 +56,21 @@ public class FinalProxy implements Interceptor {
         return calssList;
     }
 
-    private void doBefore() {
-        for (Class one : deals) {
+    private void doBefore(String currentHookName) {
+        for (Class hook : hookClasses) {
             try {
                 Class[] parameterTypes = new Class[args.length];
                 for (int i = 0; i < args.length; i++) {
                     if (args[i].getClass().getSuperclass().equals(Controller.class)) {
                         parameterTypes[i] = args[i].getClass().getSuperclass();
-                    }
-                    else{
-                        parameterTypes[i]=args[i].getClass();
+                    } else {
+                        parameterTypes[i] = args[i].getClass();
                     }
                 }
-                Method method = one.getMethod(StrKit.firstCharToLowerCase(one.getSimpleName()) + hookName, parameterTypes);
+                Method method = hook.getMethod(StrKit.firstCharToLowerCase(hook.getSimpleName()) + currentHookName, parameterTypes);
                 if (method.getParameterCount() == args.length) {
-                    Object object = Enhancer.enhance(one);
-                    LogKit.info("Method Hook     : " + one.getName() + " > " + StrKit.firstCharToLowerCase(one.getSimpleName()) + hookName);
+                    Object object = Enhancer.enhance(hook);
+                    LogKit.info("Method Hook     : " + hook.getName() + " > " + StrKit.firstCharToLowerCase(hook.getSimpleName()) + currentHookName);
                     method.invoke(object, args);
                 } else {
                     LogKit.error("Method Hook parameter not match.");
@@ -102,13 +88,18 @@ public class FinalProxy implements Interceptor {
     @Override
     public void intercept(Invocation inv) {
         //如果没有扫描到注入的类直接执行回调函数.
-        if (deals == null) {
+        if (hookClasses == null) {
             inv.invoke();
         }
-        if (inv.getMethod().getName().equals(invokeMethodName)) {
-            args = inv.getArgs();
-            doBefore();
-            Controller controller = (Controller) inv.getArg(0);
+        //判断该方法是否注解和hookName匹配，有注解代表它可以被回调执行方法.
+        if (inv.getMethod().isAnnotationPresent(Invoke.class)) {
+            Invoke invoke = inv.getMethod().getAnnotation(Invoke.class);
+            for (int i=0;i<hookName.length;i++){
+                if (invoke.value().equals(hookName[i])) {
+                    args = inv.getArgs();
+                    doBefore(hookName[i]);
+                }
+            }
         }
         inv.invoke();
     }

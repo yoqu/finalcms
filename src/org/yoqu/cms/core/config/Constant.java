@@ -22,6 +22,6 @@ public class Constant {
     public static final String PAGE_SIZE="page_size";
     /**********system variable end**********/
 
-    public static  InjectManager injectManager=null;
+
 
 }

@@ -6,6 +6,7 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import org.yoqu.cms.core.admin.config.AdminRoutes;
 import org.yoqu.cms.core.admin.config.InjectManager;
+import org.yoqu.cms.core.model.User;
 import org.yoqu.cms.core.model._MappingKit;
 import org.yoqu.cms.core.util.FinalProxy;
 
@@ -16,8 +17,10 @@ public class AppConfig extends JFinalConfig {
         // set app dev Mode debug
         me.setDevMode(PropKit.getBoolean("devMode", false));
         FinalProxy finalProxy = new FinalProxy();
-        Constant.injectManager = (InjectManager) finalProxy.createProxy(InjectManager.class,"PageInject_Before","injectCommonVariable");//初始化注入器，并调用注入方法时进行拦截
+        HookConstant.injectManager = (InjectManager) finalProxy.createProxy(InjectManager.class,"PageInject_Before");//初始化注入器，并调用注入方法时进行拦截
     }
+
+
 
     @Override
     public void configRoute(Routes me) {
