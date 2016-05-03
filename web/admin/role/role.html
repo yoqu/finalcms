@@ -62,7 +62,7 @@
                                         <#list module.methods?split(",") as method>
                                             <p><input type="checkbox" class="filled-in"
                                                       id="${module.module}-${method}-${role.id}" name="${role.name}"
-                                                      checked="checked"/>
+                                                      />
                                                 <label for="${module.module}-${method}-${role.id}"></label>
                                             </p>
                                         </#list>
@@ -90,40 +90,47 @@
         tppabs="utf8sweetalert.min.js"></script>
 <script>
     $(function () {
-        FinalDialog.show();
-        setTimeout(function(){
-            FinalDialog.close();
-        },3000);
-//        $.ajax({
-//            type: 'get',
-//            url: "http://127.0.0.1/admin/role/getSelectRole",
-//            beforeSend: function() {
-//               FinalDialog.show();
-//            },
-//            complete: function (XMLHttpRequest, status) {
-//                if (status == 'timeout') { //超时,status还有success,error等值的情况
-//                    swal("请求超时");
-//                }
-//                FinalDialog.close();
-//            },
-//            timeout: 600000,
-//            crossDomain: true,
-//            dataType: 'json',
-//            error: function (jqXHR, textStatus, errorThrown) {
-//                if (textStatus == "error") {
-//                    swal("系统错误");
-//                }
-//            },
-//            success: function (data) {
-//                console.log(data);
-//                if (data['result'] == "SUCCESS") {
-//                    Materialize.toast('删除成功', 4000);
-//                } else {
-//                    Materialize.toast('删除失败', 4000)
-//                }
-//            }
-//        });
+        $.ajax({
+            type: 'get',
+            url: "http://127.0.0.1/admin/role/getSelectRole",
+            beforeSend: function() {
+               FinalDialog.show();
+            },
+            complete: function (XMLHttpRequest, status) {
+                if (status == 'timeout') { //超时,status还有success,error等值的情况
+                    swal("请求超时");
+                }
+                FinalDialog.close();
+            },
+            timeout: 600000,
+            crossDomain: true,
+            dataType: 'json',
+            error: function (jqXHR, textStatus, errorThrown) {
+                if (textStatus == "error") {
+                    swal("系统错误");
+                }
+            },
+            success: function (data) {
+                console.log(data);
+                if (data['result'] == "SUCCESS") {
+                    loadUsedRoles(data['data']);
+                } else {
+                    Materialize.toast('角色加载失败', 4000)
+                }
+            }
+        });
     });
+
+    function loadUsedRoles(data){
+        console.log(data);
+        for (var index in data){
+            var rids= data[index]['rid'].split(',')
+            console.log(rids);
+            for(var rid in rids){
+                $("#"+data[index]['module']+"-"+data[index]['method']+"-"+rids[rid]).attr("checked","checked");
+            }
+        }
+    }
 </script>
 </@script></title>
 

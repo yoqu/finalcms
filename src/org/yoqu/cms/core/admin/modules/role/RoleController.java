@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.yoqu.cms.core.config.Constant;
 import org.yoqu.cms.core.model.Role;
+import org.yoqu.cms.core.model.RolePermission;
 import org.yoqu.cms.core.model.Url;
 import org.yoqu.cms.core.util.JSONUtil;
 import org.yoqu.cms.core.util.SiteTitle;
@@ -55,5 +56,29 @@ public class RoleController extends Controller {
             obj.put("result", Constant.FAIL);
         }
         renderJson(obj.toString());
+    }
+
+    public void saveRoles() throws JSONException {
+        try {
+            JSONArray newroles=new JSONArray(getPara("roles"));
+            List<RolePermission> permissions =  new ArrayList<>();
+            for(int i=0;i<newroles.length();i++){
+                JSONObject jsonrole = newroles.getJSONObject(i);
+                String[] rids=jsonrole.getString("rids").split("-");
+                for (int j=0;j<rids.length;j++){
+                    RolePermission rolePermission =new RolePermission();
+                    rolePermission.setIsDelete(0);
+                    rolePermission.setModule(jsonrole.getString("module"));
+                    rolePermission.setMethod(jsonrole.getString("method"));
+                    rolePermission.setRid(Integer.parseInt(rids[j]));
+                    permissions.add(rolePermission);
+                }
+            }
+            RoleInvoke.getInstance().rebuildRolePermission(permissions);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            renderJson(JSONUtil.writeFail().toString());
+        }
+
     }
 }

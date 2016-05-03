@@ -4,9 +4,11 @@ import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
 import org.yoqu.cms.core.admin.Constant.SystemVariable;
+import org.yoqu.cms.core.aop.InvokeAfter;
 import org.yoqu.cms.core.aop.InvokeBefore;
 import org.yoqu.cms.core.config.Constant;
 import org.yoqu.cms.core.model.Role;
+import org.yoqu.cms.core.model.RolePermission;
 import org.yoqu.cms.core.model.Url;
 import org.yoqu.cms.core.model.User;
 import org.yoqu.cms.core.util.FinalProxy;
@@ -72,5 +74,16 @@ public class RoleInvoke {
                 "inner join url u on r.module=u.module and r.method=u.method  " +
                 "where role.is_delete=0 and r.is_delete=0 and u.is_delete=0 " +
                 "group by r.method");
+    }
+
+    @InvokeBefore("rebuildRolePermission_Before")
+    @InvokeAfter("rebuildRolePermission_After")
+    public void rebuildRolePermission(List<RolePermission> rolePermissions){
+        if(Db.queryInt("delete from role_permission")<0){
+            throw new NullPointerException("role permission table not clear..");
+        }
+        for (RolePermission rolePermission : rolePermissions){
+            rolePermission.save();
+        }
     }
 }
