@@ -1,0 +1,131 @@
+<#include "/admin/layout/layout_header.html"/>
+<@head>
+<!--自定义head-->
+<link href="${site_url}admin/js/plugins/sweetalert/sweetalert.css" type="text/css"
+      rel="stylesheet" media="screen,projection">
+<link rel="stylesheet" href="${site_url}admin/js/plugins/animate-css/animate.css" type="text/css">
+</@head>
+<!-- //////////////////////////////////////////////////////////////////////////// -->
+<!-- START CONTENT -->
+<section id="content">
+    <!--breadcrumbs start-->
+    <div id="breadcrumbs-wrapper">
+        <!-- Search for small screen -->
+        <div class="header-search-wrapper grey hide-on-large-only">
+            <i class="mdi-action-search active"></i>
+            <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <h5 class="breadcrumbs-title">权限管理</h5>
+                    <ol class="breadcrumbs">
+                        <li><a href="${site_url}admin\dashboard">面板</a></li>
+                        <li><a href="#">权限管理</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs end-->
+
+
+    <!--start container-->
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <div class="col s12 m8 l12" style="min-height: 400px;">
+                    <table class="centered striped">
+                        <thead>
+                        <tr>
+                            <th data-field="name" rowspan="${roles.size()}">模块</th>
+                            <th data-field="email" rowspan="${roles.size()}">方法</th>
+                            <th data-field="role" colspan="${roles.size()}">角色</th>
+                        </tr>
+                        <tr>
+                            <#list roles as role>
+                                <th data-field="role.id">${role.name}</th>
+                            </#list>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <#list modules as module>
+                            <tr>
+                                <td>${module.module}</td>
+                                <td>
+                                    <#list module.methods?split(",") as method>
+                                        <p> ${method}</p>
+                                    </#list>
+                                </td>
+                                <#list roles as role>
+                                    <td>
+                                        <#list module.methods?split(",") as method>
+                                            <p><input type="checkbox" class="filled-in"
+                                                      id="${module.module}-${method}-${role.id}" name="${role.name}"
+                                                      checked="checked"/>
+                                                <label for="${module.module}-${method}-${role.id}"></label>
+                                            </p>
+                                        </#list>
+                                    </td>
+                                </#list>
+                            </tr>
+                        </#list>
+                        </tbody>
+                    </table>
+                    <hr>
+                    <div class="left-arrow"><a class="waves-effect waves-light btn-large ">保存</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!--end container-->
+</section>
+<!-- END CONTENT -->
+
+<#include "/admin/layout/layout_footer.html" />
+<@script>
+<script type="text/javascript" src="${site_url}admin/js/plugins/sweetalert/sweetalert.min.js"
+        tppabs="utf8sweetalert.min.js"></script>
+<script>
+    $(function () {
+        FinalDialog.show();
+        setTimeout(function(){
+            FinalDialog.close();
+        },3000);
+//        $.ajax({
+//            type: 'get',
+//            url: "http://127.0.0.1/admin/role/getSelectRole",
+//            beforeSend: function() {
+//               FinalDialog.show();
+//            },
+//            complete: function (XMLHttpRequest, status) {
+//                if (status == 'timeout') { //超时,status还有success,error等值的情况
+//                    swal("请求超时");
+//                }
+//                FinalDialog.close();
+//            },
+//            timeout: 600000,
+//            crossDomain: true,
+//            dataType: 'json',
+//            error: function (jqXHR, textStatus, errorThrown) {
+//                if (textStatus == "error") {
+//                    swal("系统错误");
+//                }
+//            },
+//            success: function (data) {
+//                console.log(data);
+//                if (data['result'] == "SUCCESS") {
+//                    Materialize.toast('删除成功', 4000);
+//                } else {
+//                    Materialize.toast('删除失败', 4000)
+//                }
+//            }
+//        });
+    });
+</script>
+</@script></title>
+
+</body>
+</html>

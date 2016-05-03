@@ -3,11 +3,9 @@ package org.yoqu.cms.core.config;
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
 import com.jfinal.core.Controller;
-import org.yoqu.cms.core.admin.modules.user.UserHook;
-import org.yoqu.cms.core.config.Constant;
 import org.yoqu.cms.core.admin.config.InjectManager;
+import org.yoqu.cms.core.admin.modules.user.UserInvoke;
 import org.yoqu.cms.core.model.User;
-import org.yoqu.cms.core.util.FinalProxy;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
@@ -71,7 +69,7 @@ public class AuthManagerInterceptor implements Interceptor {
      */
     public static User userAuth(User user) {
         String newPassword = encryptionString(user.getPassword());
-        List<User> users = UserHook.getInstance().finduserByNamePasswordOrName(user.getName(), newPassword);
+        List<User> users = UserInvoke.getInstance().finduserByNamePasswordOrName(user.getName(), newPassword);
         if (users.size() == 1) {
             user = users.get(0);
             user.setLastDate(new Date());//用户认证通过修改用户最后一次登录时间
@@ -86,11 +84,11 @@ public class AuthManagerInterceptor implements Interceptor {
     public void intercept(Invocation inv) {
         String uri = inv.getActionKey();
         if (uri.startsWith("/admin")) {//compare user access back-end page or front page.
-            HookConstant.injectManager.injectAnnotation(inv.getMethod(), inv.getController());//inject
-            HookConstant.injectManager.injectCommonVariable(inv.getController());
+            InjectManager.getInstance().injectAnnotation(inv.getMethod(), inv.getController());//inject
+            InjectManager.getInstance().injectCommonVariable(inv.getController());
             if (webServiceAuth(inv.getController())) {
                 inv.invoke();
-                HookConstant.injectManager.injectPersonalVariable(inv.getController());//inject user variable into page.
+                InjectManager.getInstance().injectPersonalVariable(inv.getController());//inject user variable into page.
             } else {
                 inv.getController().redirect("/admin/user/login");
             }

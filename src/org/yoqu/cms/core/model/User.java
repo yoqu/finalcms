@@ -21,17 +21,6 @@ public class User extends BaseUser<User> {
         return Role.dao.findById(getRid());
     }
 
-    public Page<User> findUserByPage(int pageNumber) {
-        return paginate(pageNumber, Integer.parseInt(SystemVariable.get(Constant.PAGE_SIZE).trim()), "select *", "from user where is_delete=0 order by createDate desc");
-    }
-
-    public boolean softDelete(int uid) {
-        if (Db.update("update user set is_delete=1 where id=?", uid) > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     @Override
     public String toString() {

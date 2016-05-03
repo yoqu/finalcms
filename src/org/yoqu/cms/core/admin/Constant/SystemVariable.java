@@ -11,7 +11,7 @@ import java.util.List;
 public class SystemVariable {
     public static HashMap<String, String> systemConstant = null;
 
-    public static void use() {
+    public static void init() {
         systemConstant = new HashMap<>();
         List<Dictionary> dictionaries = Dictionary.dao.getDictionaryList();
         for (Dictionary dictionary : dictionaries) {

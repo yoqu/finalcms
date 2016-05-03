@@ -25,12 +25,12 @@ public abstract class BaseUrl<M extends BaseUrl<M>> extends Model<M> implements 
 		return get("module");
 	}
 
-	public void setMehod(java.lang.String mehod) {
-		set("mehod", mehod);
+	public void setMethod(java.lang.String method) {
+		set("method", method);
 	}
 
-	public java.lang.String getMehod() {
-		return get("mehod");
+	public java.lang.String getMethod() {
+		return get("method");
 	}
 
 	public void setUrl(java.lang.String url) {

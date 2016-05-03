@@ -5,6 +5,7 @@ import com.jfinal.core.Controller;
 import com.jfinal.ext.interceptor.POST;
 import com.jfinal.plugin.activerecord.Page;
 import org.json.JSONException;
+import org.yoqu.cms.core.admin.modules.user.UserInvoke;
 import org.yoqu.cms.core.config.AuthManagerInterceptor;
 import org.yoqu.cms.core.model.Role;
 import org.yoqu.cms.core.model.User;
@@ -22,7 +23,7 @@ public class PeopleController extends Controller {
     @SiteTitle("用户管理")
     public void index() {
         int page = getPara("page") != null ? Integer.parseInt(getPara("page")) : 1;
-        Page<User> users = User.dao.findUserByPage(page);
+        Page<User> users = UserInvoke.getInstance().findUserByPage(page);
         setAttr("userList", users);
         render("/admin/people/people.html");
     }
@@ -43,7 +44,7 @@ public class PeopleController extends Controller {
         }
         List<Role> roleList = Role.dao.findAllRole();
         setAttr("roleList", roleList);
-        User user = User.dao.findById(id);
+        User user =UserInvoke.getInstance().findUserById(id);
         setAttr("user", user);
         render("/admin/people/edit.html");
     }
@@ -55,7 +56,7 @@ public class PeopleController extends Controller {
         user.setPassword(AuthManagerInterceptor.encryptionString(user.getPassword()));
         user.setLastDate(user.getCreateDate());
         user.setIsDelete(0);
-        user.save();
+        UserInvoke.getInstance().saveUser(user);
         render("/admin/people/people.html");
     }
 
@@ -67,7 +68,7 @@ public class PeopleController extends Controller {
         user.setPassword(AuthManagerInterceptor.encryptionString(user.getPassword()));
         user.setLastDate(user.getCreateDate());
         user.setIsDelete(0);
-        user.save();
+        UserInvoke.getInstance().saveUser(user);
         render("/admin/people/people.html");
     }
 
@@ -75,7 +76,7 @@ public class PeopleController extends Controller {
     public void doDelete() {
         Integer uid = getParaToInt("id");
         try {
-            User.dao.softDelete(uid);
+            UserInvoke.getInstance().softDelete(uid);
             renderJson(JSONUtil.writeSuccess().toString());
         } catch (Exception ex) {
             try {
@@ -84,5 +85,11 @@ public class PeopleController extends Controller {
                 renderText("{result:'json error'}");
             }
         }
+    }
+
+    @Before(POST.class)
+    public void validateField(){
+        String username = getPara("name");
+
     }
 }

@@ -68,7 +68,7 @@ public class UserController extends Controller {
     @Clear
     public void doRegister() {
         User user = getModel(User.class);
-        List<User> users = UserHook.getInstance().finduserByNamePasswordOrName(user.getName());
+        List<User> users = UserInvoke.getInstance().finduserByNamePasswordOrName(user.getName());
         if (users.size() == 0) {
             try {
                 renderJson(JSONUtil.writeFailInformation("User name be registed.").toString());
