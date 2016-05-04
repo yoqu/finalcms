@@ -62,7 +62,7 @@
                                         <#list module.methods?split(",") as method>
                                             <p><input type="checkbox" class="filled-in"
                                                       id="${module.module}-${method}-${role.id}" name="${role.name}"
-                                                      />
+                                            />
                                                 <label for="${module.module}-${method}-${role.id}"></label>
                                             </p>
                                         </#list>
@@ -73,7 +73,7 @@
                         </tbody>
                     </table>
                     <hr>
-                    <div class="left-arrow"><a class="waves-effect waves-light btn-large ">保存</a>
+                    <div class="left-arrow"><a class="waves-effect waves-light btn-large" onclick="saveRoles()">保存</a>
                     </div>
                 </div>
             </div>
@@ -88,13 +88,14 @@
 <@script>
 <script type="text/javascript" src="${site_url}admin/js/plugins/sweetalert/sweetalert.min.js"
         tppabs="utf8sweetalert.min.js"></script>
+
 <script>
     $(function () {
         $.ajax({
             type: 'get',
             url: "http://127.0.0.1/admin/role/getSelectRole",
-            beforeSend: function() {
-               FinalDialog.show();
+            beforeSend: function () {
+                FinalDialog.show();
             },
             complete: function (XMLHttpRequest, status) {
                 if (status == 'timeout') { //超时,status还有success,error等值的情况
@@ -121,15 +122,62 @@
         });
     });
 
-    function loadUsedRoles(data){
-        console.log(data);
-        for (var index in data){
-            var rids= data[index]['rid'].split(',')
-            console.log(rids);
-            for(var rid in rids){
-                $("#"+data[index]['module']+"-"+data[index]['method']+"-"+rids[rid]).attr("checked","checked");
+    function loadUsedRoles(data) {
+//        console.log(data);
+        for (var index in data) {
+            var rids = data[index]['rid'].split(',')
+//            console.log(rids);
+            for (var rid in rids) {
+                $("#" + data[index]['module'] + "-" + data[index]['method'] + "-" + rids[rid]).attr("checked", "checked");
             }
         }
+    }
+
+
+    function saveRoles() {
+        var checkeds=new Array();
+        $('input[type=checkbox]').each(function () {
+//            console.log($(this).attr("id"));
+            if (this.checked == true) {
+                console.log(this.checked);
+                checkeds.push($(this).attr("id"))
+            }
+        });
+        console.log(checkeds);
+        result = JSON.stringify(checkeds);
+        $.ajax({
+            type: 'post',
+            url: "http://127.0.0.1/admin/role/saveRoles",
+            beforeSend: function () {
+                FinalDialog.show();
+            },
+            data:{"roles":result},
+            complete: function (XMLHttpRequest, status) {
+                if (status == 'timeout') { //超时,status还有success,error等值的情况
+                    swal("请求超时");
+                }
+                FinalDialog.close();
+            },
+            timeout: 600000,
+            crossDomain: true,
+            dataType: 'json',
+            error: function (jqXHR, textStatus, errorThrown) {
+                if (textStatus == "error") {
+                    swal("系统错误");
+                }
+            },
+            success: function (data) {
+                console.log(data);
+                if (data['result'] == "SUCCESS") {
+                    Materialize.toast('权限表重构成功，即将刷新页面', 4000)
+                    setTimeout(function(){
+                        location.reload();
+                    },3000);
+                } else {
+                    Materialize.toast('权限表重构失败', 4000);
+                }
+            }
+        });
     }
 </script>
 </@script></title>

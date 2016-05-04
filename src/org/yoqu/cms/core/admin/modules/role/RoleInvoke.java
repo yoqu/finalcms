@@ -79,7 +79,7 @@ public class RoleInvoke {
     @InvokeBefore("rebuildRolePermission_Before")
     @InvokeAfter("rebuildRolePermission_After")
     public void rebuildRolePermission(List<RolePermission> rolePermissions){
-        if(Db.queryInt("delete from role_permission")<0){
+        if(Db.update("delete from role_permission")<0){
             throw new NullPointerException("role permission table not clear..");
         }
         for (RolePermission rolePermission : rolePermissions){

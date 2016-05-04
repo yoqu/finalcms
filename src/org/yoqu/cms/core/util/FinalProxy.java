@@ -34,8 +34,8 @@ public class FinalProxy implements Interceptor {
      */
     public Object createProxy(Class target) {
         try {
-            if (hookClasses == null)
-                hookClasses = loadInvokes();
+            if (FinalProxy.hookClasses == null)
+                FinalProxy.hookClasses = loadInvokes();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
@@ -58,7 +58,7 @@ public class FinalProxy implements Interceptor {
         for (Class hook : hookClasses) {
             try {
                 //args不为空说明是Before执行
-                if(args!=null && returnValue==null){
+                if (args != null && returnValue == null) {
                     Class[] parameterTypes = new Class[args.length];
                     for (int i = 0; i < args.length; i++) {
                         if (args[i].getClass().getSuperclass().equals(Controller.class)) {
@@ -67,26 +67,32 @@ public class FinalProxy implements Interceptor {
                             parameterTypes[i] = args[i].getClass();
                         }
                     }
-                    Method method = hook.getMethod(StrKit.firstCharToLowerCase(hook.getSimpleName()) + currentHookName, parameterTypes);
-                    if (method.getParameterCount() == args.length) {
-                        Object object = Enhancer.enhance(hook);
-                        LogKit.info("Before Method Hook     : " + hook.getName() + " > " + StrKit.firstCharToLowerCase(hook.getSimpleName()) + currentHookName);
-                        method.invoke(object, args);
-                    } else {
-                        LogKit.error("Method Hook parameter not match.");
+                    try {
+                        Method method = hook.getMethod(StrKit.firstCharToLowerCase(hook.getSimpleName()) + currentHookName, parameterTypes);
+                        if (method.getParameterCount() == args.length) {
+                            Object object = Enhancer.enhance(hook);
+                            LogKit.info("Before Method Hook     : " + hook.getName() + " > " + StrKit.firstCharToLowerCase(hook.getSimpleName()) + currentHookName);
+                            method.invoke(object, args);
+                        } else {
+                            LogKit.error("Method Hook parameter not match.");
+                        }
+                    } catch (NoSuchMethodException e) {
+                        LogKit.error("NoSuchMethodException:  " + e.getMessage());
+                        return;
                     }
                 }
                 //after执行
-                if(returnValue!=null){
-
-                    Method method = hook.getMethod(StrKit.firstCharToLowerCase(hook.getSimpleName()) + currentHookName,  returnValue.getClass());
-                    Object object = Enhancer.enhance(hook);
-                    LogKit.info("After Method Hook     : " + hook.getName() + " > " + StrKit.firstCharToLowerCase(hook.getSimpleName()) + currentHookName);
-                    method.invoke(object, returnValue);
+                if (returnValue != null) {
+                    try {
+                        Method method = hook.getMethod(StrKit.firstCharToLowerCase(hook.getSimpleName()) + currentHookName, returnValue.getClass());
+                        Object object = Enhancer.enhance(hook);
+                        LogKit.info("After Method Hook     : " + hook.getName() + " > " + StrKit.firstCharToLowerCase(hook.getSimpleName()) + currentHookName);
+                        method.invoke(object, returnValue);
+                    } catch (NoSuchMethodException e) {
+                        LogKit.error("NoSuchMethodException:  " + e.getMessage());
+                        return;
+                    }
                 }
-
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             } catch (InvocationTargetException e) {
@@ -102,9 +108,11 @@ public class FinalProxy implements Interceptor {
             inv.invoke();
             return;
         }
+
         //判断该方法是否注解和hookName匹配，有注解代表它可以被回调执行方法.
         if (inv.getMethod().isAnnotationPresent(InvokeBefore.class)) {
             InvokeBefore invoke = inv.getMethod().getAnnotation(InvokeBefore.class);
+            args = inv.getArgs();
             doHookThing(invoke.value());
         }
         inv.invoke();

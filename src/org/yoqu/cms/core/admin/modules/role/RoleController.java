@@ -1,6 +1,8 @@
 package org.yoqu.cms.core.admin.modules.role;
 
+import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
+import com.jfinal.ext.interceptor.POST;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
 import org.json.JSONArray;
@@ -38,14 +40,14 @@ public class RoleController extends Controller {
     public void getSelectRole() throws JSONException {
         List<Record> records = RoleInvoke.getInstance().findSelectRole();
         JSONObject obj = new JSONObject();
-        JSONArray array=new JSONArray();
-        for (Record record : records){
-            JSONObject jsonrecord=new JSONObject();
-            jsonrecord.put("method",record.getStr("method"));
-            jsonrecord.put("module",record.getStr("module"));
-            jsonrecord.put("name",record.getStr("name"));
-            jsonrecord.put("rid",record.getStr("rid"));
-            jsonrecord.put("url",record.getStr("url"));
+        JSONArray array = new JSONArray();
+        for (Record record : records) {
+            JSONObject jsonrecord = new JSONObject();
+            jsonrecord.put("method", record.getStr("method"));
+            jsonrecord.put("module", record.getStr("module"));
+            jsonrecord.put("name", record.getStr("name"));
+            jsonrecord.put("rid", record.getStr("rid"));
+            jsonrecord.put("url", record.getStr("url"));
             array.put(jsonrecord);
         }
         try {
@@ -58,21 +60,22 @@ public class RoleController extends Controller {
         renderJson(obj.toString());
     }
 
+    @Before(POST.class)
     public void saveRoles() throws JSONException {
         try {
-            JSONArray newroles=new JSONArray(getPara("roles"));
-            List<RolePermission> permissions =  new ArrayList<>();
-            for(int i=0;i<newroles.length();i++){
-                JSONObject jsonrole = newroles.getJSONObject(i);
-                String[] rids=jsonrole.getString("rids").split("-");
-                for (int j=0;j<rids.length;j++){
-                    RolePermission rolePermission =new RolePermission();
-                    rolePermission.setIsDelete(0);
-                    rolePermission.setModule(jsonrole.getString("module"));
-                    rolePermission.setMethod(jsonrole.getString("method"));
-                    rolePermission.setRid(Integer.parseInt(rids[j]));
-                    permissions.add(rolePermission);
-                }
+            if (getPara("roles") == null) {
+                renderJson(JSONUtil.writeFail().toString());
+            }
+            JSONArray newroles = new JSONArray(getPara("roles"));
+            List<RolePermission> permissions = new ArrayList<>();
+            for (int i = 0; i < newroles.length(); i++) {
+                String[] strPermissions = newroles.getString(i).split("-");
+                RolePermission rolePermission = new RolePermission();
+                rolePermission.setIsDelete(0);
+                rolePermission.setModule(strPermissions[0]);
+                rolePermission.setMethod(strPermissions[1]);
+                rolePermission.setRid(Integer.parseInt(strPermissions[2]));
+                permissions.add(rolePermission);
             }
             RoleInvoke.getInstance().rebuildRolePermission(permissions);
         } catch (JSONException e) {
