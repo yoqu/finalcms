@@ -18,4 +18,12 @@ public class DashBoardController extends Controller {
     public void admin() {
         redirect("/admin/dashboard");
     }
+
+    @SiteTitle("没有权限")
+    @ActionKey("/admin/nopermission")
+    public void nopermission() {
+        System.out.println("test");
+        render("/admin/noPermission.html");
+    }
+
 }

@@ -4,7 +4,9 @@ import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
 import com.jfinal.core.Controller;
 import org.yoqu.cms.core.admin.config.InjectManager;
+import org.yoqu.cms.core.admin.modules.role.RoleInvoke;
 import org.yoqu.cms.core.admin.modules.user.UserInvoke;
+import org.yoqu.cms.core.model.RolePermission;
 import org.yoqu.cms.core.model.User;
 
 import java.security.NoSuchAlgorithmException;
@@ -16,6 +18,7 @@ import java.util.List;
  */
 public class AuthManagerInterceptor implements Interceptor {
 
+
     /**
      * 对用户进行登陆验证
      *
@@ -24,6 +27,27 @@ public class AuthManagerInterceptor implements Interceptor {
      */
     public static boolean webServiceAuth(Controller controller) {
         if (controller.getSessionAttr(Constant.ONLINE_USER) != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * 用户权限认证
+     *
+     * @param controller
+     * @return
+     */
+    public static boolean webUserPermissionCheck(Controller controller) {
+        String uri = controller.getRequest().getRequestURI();
+        User user = controller.getSessionAttr(Constant.ONLINE_USER);
+        int rid = user.getRole().getId();
+        if (rid == 1) {
+            return true;
+        }
+        List<RolePermission> rolePermissions = RoleInvoke.getInstance().findRolePermissionByUriRid(uri, rid);
+        if (rolePermissions.size() > 0) {
             return true;
         } else {
             return false;
@@ -87,8 +111,15 @@ public class AuthManagerInterceptor implements Interceptor {
             InjectManager.getInstance().injectAnnotation(inv.getMethod(), inv.getController());//inject
             InjectManager.getInstance().injectCommonVariable(inv.getController());
             if (webServiceAuth(inv.getController())) {
-                inv.invoke();
                 InjectManager.getInstance().injectPersonalVariable(inv.getController());//inject user variable into page.
+                if (webUserPermissionCheck(inv.getController())) {
+                    inv.invoke();
+                } else {
+                    System.out.println(inv.getController().getRequest().getRequestURI());
+                    if (!inv.getController().getRequest().getRequestURI().equals("/admin/nopermission")) {
+                        inv.getController().redirect("/admin/nopermission");
+                    }
+                }
             } else {
                 inv.getController().redirect("/admin/user/login");
             }

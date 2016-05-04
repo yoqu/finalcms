@@ -86,4 +86,14 @@ public class RoleInvoke {
             rolePermission.save();
         }
     }
+
+    public List<RolePermission> findAllRolePermission(){
+        return RolePermission.dao.find("select * from role_permission where is_delete=0");
+    }
+
+    public List<RolePermission> findRolePermissionByUriRid(String uri,int rid){
+        return RolePermission.dao.find("select r.* " +
+                "from url u inner join role_permission r on u.module=r.module and u.method=r.method " +
+                "where u.url=? and rid=1?",uri,rid);
+    }
 }
