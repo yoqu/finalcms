@@ -117,7 +117,7 @@ public class AuthManagerInterceptor implements Interceptor {
                 } else {
                     System.out.println(inv.getController().getRequest().getRequestURI());
                     if (!inv.getController().getRequest().getRequestURI().equals("/admin/nopermission")) {
-                        inv.getController().redirect("/admin/nopermission");
+                        inv.getController().render("/admin/noPermission.html");
                     }
                 }
             } else {

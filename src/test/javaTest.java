@@ -4,6 +4,8 @@ import org.yoqu.cms.core.admin.modules.dashboard.DashBoardController;
 import org.yoqu.cms.core.util.SiteTitle;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by yoqu on 2016/4/20 0020.
@@ -11,24 +13,37 @@ import java.lang.reflect.Method;
 public class javaTest {
 
     public static void main(String[] args) {
-        Class clazz = DashBoardController.class;
-//        try {
-//            Method method = clazz.getMethod("index", null);
-//            if (method.isAnnotationPresent(SiteTitle.class)) {
-//                SiteTitle siteTitle = method.getAnnotation(SiteTitle.class);
-//                System.out.println(siteTitle.value());
-//            }
-//
-//        } catch (NoSuchMethodException e) {
-//            e.printStackTrace();
-//        }
-        for (Class<?> superClass=clazz;superClass!=Object.class;superClass=superClass.getSuperclass()){
-            try {
-                System.out.println(superClass.getDeclaredMethod("index",null));
-            }catch (NoSuchMethodException e){
-                System.out.println("类型找不到"+e.getMessage());
-            }
-        }
+        TestTwo testTwo =new TestTwo();
+        testTwo.init(() -> {System.out.println("hasd");});
+        testTwo.sayHello();
+        List<String> stringas=new ArrayList<>();
+        stringas.add("c");
+        stringas.add("b");
+        stringas.add("a");
+        stringas.add("g");
+        stringas.add("e");
+        System.out.println(stringas.stream()
+        );
     }
+}
+
+class TestTwo{
+    private Hello test;
+
+    public void init(Hello test){
+        this.test=test;
+    }
+    public void sayHello(){
+        test.sayHello();
+    }
+}
+
+class Test{
+    public void sayHello(String hello){
+        System.out.println(hello);
+    }
+}
+interface Hello{
+    public void sayHello( );
 
 }
