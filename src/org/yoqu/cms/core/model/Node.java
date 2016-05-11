@@ -1,5 +1,6 @@
 package org.yoqu.cms.core.model;
 
+import org.yoqu.cms.core.admin.modules.user.UserInvoke;
 import org.yoqu.cms.core.model.base.BaseNode;
 
 /**
@@ -8,4 +9,7 @@ import org.yoqu.cms.core.model.base.BaseNode;
 @SuppressWarnings("serial")
 public class Node extends BaseNode<Node> {
 	public static final Node dao = new Node();
+	public User getUser(){
+		return UserInvoke.getInstance().findUserById(getUid());
+	}
 }

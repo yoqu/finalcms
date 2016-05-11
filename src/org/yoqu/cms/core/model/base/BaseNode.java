@@ -41,6 +41,22 @@ public abstract class BaseNode<M extends BaseNode<M>> extends Model<M> implement
 		return get("content");
 	}
 
+	public void setCreateDate(java.util.Date createDate) {
+		set("create_date", createDate);
+	}
+
+	public java.util.Date getCreateDate() {
+		return get("create_date");
+	}
+
+	public void setUpdateDate(java.util.Date updateDate) {
+		set("update_date", updateDate);
+	}
+
+	public java.util.Date getUpdateDate() {
+		return get("update_date");
+	}
+
 	public void setTags(java.lang.String tags) {
 		set("tags", tags);
 	}

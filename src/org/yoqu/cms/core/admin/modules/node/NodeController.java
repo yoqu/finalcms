@@ -1,10 +1,20 @@
 package org.yoqu.cms.core.admin.modules.node;
 
+import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
+import com.jfinal.ext.interceptor.POST;
+import com.jfinal.plugin.activerecord.Page;
+import org.json.JSONException;
+import org.yoqu.cms.core.admin.modules.user.UserInvoke;
+import org.yoqu.cms.core.aop.SiteTitle;
 import org.yoqu.cms.core.config.Constant;
+import org.yoqu.cms.core.config.FinalCMS;
 import org.yoqu.cms.core.model.Node;
+import org.yoqu.cms.core.model.User;
+import org.yoqu.cms.core.util.JSONUtil;
 import org.yoqu.cms.core.util.StringUtils;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -12,18 +22,18 @@ import java.util.List;
  * @date 2016/5/6 0006
  * @description
  */
-public class NodeController extends Controller {
+public class NodeController extends FinalCMS {
 
     public void index() {
         if (getPara() != null) {
             if (!StringUtils.isNumbervalue(getPara())) {
-                render(Constant.RENDER_ACCESS_NOT_FOUND);
+                renderNotFound();
                 return;
             } else {
                 int id = getParaToInt();
                 Node node = Node.dao.findById(id);
                 if (node == null) {
-                    render(Constant.RENDER_ACCESS_NOT_FOUND);
+                    renderNotFound();
                     return;
                 }
                 setAttr("node", node);
@@ -31,11 +41,73 @@ public class NodeController extends Controller {
                 render("/admin/node/edit.html");
             }
         } else {
-            List<Node> nodeList = Node.dao.find("select * from node where is_delete=0");
+            int page = getPara("page") != null ? getParaToInt("page") : 1;
+            Page<Node> nodeList = NodeInvoke.getInstance().findNodeByPage(page);
             setAttr("nodeList", nodeList);
             setAttr("site_title", "内容管理");
+            render("/admin/node/nodeList.html");
         }
     }
 
+    @SiteTitle("创建内容")
+    public void create() {
+        render("/admin/node/create.html");
+    }
 
+    @Before(POST.class)
+    public void doCreate() {
+        Node node = getModel(Node.class);
+        node.setCreateDate(new Date());
+        node.setUpdateDate(new Date());
+        node.setUid(getUser().getId());
+        if (node.save()) {
+            redirect("/admin/node");
+        } else {
+            renderText("save fail.");
+        }
+
+    }
+
+    @SiteTitle("内容编辑")
+    public void edit() {
+        if (getPara() == null) {
+            renderNotFound();
+            return;
+        }
+        if (!StringUtils.isNumbervalue(getPara())) {
+            renderNotFound();
+            ;
+            return;
+        }
+        Node node = Node.dao.findById(getParaToInt());
+        if (node == null) {
+            renderNotFound();
+            return;
+        }
+        setAttr("node", node);
+        render("/admin/node/edit.html");
+    }
+
+    public void doUpdate() {
+        Node node = getModel(Node.class);
+        if (node.save()) {
+            redirect("/admin/node");
+        } else {
+            renderText("save fail.");
+        }
+    }
+
+    public void doDelete() {
+        Integer nid = getParaToInt("id");
+        try {
+            NodeInvoke.getInstance().softDelete(nid);
+            renderJSONSuccess();
+        } catch (Exception ex) {
+            try {
+                renderJSONFail("删除内容出错");
+            } catch (JSONException e) {
+                renderJSONError();
+            }
+        }
+    }
 }

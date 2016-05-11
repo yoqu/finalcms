@@ -7,6 +7,7 @@ import com.jfinal.plugin.activerecord.Page;
 import org.json.JSONException;
 import org.yoqu.cms.core.admin.modules.user.UserInvoke;
 import org.yoqu.cms.core.config.AuthManagerInterceptor;
+import org.yoqu.cms.core.config.FinalCMS;
 import org.yoqu.cms.core.model.Role;
 import org.yoqu.cms.core.model.User;
 import org.yoqu.cms.core.util.JSONUtil;
@@ -18,7 +19,7 @@ import java.util.List;
 /**
  * Created by yoqu on 2016/4/20 0020.
  */
-public class PeopleController extends Controller {
+public class PeopleController extends FinalCMS {
 
     @SiteTitle("用户管理")
     public void index() {
@@ -82,7 +83,7 @@ public class PeopleController extends Controller {
             try {
                 renderJson(JSONUtil.writeFailInformation("删除用户出错").toString());
             } catch (JSONException e) {
-                renderText("{result:'json error'}");
+                renderJSONError();
             }
         }
     }
