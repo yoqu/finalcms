@@ -22,6 +22,12 @@ public class Constant {
     public static final String PAGE_SIZE="page_size";
     /**********system variable end**********/
 
+    /***********render url start************/
+    public static final String RENDER_ACCESS_DENIED="/admin/noPermission.html";
+    public static final String RENDER_ACCESS_NOT_FOUND="/admin/404.html";
+    /***********render url end************/
+
+
 
 
 }

@@ -29,10 +29,11 @@
     <link href="${site_url}admin/js/plugins/prism/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
     <link href="${site_url}admin/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet"
           media="screen,projection">
-    <link href="${site_url}admin/js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="${site_url}admin/js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet"
+          media="screen,projection">
     <#macro head>
         <#nested>
-</head>
+            </head>
 
 <body>
 <!-- Start Page Loading -->
@@ -53,7 +54,8 @@
             <div class="nav-wrapper">
                 <ul class="left">
                     <li><h1 class="logo-wrapper"><a href="${site_url}admin/dashboard" class="brand-logo darken-1"><img
-                            src="${site_url}admin/images/materialize-logo.png" alt="materialize logo"></a> <span class="logo-text">Final CMS系统</span>
+                            src="${site_url}admin/images/materialize-logo.png" alt="materialize logo"></a> <span
+                            class="logo-text">Final CMS系统</span>
                     </h1></li>
                 </ul>
             </div>
@@ -76,7 +78,8 @@
                 <li class="user-details cyan darken-2">
                     <div class="row">
                         <div class="col col s4 m4 l4">
-                            <img src="${site_url}admin/images/avatar.jpg" alt="" class="circle responsive-img valign profile-image">
+                            <img src="${site_url}admin/images/avatar.jpg" alt=""
+                                 class="circle responsive-img valign profile-image">
                         </div>
                         <div class="col col s8 m8 l8">
                             <ul id="profile-dropdown" class="dropdown-content">
@@ -98,8 +101,17 @@
                         </div>
                     </div>
                 </li>
-                <li class="bold"><a href="/admin/dashboard" class="waves-effect waves-cyan"><i
+                <li class="bold"><a href="${site_url}admin/dashboard" class="waves-effect waves-cyan"><i
                         class="mdi-action-dashboard"></i>面板</a>
+                </li>
+                <li class="bold"><a href="${site_url}admin/menu" class="waves-effect waves-cyan"><i
+                        class="mdi-navigation-menu"></i>菜单</a>
+                </li>
+                <li class="bold"><a href="${site_url}admin/role" class="waves-effect waves-cyan"><i
+                        class="mdi-action-perm-contact-cal"></i>权限</a>
+                </li>
+                <li class="bold"><a href="${site_url}admin/node" class="waves-effect waves-cyan"><i
+                        class="mdi-action-perm-contact-cal"></i>内容管理</a>
                 </li>
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
@@ -110,8 +122,6 @@
                                     <li><a href="${site_url}admin/people">用户管理</a>
                                     </li>
                                     <li><a href="${site_url}admin/people/create">添加用户</a>
-                                    </li>
-                                    <li><a href="${site_url}admin/role">权限管理</a>
                                     </li>
                                 </ul>
                             </div>
@@ -125,4 +135,4 @@
                     class="mdi-navigation-menu"></i></a>
         </aside>
         <!-- END LEFT SIDEBAR NAV-->
-</#macro>
+        </#macro>

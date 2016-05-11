@@ -1,4 +1,4 @@
-package org.yoqu.cms.core.util;
+package org.yoqu.cms.core.aop;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

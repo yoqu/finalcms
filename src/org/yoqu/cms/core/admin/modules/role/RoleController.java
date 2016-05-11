@@ -3,7 +3,6 @@ package org.yoqu.cms.core.admin.modules.role;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.ext.interceptor.POST;
-import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -11,9 +10,8 @@ import org.json.JSONObject;
 import org.yoqu.cms.core.config.Constant;
 import org.yoqu.cms.core.model.Role;
 import org.yoqu.cms.core.model.RolePermission;
-import org.yoqu.cms.core.model.Url;
 import org.yoqu.cms.core.util.JSONUtil;
-import org.yoqu.cms.core.util.SiteTitle;
+import org.yoqu.cms.core.aop.SiteTitle;
 
 import java.util.ArrayList;
 import java.util.List;

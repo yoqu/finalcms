@@ -10,7 +10,7 @@ import org.yoqu.cms.core.config.AuthManagerInterceptor;
 import org.yoqu.cms.core.model.Role;
 import org.yoqu.cms.core.model.User;
 import org.yoqu.cms.core.util.JSONUtil;
-import org.yoqu.cms.core.util.SiteTitle;
+import org.yoqu.cms.core.aop.SiteTitle;
 
 import java.util.Date;
 import java.util.List;

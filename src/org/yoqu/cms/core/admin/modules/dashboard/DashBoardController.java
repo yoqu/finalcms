@@ -2,7 +2,7 @@ package org.yoqu.cms.core.admin.modules.dashboard;
 
 import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
-import org.yoqu.cms.core.util.SiteTitle;
+import org.yoqu.cms.core.aop.SiteTitle;
 
 /**
  * Created by yoqu on 2016/4/18 0018.

@@ -8,6 +8,7 @@ import org.yoqu.cms.core.admin.config.AdminRoutes;
 import org.yoqu.cms.core.admin.config.InjectManager;
 import org.yoqu.cms.core.model.User;
 import org.yoqu.cms.core.model._MappingKit;
+import org.yoqu.cms.core.util.AdminHandler;
 import org.yoqu.cms.core.util.FinalProxy;
 
 public class AppConfig extends JFinalConfig {
@@ -45,7 +46,7 @@ public class AppConfig extends JFinalConfig {
 
     @Override
     public void configHandler(Handlers me) {
-
+        me.add(new AdminHandler());
     }
 
     //create C3p0Plugin .

@@ -1,0 +1,66 @@
+<#include "/admin/layout/layout_header.html"/>
+<@head>
+<link rel="stylesheet" href="${site_url}admin/css/custom/custom.min.css" type="text/css">
+</@head>
+<!-- //////////////////////////////////////////////////////////////////////////// -->
+<!-- START CONTENT -->
+<section id="content">
+
+    <!--breadcrumbs start-->
+    <div id="breadcrumbs-wrapper">
+        <!-- Search for small screen -->
+        <div class="header-search-wrapper grey hide-on-large-only">
+            <i class="mdi-action-search active"></i>
+            <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <h5 class="breadcrumbs-title">菜单管理</h5>
+                    <ol class="breadcrumbs">
+                        <li><a href="${site_url}admin/dashboard">控制面板</a></li>
+                        <li><a href="${site_url}admin/menu">菜单管理</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs end-->
+
+    <!--start container-->
+    <div class="container">
+        <div class="section">
+            <div class="caption">
+                <div class="s12 m6 l4">
+                    <a class="btn waves-effect teal waves-light" href="${site_url}admin/menu/create">新建</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m8 l7 offset-l2">
+                    <#if menuTypeList.size()==0>
+                        <div id="card-alert" class="card light-blue lighten-5">
+                            <div class="card-content light-blue-text">
+                                <p>没有菜单，<a href="${site_url}admin/menu/create">新建</a>一个？</p>
+                            </div>
+                        </div>
+                        <#else>
+                            <div class="collection">
+                                <a href="#!" class="collection-header">
+                                    <h4>菜单</h4>
+                                </a>
+                                <#list menuTypeList as menuType>
+                                    <a href="${site_url}admin/menu/${menuType.id}"
+                                       class="collection-item">${menuType.name}</a>
+                                </#list>
+                            </div>
+                    </#if>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end container-->
+</section>
+<!-- END CONTENT -->
+
+<#include "/admin/layout/layout_footer.html" />
+<@script></@script>

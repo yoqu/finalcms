@@ -6,7 +6,7 @@ import org.yoqu.cms.core.admin.Constant.SystemVariable;
 import org.yoqu.cms.core.aop.InvokeBefore;
 import org.yoqu.cms.core.config.Constant;
 import org.yoqu.cms.core.util.FinalProxy;
-import org.yoqu.cms.core.util.SiteTitle;
+import org.yoqu.cms.core.aop.SiteTitle;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;

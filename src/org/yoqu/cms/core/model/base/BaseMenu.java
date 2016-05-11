@@ -25,6 +25,14 @@ public abstract class BaseMenu<M extends BaseMenu<M>> extends Model<M> implement
 		return get("name");
 	}
 
+	public void setType(java.lang.Integer type) {
+		set("type", type);
+	}
+
+	public java.lang.Integer getType() {
+		return get("type");
+	}
+
 	public void setUrl(java.lang.String url) {
 		set("url", url);
 	}
