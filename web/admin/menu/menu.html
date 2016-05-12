@@ -1,6 +1,7 @@
 <#include "/admin/layout/layout_header.html"/>
 <@head>
 <link rel="stylesheet" href="${site_url}admin/css/custom/custom.min.css" type="text/css">
+<link href="/admin/js/plugins/jquery.nestable/nestable.css" type="text/css" rel="stylesheet" media="screen,projection">
 </@head>
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- START CONTENT -->
@@ -30,77 +31,87 @@
     <!--start container-->
     <div class="container">
         <div class="section">
+            <div class="caption">
+                <div class="s12 m6 l4">
+                    <a class="btn waves-effect teal waves-light" href="/admin/menu/create/${menuType.id}">新建</a>
+                </div>
+            </div>
+            <div class="divider"></div>
             <div class="row">
-                <div class="col s12 push-l3 l6">
-                    <div class="card-panel">
-                        <h4 class="header2">新建用户</h4>
-                        <div class="row">
-                            <form class="col s12" method="post" action="${site_url}admin/people/doCreate">
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="mdi-action-account-circle prefix"></i>
-                                        <input id="name" name="user.name" type="text">
-                                        <label>用户名</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="mdi-action-account-box prefix"></i>
-                                        <input id="nickname" name="user.nickname" type="text">
-                                        <label>昵称</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="mdi-communication-email prefix"></i>
-                                        <input id="email" name="user.email" type="email">
-                                        <label>Email</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="mdi-hardware-phone-iphone prefix"></i>
-                                        <input id="phone" name="user.phone" type="number">
-                                        <label>手机号</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="mdi-action-lock-outline prefix"></i>
-                                        <input id="password" name="user.password" type="password">
-                                        <label>密码</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="mdi-action-lock-outline prefix"></i>
-                                        <input id="passwordAgain" name="passwordAgain" type="password">
-                                        <label>重复密码</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="mdi-action-account-box prefix"></i>
-                                        <select name="user.rid">
-                                            <option value="" disabled selected>用户角色</option>
-                                            <#list roleList as role>
-                                                <option value="${role.id}">${role.name}</option>
-                                            </#list>
-                                        </select>
-                                        <label>角色</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <button class="btn cyan waves-effect waves-light right" type="submit">创建
-                                            <i class="mdi-content-send right"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                <div class="col s12 m8 l9">
+                    <div class="dd" id="nestable3">
+                        <ol class="dd-list">
+                            <li class="dd-item dd3-item" data-id="15">
+                                <button data-action="collapse" type="button">Collapse</button>
+                                <button data-action="expand" type="button" style="display: none;">Expand</button>
+                                <div class="dd-handle dd3-handle">Drag</div>
+                                <div class="dd3-content">Item 15</div>
+                                <ol class="dd-list">
+                                    <li class="dd-item dd3-item" data-id="18">
+                                        <div class="dd-handle dd3-handle">Drag</div>
+                                        <div class="dd3-content">Item 18</div>
+                                    </li>
+                                    <li class="dd-item dd3-item" data-id="16">
+                                        <div class="dd-handle dd3-handle">Drag</div>
+                                        <div class="dd3-content">Item 16</div>
+                                    </li>
+                                    <li class="dd-item dd3-item" data-id="17">
+                                        <div class="dd-handle dd3-handle">Drag</div>
+                                        <div class="dd3-content">Item 17</div>
+                                    </li>
+
+                                </ol>
+                            </li>
+                            <li class="dd-item dd3-item" data-id="13">
+                                <div class="dd-handle dd3-handle">Drag</div>
+                                <div class="dd3-content">Item 13</div>
+                            </li>
+                            <li class="dd-item dd3-item" data-id="14">
+                                <div class="dd-handle dd3-handle">Drag</div>
+                                <div class="dd3-content">Item 14</div>
+                            </li>
+                        </ol>
                     </div>
                 </div>
+
+
+                <div class="col s12 m8 l12" style="min-height: 400px;">
+                    <table class="striped">
+                        <thead>
+                        <tr>
+                            <th data-field="id">Id</th>
+                            <th data-field="name">名称</th>
+                            <th data-field="author">路径</th>
+                            <th data-field="operate">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+
+
+                        <#list menuList as menu>
+                            <tr id="${menu.id}">
+                                <td>${menu.id}</td>
+                                <td>${menu.name}</td>
+                                <td>${menu.url}</td>
+                                <td>
+                                    <span class="edit"><a href="${site_url}admin/menu/edit/${menu.id}" title="编辑"><i
+                                            class="mdi-image-edit"></i></a></span>
+                                <span class="delete">
+                                    <a href="#" title="删除" onclick="deleteMenuItem(${menu.id})"><i
+                                            class="mdi-action-delete"></i></a></span>
+                                </td>
+                            </tr>
+                        </#list>
+                        </tbody>
+                    </table>
+                    <div class="input-field col s12">
+                        <button class="btn cyan waves-effect waves-light right" id="btnsave" type="button">保存
+                            <i class="mdi-content-send right"></i>
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -109,4 +120,16 @@
 <!-- END CONTENT -->
 
 <#include "/admin/layout/layout_footer.html" />
-<@script></@script>
+<@script>
+<script type="text/javascript" src="/admin/js/plugins/jquery.nestable/jquery.nestable.js"></script>
+<script>
+
+    $(document).ready(function () {
+        $('#nestable3').nestable();
+        $("#btnsave").click(function (e) {
+            alert("asd");
+            console.log($('#nestable3').nestable('serialize'));
+        });
+    });
+</script>
+</@script>

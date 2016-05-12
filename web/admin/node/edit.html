@@ -1,6 +1,7 @@
 <#include "/admin/layout/layout_header.html"/>
 <@head>
 <link rel="stylesheet" href="${site_url}admin/css/custom/custom.min.css" type="text/css">
+<link rel="stylesheet" href="${site_url}admin/js/plugins/markdown-js/css/editormd.min.css"/>
 </@head>
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- START CONTENT -->
@@ -35,33 +36,28 @@
                     <div class="card-panel">
                         <h4 class="header2">新建内容</h4>
                         <div class="row">
-                            <form class="col s12" method="post" action="${site_url}admin/node/doCreate">
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="mdi-action-account-circle prefix"></i>
-                                        <input id="title" name="node.title" type="text">
-                                        <label>标题：</label>
+                            <form class="col s12" method="post" action="${site_url}admin/node/doUpdate">
+                                <input value="${node.id}" name="node.id" type="hidden">
+                                <div class="input-field col s12">
+                                    <label for="title" class="">标题：</label>
+                                    <input id="title" name="node.title" type="text" value="${node.title}">
+                                    <div class="errorTxt1"></div>
+                                </div>
+                                <div style="height: 450px;" class="input-field col s12">
+                                    <label for="nodecontent" class="">内容：</label>
+                                    <div  id="editormd" style="z-index: 10000;">
+                                    <textarea id="nodecontent" class="materialize-textarea"
+                                              name="node.content">${node.content}</textarea>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <textarea id="nodecontent" class="materialize-textarea" name="node.content"></textarea>
-                                        <label for="nodecontent" class="">内容：</label>
-                                    </div>
+                                <div class="input-field col s12">
+                                    <label>标签</label>
+                                    <input id="tags" name="node.tags" type="text" value="${node.tags}">
                                 </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <i class="mdi-communication-email prefix"></i>
-                                        <input id="tags" name="node.tags" type="text">
-                                        <label>标签</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <button class="btn cyan waves-effect waves-light right" type="submit">创建
-                                            <i class="mdi-content-send right"></i>
-                                        </button>
-                                    </div>
+                                <div class="input-field col s12">
+                                    <button class="btn cyan waves-effect waves-light right" type="submit">创建
+                                        <i class="mdi-content-send right"></i>
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -75,4 +71,17 @@
 <!-- END CONTENT -->
 
 <#include "/admin/layout/layout_footer.html" />
-<@script></@script>
+<@script>
+<script type="text/javascript" src="/admin/js/plugins/markdown-js/editormd.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var editor = editormd("editormd", {
+            path: "/admin/js/plugins/markdown-js/lib/", // Autoload modules mode, codemirror, marked... dependents libs path
+            watch: false,
+            toolbarIcons: function () {
+                return ["undo", "redo", "uppercase", "lowercase", "|", "h1", "bold", "hr", "list-ul", "list-ol", "link", "reference-link", "code", "preformatted-text", "code-block", "table", "||", "watch", "fullscreen", "preview"]
+            }
+        });
+    });
+</script>
+</@script>

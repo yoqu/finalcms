@@ -8,4 +8,8 @@ import org.yoqu.cms.core.model.base.BaseMenu;
 @SuppressWarnings("serial")
 public class Menu extends BaseMenu<Menu> {
 	public static final Menu dao = new Menu();
+
+	public MenuType getMenuType(){
+		return MenuType.dao.findById(getType());
+	}
 }

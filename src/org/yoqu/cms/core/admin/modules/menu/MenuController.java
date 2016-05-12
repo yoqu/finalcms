@@ -27,11 +27,12 @@ public class MenuController extends Controller {
                     return;
                 }
                 setAttr("menuType", menuType);
-                List<Menu> menuList = Menu.dao.find("select * form menu where type=?",menuType.getId());
+                List<Menu> menuList = Menu.dao.find("select * from menu where type=?",menuType.getId());
                 if (menuList == null) {
                     setAttr("site_title", "无数据");
                 }else{
                     setAttr("site_title", menuType.getName());
+                    setAttr("menuList",menuList);
                 }
                 render("/admin/menu/menu.html");
             }

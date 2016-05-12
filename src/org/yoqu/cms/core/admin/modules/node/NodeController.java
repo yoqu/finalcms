@@ -60,6 +60,7 @@ public class NodeController extends FinalCMS {
         node.setCreateDate(new Date());
         node.setUpdateDate(new Date());
         node.setUid(getUser().getId());
+        node.setIsDelete(0);
         if (node.save()) {
             redirect("/admin/node");
         } else {
@@ -90,7 +91,7 @@ public class NodeController extends FinalCMS {
 
     public void doUpdate() {
         Node node = getModel(Node.class);
-        if (node.save()) {
+        if (node.update()) {
             redirect("/admin/node");
         } else {
             renderText("save fail.");
