@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>首页|${site_name}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="${site_url}front/css/icon.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="${site_url}front/css/materialize.css">
+    <link rel="stylesheet" href="${site_url}front/css/style.css">
+    <link rel="stylesheet" href="${site_url}front/css/mobile_style.css">
+    <#macro head>
+        <#nested>
+</head>
+<body>
+<header class="my-nav">
+    <div class="container">
+        <nav class="my-nav">
+            <div class="nav-wrapper">
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <a href="${site_url}" class="logo"><img class="responsive-img" src="${site_url}front/img/logo.png" alt=""></a>
+                <ul class="left">
+                    <li><a href="#">关于我</a></li>
+                    <li><a href="#">生活随记</a></li>
+                </ul>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#modal_about" class="modal-trigger">关注我</a></li>
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+                    <li><a href="#modal_about" class="modal-trigger">关注我</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+</#macro>

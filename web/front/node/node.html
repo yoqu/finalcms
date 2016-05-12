@@ -1,0 +1,79 @@
+<#include "/front/layout/layout_header.html"/>
+<@head>
+<link rel="stylesheet" href="/admin/js/plugins/markdown-js/css/editormd.preview.css">
+</@head>
+<div class="container">
+    <div class="row">
+        <div class="col m8 s12 content">
+            <div class="title">
+                <h3>${node.title}</h3>
+                <div>
+                    <div><i class="material-icons tiny ">schedule</i>${node.createDate}
+
+                         <i class="material-icons tiny ">perm_identity</i>${node.user.name}
+                    </div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="content" id="node" style="min-height: 450px;">${node.content}</div>
+            <div class="comment">
+                <!-- 多说评论框 start -->
+                <div class="ds-thread"
+                     data-thread-key="${node.id}"
+                     data-title="${node.title}"
+                     data-url="${site_url}node/${node.id}"></div>
+                <!-- 多说评论框 end -->
+                <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+                <script type="text/javascript">
+                    var duoshuoQuery = {short_name: "yoqu"};
+                    (function () {
+                        var ds = document.createElement('script');
+                        ds.type = 'text/javascript';
+                        ds.async = true;
+                        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                        ds.charset = 'UTF-8';
+                        (document.getElementsByTagName('head')[0]
+                        || document.getElementsByTagName('body')[0]).appendChild(ds);
+                    })();
+                </script>
+                <!-- 多说公共JS代码 end -->
+            </div>
+        </div>
+        <#include "/front/layout/layout_right.html"/>
+    </div>
+</div>
+<#include "/front/layout/layout_footer.html"/>
+<@script>
+<script type="text/javascript" src="/admin/js/plugins/markdown-js/lib/marked.min.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/markdown-js/lib/prettify.min.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/markdown-js/lib/raphael.min.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/markdown-js/lib/underscore.min.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/markdown-js/lib/sequence-diagram.min.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/markdown-js/lib/flowchart.min.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/markdown-js/lib/jquery.flowchart.min.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/markdown-js/editormd.min.js"></script>
+
+<script>
+
+    $(function () {
+        var text =  $("#node").html();
+        $("#node").empty();
+        testEditormdView = editormd.markdownToHTML("node", {
+            markdown:text,//+ "\r\n" + $("#append-test").text(),
+            //htmlDecode      : true,       // 开启 HTML 标签解析，为了安全性，默认不开启
+            htmlDecode: "style,script,iframe",  // you can filter tags decode
+            //toc             : false,
+            tocm: true,    // Using [TOCM]
+            //tocContainer    : "#custom-toc-container", // 自定义 ToC 容器层
+            //gfm             : false,
+            //tocDropdown     : true,
+            // markdownSourceCode : true, // 是否保留 Markdown 源码，即是否删除保存源码的 Textarea 标签
+            emoji: true,
+            taskList: true,
+            tex: true,  // 默认不解析
+            flowChart: true,  // 默认不解析
+            sequenceDiagram: true,  // 默认不解析
+        });
+    });
+</script>
+</@script>

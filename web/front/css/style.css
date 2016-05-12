@@ -1,0 +1,150 @@
+.my-nav{
+    background: #00897b;
+    box-shadow: none;
+}
+.logo{
+    width:58px;
+    height:auto;
+    float: left;
+    display: inline-block;
+    background: url("../font/material-design-icons/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2");
+}
+.article-image{
+    margin:10px;
+    margin-top: 40px;
+}
+.article-image img{
+    border-radius: 8px;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    overflow: hidden;
+}
+
+.biaoqian{
+    display: inline-block;
+
+}
+.card-action a{
+    color: #ee6e73!important;
+    float: right;
+    padding-top: 10px;
+}
+.card-action a:hover{
+    color: #9e9d24!important;
+}
+
+a.waves-circle{
+    top: 120px;
+    left:0.5em;
+    border: 4px solid;
+    transition: background-color 0.5s ease 0s;
+}
+
+.waves-circle{
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1.5em;
+}
+.waves-circle:hover{
+    background-color: transparent;
+}
+.spot{
+    position: absolute;
+    left: -32px!important;
+}
+.spot-1{
+    background-color:  #ff5c5a;
+}
+
+.spot-2{
+    background-color:  #1bc656;
+}
+
+.spot-3{
+    background-color:  #ffbb50;
+}
+
+.front-content{
+    border-left: 2px solid #bdbdbd;
+    position: relative;
+}
+.front-content:before{
+    position: relative;
+    height: 20px;
+    width: 15px;
+    background: #fff;
+    display: block;
+    content: ".";
+    text-indent: -99999px;
+    left: -14px;
+    border-bottom: 2px solid #bdbdbd;
+}
+.front-content:after{
+    position: relative;
+    height: 20px;
+    width: 15px;
+    background: #fff;
+    display: block;
+    content: ".";
+    text-indent: -99999px;
+    left: -11px;
+    border-bottom: 2px solid #bdbdbd;
+}
+
+
+.spot-content .card{
+    margin-left: 20px;
+}
+
+.pagination .active{
+    background-color: #f57c00 !important;
+}
+
+footer.page-footer{
+    background-color: rgb(117, 117, 117)!important;
+}
+nav ul a {
+    font-size: 1.1rem!important;
+}
+.my_photo:hover{
+
+}
+.my_photo{
+    display: block;
+    width: 100%;
+    background: url("../img/myphoto.png");
+    filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+    -moz-background-size:100% 100%;
+    background-size:100% 100%;
+    height:200px;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    border-radius:50%;
+    overflow: hidden;
+}
+.photo_title{
+    display: block;
+    padding-top: 8px;
+    width: 100%;
+    height: 55px;
+    text-align: center;
+    line-height: 38px;
+    color: #FFF;
+    background: rgba(0, 0, 0, 0.5) none repeat scroll 0% 0%;
+    transition: bottom 0.5s ease-in-out 0s;
+    position: relative;
+    bottom: -200px;
+    left: 10px;
+}
+.my_photo:hover .photo_title{
+    bottom: -150px;
+}
+.card-image{
+    max-width: 200px;
+    margin:auto;
+}
+#description{
+    color: #fafafa;
+}

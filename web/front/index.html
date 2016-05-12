@@ -1,0 +1,74 @@
+<#include "/front/layout/layout_header.html"/>
+<@head>
+</@head>
+<div class="container">
+    <div class="row">
+        <div class="col m8 s12 front-content">
+            <#list nodeList.getList() as node>
+                <article class="front-article">
+                    <div class="row ">
+                        <div class="col m1 spot ">
+                            <a class="waves-effect waves-circle btn-floating spot-1" data-position="left"
+                               data-delay="50" data-tooltip="时间：${node.createDate}"></a>
+                        </div>
+                        <div class="col s12 m11 spot-content ">
+                            <div class="card">
+                                <div class="row">
+                                    <div class="col m4 s12">
+                                        <div class="article-image">
+                                            <img data-src="http://cdn.adki.me/wp-content/uploads/2016/01/追忆_副本-220x150.jpg"
+                                                 class="responsive-img"
+                                                 src="http://cdn.adki.me/wp-content/uploads/2016/01/追忆_副本-220x150.jpg">
+                                        </div>
+                                    </div>
+                                    <div class="col m8 s12 card-content">
+                                        <span class="card-title">${node.title}</span>
+                                        <p>${node.content?substring(0,10)}...</p>
+                                    </div>
+                                </div>
+                                <div class="card-action">
+                                    <div class="biaoqian">
+                                        <#if node.tags!="">
+                                            <span>标签：</span>
+                                            <#list node.tags?split(",") as tag>
+                                                <div class="chip">
+                                                    ${tag}
+                                                </div>
+                                            </#list>
+                                            <#else>
+                                                <label>暂无标签</label>
+                                        </#if>
+                                    </div>
+                                    <a href="/node/${node.id}" class="right-align">查看</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </#list>
+            <ul class="pagination center-align">
+                <#if nodeList.pageNumber==1>
+                    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                    <#else>
+                        <li class="waves-effect"><a href="?page=1"><i class="material-icons">chevron_left</i></a>
+                        </li>
+                </#if>
+                <#list 1..nodeList.totalPage as i>
+                    <li class="<#if nodeList.pageNumber==i>active<#else>waves-effect</#if>"><a
+                            href="?page=${i}">${i}</a>
+                    </li>
+                </#list>
+                <#if nodeList.pageNumber==nodeList.totalPage>
+                    <li class="disabled"><a href="#!"><i
+                            class="material-icons">chevron_right</i></a></li>
+                    <#else>
+                        <li class="waves-effect"><a href="?page=${nodeList.totalPage}"><i
+                                class="material-icons">chevron_right</i></a></li>
+                </#if>
+            </ul>
+        </div>
+        <#include "/front/layout/layout_right.html"/>
+    </div>
+</div>
+<#include "/front/layout/layout_footer.html"/>
+<@script></@script>

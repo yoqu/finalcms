@@ -1,0 +1,17 @@
+@media only screen and (max-device-width:480px){
+    .front-content{
+        border:none;
+    }
+    .front-content:before{
+        display: none;
+    }
+    .front-content:after{
+        display: none;
+    }
+    .spot{
+        display: none;
+    }
+    .spot-content .card{
+        margin-left: 0px;
+    }
+}

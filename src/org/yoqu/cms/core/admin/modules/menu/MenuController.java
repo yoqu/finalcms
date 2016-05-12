@@ -2,6 +2,7 @@ package org.yoqu.cms.core.admin.modules.menu;
 
 import com.jfinal.core.*;
 import org.yoqu.cms.core.config.Constant;
+import org.yoqu.cms.core.config.FinalCMS;
 import org.yoqu.cms.core.model.Menu;
 import org.yoqu.cms.core.model.MenuType;
 import org.yoqu.cms.core.util.StringUtils;
@@ -14,16 +15,16 @@ import java.util.regex.Pattern;
  * @date 2016/5/9 0009
  * @description
  */
-public class MenuController extends Controller {
+public class MenuController extends FinalCMS {
 
     public void index() {
         if (getPara() != null) {
             if (!StringUtils.isNumbervalue(getPara())) {
-                render(Constant.RENDER_ACCESS_NOT_FOUND);
+                renderNotFound();
             } else {
                 MenuType menuType=MenuType.dao.findById(getParaToInt());
                 if(menuType==null){
-                    render(Constant.RENDER_ACCESS_NOT_FOUND);
+                    renderNotFound();
                     return;
                 }
                 setAttr("menuType", menuType);
@@ -46,10 +47,10 @@ public class MenuController extends Controller {
 
     public void create() {
         if (getPara() == null) {
-            render(Constant.RENDER_ACCESS_NOT_FOUND);
+            renderNotFound();
         }
         if (!StringUtils.isNumbervalue(getPara())) {
-            render(Constant.RENDER_ACCESS_NOT_FOUND);
+            renderNotFound();
         } else {
             Menu menu = Menu.dao.findById(getParaToInt());
             setAttr("menu", menu);

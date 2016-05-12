@@ -107,9 +107,9 @@ public class AuthManagerInterceptor implements Interceptor {
     @Override
     public void intercept(Invocation inv) {
         String uri = inv.getActionKey();
+        InjectManager.getInstance().injectCommonVariable(inv.getController());
         if (uri.startsWith("/admin")) {//compare user access back-end page or front page.
             InjectManager.getInstance().injectAnnotation(inv.getMethod(), inv.getController());//inject
-            InjectManager.getInstance().injectCommonVariable(inv.getController());
             if (webServiceAuth(inv.getController())) {
                 InjectManager.getInstance().injectPersonalVariable(inv.getController());//inject user variable into page.
                 if (webUserPermissionCheck(inv.getController())) {

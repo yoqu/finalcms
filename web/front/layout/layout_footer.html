@@ -1,0 +1,60 @@
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">\(＾O＾)/</h5>
+                <div class="grey-text text-lighten-4">
+                        <pre>
+  ____          _ _
+ / ___|___   __| (_)_ __   __ _
+| |   / _ \ / _` | | '_ \ / _` |
+| |__| (_) | (_| | | | | | (_| |
+ \____\___/ \__,_|_|_| |_|\__, |
+                          |___/
+                        </pre>
+                </div>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">友情链接</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="#!">百度</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">谷歌</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">淘宝</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">京东</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2016 Copyright yoqu <i><a href="/admin/" style="color:#eeeeee ;">后台</a></i>
+        </div>
+    </div>
+</footer>
+<!-- Modal Structure -->
+<div id="modal_about" class="modal">
+    <div class="modal-content">
+        <h4>我的社交账号</h4>
+        <p><i class="material-icons small">email</i>yoqulin@qq.com<br>
+            <i class="iconfont">&#xe60f;</i>川帅第一号<br>
+            <i class="iconfont">&#xe60c;</i>s523915627<br>
+            <i class="iconfont">&#xf0002;</i>523915627<br>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">关闭</a>
+    </div>
+</div>
+<script type="text/javascript" src="${site_url}front/js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="${site_url}front/js/materialize.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".button-collapse").sideNav();
+        $('.btn-floating').tooltip({delay: 50});
+        $('.modal-trigger').leanModal();
+    });
+</script>
+<#macro script>
+    <#nested>
+</#macro>
+</body>
