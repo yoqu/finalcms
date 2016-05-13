@@ -5,6 +5,10 @@
     <a href="http://www.weibo.com/yoquwap" class="box4"><i class="icon iconfont">&#xe652;</i></a>
 </div>
 
+<div id="scrollTop">
+    <div class="level-2"></div>
+    <div class="level-3"></div>
+</div>
 <footer class="page-footer">
     <div class="container">
         <div class="row">
@@ -39,7 +43,7 @@
     </div>
 </footer>
 <script type="text/javascript" src="${site_url}front/js/jquery-1.11.1.js"></script>
-<script type="text/javascript" src="${site_url}front/js/materialize.js"></script>
+<script type="text/javascript" src="${site_url}admin/js/materialize.min.js"></script>
 <script type="text/javascript" src="${site_url}front/js/plugins/tooltipster/js/jquery.tooltipster.min.js"></script>
 <script>
     $(document).ready(function () {
@@ -52,25 +56,27 @@
             $(this).animate({width: '50px'}, 300);
         });
         $('.leftbox .box1').tooltipster({
-            content:$('<span><img src="/front/img/wechat.png" height="300px" width="300px" /></span>'),
-            position:"left",
+            content: $('<span><img src="/front/img/wechat.png" height="300px" width="300px" /></span>'),
+            position: "left",
         });
         $('.leftbox .box2').tooltipster({
-            content:$('<span><img src="/front/img/alipay.jpg" height="400px" width="300px"/></span>'),
-            position:"left",
+            content: $('<span><img src="/front/img/alipay.jpg" height="400px" width="300px"/></span>'),
+            position: "left",
         });
         $('.leftbox .box3').tooltipster({
-            content:"QQ:523915627",
-            position:"left",
+            content: "QQ:523915627",
+            position: "left",
         });
         $('.leftbox .box4').tooltipster({
-            content:"川帅第一号",
-            position:"left",
+            content: "川帅第一号",
+            position: "left",
         });
-
-
+        $("#profilebox .my_photo").hover(function () {
+            $(this).addClass("animated jello");
+        }, function () {
+//            $(this).removeClass("animated jello");
+        })
     });
-
 </script>
 <#macro script>
     <#nested>

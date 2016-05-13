@@ -21,6 +21,13 @@
   -webkit-font-smoothing: antialiased;
 }
 
+@font-face {font-family: 'siyuanfont';
+  src: url('//at.alicdn.com/t/9tf76dn5kqgmbo6r.eot'); /* IE9*/
+  src: url('//at.alicdn.com/t/9tf76dn5kqgmbo6r.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('//at.alicdn.com/t/9tf76dn5kqgmbo6r.woff') format('woff'), /* chrome、firefox */
+  url('//at.alicdn.com/t/9tf76dn5kqgmbo6r.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('//at.alicdn.com/t/9tf76dn5kqgmbo6r.svg#思源黑体-正粗') format('svg'); /* iOS 4.1- */
+}
 
 @font-face {font-family: 'iconfont';
   src: url('../font/icon/iconfont.eot'); /* IE9*/
