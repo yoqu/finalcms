@@ -29,6 +29,7 @@
   url('../font/icon/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
   url('../font/icon/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
 }
+
 .iconfont{
   font-family:"iconfont" !important;
   font-weight: normal;

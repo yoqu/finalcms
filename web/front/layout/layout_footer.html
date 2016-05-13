@@ -1,3 +1,10 @@
+<div class="leftbox z-depth-3">
+    <a href="#!" class="box1 "><i class="icon iconfont ">&#xe651;</i></a>
+    <a href="#!" class="box2"><i class="icon iconfont">&#xe61f;</i></a>
+    <a href="#!" class="box3"><i class="icon iconfont">&#xe641;</i></a>
+    <a href="http://www.weibo.com/yoquwap" class="box4"><i class="icon iconfont">&#xe652;</i></a>
+</div>
+
 <footer class="page-footer">
     <div class="container">
         <div class="row">
@@ -31,28 +38,39 @@
         </div>
     </div>
 </footer>
-<!-- Modal Structure -->
-<div id="modal_about" class="modal">
-    <div class="modal-content">
-        <h4>我的社交账号</h4>
-        <p><i class="material-icons small">email</i>yoqulin@qq.com<br>
-            <i class="iconfont">&#xe60f;</i>川帅第一号<br>
-            <i class="iconfont">&#xe60c;</i>s523915627<br>
-            <i class="iconfont">&#xf0002;</i>523915627<br>
-        </p>
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">关闭</a>
-    </div>
-</div>
 <script type="text/javascript" src="${site_url}front/js/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="${site_url}front/js/materialize.js"></script>
+<script type="text/javascript" src="${site_url}front/js/plugins/tooltipster/js/jquery.tooltipster.min.js"></script>
 <script>
     $(document).ready(function () {
         $(".button-collapse").sideNav();
         $('.btn-floating').tooltip({delay: 50});
-        $('.modal-trigger').leanModal();
+
+        $('.leftbox a').hover(function () {
+            $(this).animate({width: '40px'}, 300);
+        }, function () {
+            $(this).animate({width: '50px'}, 300);
+        });
+        $('.leftbox .box1').tooltipster({
+            content:$('<span><img src="/front/img/wechat.png" height="300px" width="300px" /></span>'),
+            position:"left",
+        });
+        $('.leftbox .box2').tooltipster({
+            content:$('<span><img src="/front/img/alipay.jpg" height="400px" width="300px"/></span>'),
+            position:"left",
+        });
+        $('.leftbox .box3').tooltipster({
+            content:"QQ:523915627",
+            position:"left",
+        });
+        $('.leftbox .box4').tooltipster({
+            content:"川帅第一号",
+            position:"left",
+        });
+
+
     });
+
 </script>
 <#macro script>
     <#nested>

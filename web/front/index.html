@@ -8,7 +8,7 @@
                 <article class="front-article">
                     <div class="row ">
                         <div class="col m1 spot ">
-                            <a class="waves-effect waves-circle btn-floating spot-1" data-position="left"
+                            <a class="waves-effect waves-circle btn-floating " data-position="left"
                                data-delay="50" data-tooltip="时间：${node.createDate}"></a>
                         </div>
                         <div class="col s12 m11 spot-content ">
@@ -23,7 +23,7 @@
                                     </div>
                                     <div class="col m8 s12 card-content">
                                         <span class="card-title">${node.title}</span>
-                                        <p>${node.content?substring(0,10)}...</p>
+                                        <p>${node.content}...</p>
                                     </div>
                                 </div>
                                 <div class="card-action">
@@ -71,4 +71,36 @@
     </div>
 </div>
 <#include "/front/layout/layout_footer.html"/>
-<@script></@script>
+<@script>
+<script src="/front/js/about/marked.js"></script>
+<script>
+    $(function () {
+        $("article .card-content p").each(function (index) {
+            var text = $(this).text();
+            text = marked(text);
+            text = text.replace(/<\/?[^>]*>/g, ''); //去除HTML tag
+            text = text.replace(/[ | ]*\n/g, '\n'); //去除行尾空白
+            text = text.replace(/\n[\s| | ]*\r/g, '\n'); //去除多余空行
+            if (text.length > 100) {
+                text = text.substring(0, 100);
+            }
+            text += "...";
+            $(this).text(text);
+        });
+        $("article .spot .btn-floating").each(function (index) {
+            if (index % 3 == 0) {
+                $(this).addClass("spot-1");
+            } else if (index % 3 == 1) {
+                $(this).addClass("spot-2");
+            } else {
+                $(this).addClass("spot-3");
+            }
+        });
+
+//        var text = $("article .card-content").text();
+//        $("article .card-content").empty();
+//        text = marked(text);
+
+    });
+</script>
+</@script>

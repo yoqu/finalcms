@@ -1,0 +1,6 @@
+.leftbox{ width:65px; height:200px; position:fixed; right:0; top:80%; margin-top:-125px; z-index:900;background: #eeeeee;}
+.leftbox a{ width:50px; height:50px; line-height:50px; float:left; display:block; text-align:right;}
+.leftbox .box1 i{ color:#4caf50;;}
+.leftbox .box2 i{ color:#42a5f5;}
+.leftbox .box3 i{ color:#546e7a;}
+.leftbox .box4 i{ color:#E6162D;}
