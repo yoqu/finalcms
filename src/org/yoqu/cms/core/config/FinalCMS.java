@@ -2,6 +2,7 @@ package org.yoqu.cms.core.config;
 
 import com.jfinal.core.Controller;
 import org.json.JSONException;
+import org.yoqu.cms.core.admin.config.InjectManager;
 import org.yoqu.cms.core.model.User;
 import org.yoqu.cms.core.util.JSONUtil;
 
@@ -48,4 +49,10 @@ public class FinalCMS extends Controller {
     public void renderJSONFail(String information) throws JSONException {
         renderJson(JSONUtil.writeFailInformation(information).toString());
     }
+
+
+    public void injectCommonVariable() {
+        InjectManager.getInstance().injectCommonVariable(this);
+    }
+
 }

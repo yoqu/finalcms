@@ -19,6 +19,7 @@ public class _MappingKit {
 		arp.addMapping("comment", "id", Comment.class);
 		arp.addMapping("dictionary", "id", Dictionary.class);
 		arp.addMapping("dictionary_type", "id", DictionaryType.class);
+		arp.addMapping("file", "id", File.class);
 		arp.addMapping("menu", "id", Menu.class);
 		arp.addMapping("menu_type", "id", MenuType.class);
 		arp.addMapping("module", "id", Module.class);

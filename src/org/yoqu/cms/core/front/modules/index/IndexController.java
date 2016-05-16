@@ -13,12 +13,11 @@ import org.yoqu.cms.core.model.Node;
  */
 public class IndexController extends FinalCMS {
 
+    @SiteTitle("首页")
     public void index() {
         int page = getPara("page") != null ? getParaToInt("page") : 1;
         Page<Node> nodeList = NodeInvoke.getInstance().findNodeByPage(page);
-
         setAttr("nodeList", nodeList);
-
         render("/front/index.html");
     }
 

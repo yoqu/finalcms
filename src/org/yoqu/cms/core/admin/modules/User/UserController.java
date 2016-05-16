@@ -5,8 +5,10 @@ import com.jfinal.aop.Clear;
 import com.jfinal.core.Controller;
 import com.jfinal.ext.interceptor.POST;
 import org.json.JSONException;
+import org.yoqu.cms.core.aop.SiteTitle;
 import org.yoqu.cms.core.config.AuthManagerInterceptor;
 import org.yoqu.cms.core.config.Constant;
+import org.yoqu.cms.core.config.FinalCMS;
 import org.yoqu.cms.core.model.Role;
 import org.yoqu.cms.core.model.User;
 import org.yoqu.cms.core.util.JSONUtil;
@@ -18,7 +20,7 @@ import java.util.List;
  * Created by yoqu on 2016/4/13 0013.
  */
 
-public class UserController extends Controller {
+public class UserController extends FinalCMS {
 
     public void index() {
         render("/admin/login.html");
@@ -26,14 +28,19 @@ public class UserController extends Controller {
 
     @Clear
     public void login() {
+        setPageTitle("登录");
+        injectCommonVariable();
         render("/admin/login.html");
     }
 
     @Clear
     public void register() {
+        setPageTitle("注册");
+        injectCommonVariable();
         render("/admin/register.html");
     }
 
+    @SiteTitle("我的资料")
     public void profile() {
         render("admin/profile.html");
     }

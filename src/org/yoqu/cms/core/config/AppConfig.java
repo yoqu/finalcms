@@ -18,6 +18,7 @@ public class AppConfig extends JFinalConfig {
         PropKit.use("database_config.txt");
         // set app dev Mode debug
         me.setDevMode(PropKit.getBoolean("devMode", false));
+
         FinalProxy finalProxy = new FinalProxy();
     }
 

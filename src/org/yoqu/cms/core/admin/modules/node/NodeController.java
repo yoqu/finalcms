@@ -4,6 +4,7 @@ import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.ext.interceptor.POST;
 import com.jfinal.plugin.activerecord.Page;
+import com.jfinal.upload.UploadFile;
 import org.json.JSONException;
 import org.yoqu.cms.core.admin.modules.user.UserInvoke;
 import org.yoqu.cms.core.aop.SiteTitle;
@@ -56,6 +57,7 @@ public class NodeController extends FinalCMS {
 
     @Before(POST.class)
     public void doCreate() {
+        UploadFile file = getFile("file");
         Node node = getModel(Node.class);
         node.setCreateDate(new Date());
         node.setUpdateDate(new Date());
