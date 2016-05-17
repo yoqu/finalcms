@@ -1,4 +1,0 @@
-jdbcUrl = jdbc:mysql://127.0.0.1/blog?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
-user = root
-password =usbw
-devMode = true

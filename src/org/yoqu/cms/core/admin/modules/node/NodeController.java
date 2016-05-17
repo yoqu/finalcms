@@ -10,6 +10,7 @@ import org.yoqu.cms.core.admin.modules.user.UserInvoke;
 import org.yoqu.cms.core.aop.SiteTitle;
 import org.yoqu.cms.core.config.Constant;
 import org.yoqu.cms.core.config.FinalCMS;
+import org.yoqu.cms.core.model.File;
 import org.yoqu.cms.core.model.Node;
 import org.yoqu.cms.core.model.User;
 import org.yoqu.cms.core.util.JSONUtil;
@@ -57,18 +58,32 @@ public class NodeController extends FinalCMS {
 
     @Before(POST.class)
     public void doCreate() {
-        UploadFile file = getFile("file");
+
         Node node = getModel(Node.class);
         node.setCreateDate(new Date());
         node.setUpdateDate(new Date());
         node.setUid(getUser().getId());
         node.setIsDelete(0);
         if (node.save()) {
+
             redirect("/admin/node");
         } else {
             renderText("save fail.");
         }
 
+    }
+
+    public void uploadFile() {
+        if (isParaBlank("file")) {
+            renderJSONError();
+            return;
+        }
+        UploadFile uploadFile = getFile("file");
+        File file = new File();
+        file.setModule("node");
+        file.setPath(uploadFile.getFileName());
+        file.setUploadTime(new Date());
+        file.save();
     }
 
     @SiteTitle("内容编辑")

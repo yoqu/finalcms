@@ -34,17 +34,17 @@
                             <form class="col s12" id="node" method="post" action="${site_url}admin/node/doCreate" enctype="multipart/form-data">
                                 <div class="input-field col s12">
                                     <label for="title" class="">标题：</label>
-                                    <input id="title" name="node.title" type="text">
+                                    <input id="title" name="title" type="text">
                                 </div>
                                 <div style="height: 450px;" class="input-field col s12">
                                     <label for="nodecontent" class="">内容：</label>
                                     <div id="editormd" style="z-index: 10000;">
                                     <textarea id="nodecontent" class="materialize-textarea"
-                                              name="node.content">请输入内容...</textarea>
+                                              name="content">请输入内容...</textarea>
                                     </div>
                                 </div>
                                 <div class="input-field col s12">
-                                    <input id="tags" name="node.tags" type="text">
+                                    <input id="tags" name="tags" type="text">
                                 </div>
                                 <div class="input-field col s12">
                                     <div class="file-field input-field">

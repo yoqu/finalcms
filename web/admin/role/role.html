@@ -93,7 +93,7 @@
     $(function () {
         $.ajax({
             type: 'get',
-            url: "http://127.0.0.1/admin/role/getSelectRole",
+            url: "${site_url}admin/role/getSelectRole",
             beforeSend: function () {
                 FinalDialog.show();
             },
@@ -147,7 +147,7 @@
         result = JSON.stringify(checkeds);
         $.ajax({
             type: 'post',
-            url: "http://127.0.0.1/admin/role/saveRoles",
+            url: "${site_url}admin/role/saveRoles",
             beforeSend: function () {
                 FinalDialog.show();
             },
