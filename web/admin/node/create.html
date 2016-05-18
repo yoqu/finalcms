@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="${site_url}admin/css/custom/custom.min.css" type="text/css">
 <link rel="stylesheet" href="${site_url}admin/js/plugins/markdown-js/css/editormd.min.css"/>
 <link rel="stylesheet" href="${site_url}admin/js/plugins/tags/jquery.tagsinput.min.css"/>
+<link href="${site_url}admin/js/plugins/upload//uploadfile.css" rel="stylesheet">
 </@head>
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- START CONTENT -->
@@ -31,30 +32,24 @@
                     <div class="card-panel">
                         <h4 class="header2">新建内容</h4>
                         <div class="row">
-                            <form class="col s12" id="node" method="post" action="${site_url}admin/node/doCreate" enctype="multipart/form-data">
+                            <form class="col s12" id="node" method="post" action="${site_url}admin/node/doCreate">
                                 <div class="input-field col s12">
                                     <label for="title" class="">标题：</label>
-                                    <input id="title" name="title" type="text">
+                                    <input id="title" name="node.title" type="text">
                                 </div>
                                 <div style="height: 450px;" class="input-field col s12">
                                     <label for="nodecontent" class="">内容：</label>
                                     <div id="editormd" style="z-index: 10000;">
                                     <textarea id="nodecontent" class="materialize-textarea"
-                                              name="content">请输入内容...</textarea>
+                                              name="node.content">请输入内容...</textarea>
                                     </div>
                                 </div>
                                 <div class="input-field col s12">
-                                    <input id="tags" name="tags" type="text">
+                                    <input id="tags" name="node.tags" type="text">
                                 </div>
+                                <input type="hidden" name="files" id="files">
                                 <div class="input-field col s12">
-                                    <div class="file-field input-field">
-                                        <div class="btn">
-                                            <span>File</span>
-                                            <input type="file" name="file">
-                                        </div>
-                                        <div class="file-path-wrapper">
-                                            <input class="file-path validate valid" type="text" placeholder="上传一个或多个文件">
-                                        </div>
+                                    <div id="singleupload">上传
                                     </div>
                                 </div>
                                 <div class="input-field col s12">
@@ -76,10 +71,34 @@
 <#include "/admin/layout/layout_footer.html" />
 <@script>
 <script type="text/javascript" src="/admin/js/plugins/markdown-js/editormd.min.js"></script>
+<script src="/admin/js/plugins/upload/jquery.uploadfile.min.js"></script>
 <script type="text/javascript" src="/admin/js/plugins/jquery-validation/jquery.validate.min.js"></script>
 <script type="text/javascript" src="/admin/js/plugins/tags/jquery.tagsinput.min.js"></script>
 <script type="text/javascript">
     $(function () {
+        $("#singleupload").uploadFile({
+            url: "/admin/node/doUploadFile",
+            multiple: false,
+            dragDrop: false,
+            maxFileCount: 1,
+            fileName: "file",
+            onSuccess: function (files, data, xhr, pd) {
+                console.log(data);
+                if (data['result'] == "SUCCESS") {
+                    console.log(data);
+                    var files = $("#files").val();
+                    if (files != "" && files != null) {
+                        files += "," + data['data']['id'];
+                    }
+                    else {
+                        files = data['data']['id'];
+                    }
+                    $("#files").val(files);
+                    console.log(files);
+                }
+            },
+        });
+
         $('#tags').tagsInput({width: 'auto'});
         $("#node").validate({
             rules: {

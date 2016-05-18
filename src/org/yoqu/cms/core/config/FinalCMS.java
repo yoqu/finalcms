@@ -1,7 +1,9 @@
 package org.yoqu.cms.core.config;
 
 import com.jfinal.core.Controller;
+import com.jfinal.kit.JsonKit;
 import org.json.JSONException;
+import org.json.JSONObject;
 import org.yoqu.cms.core.admin.config.InjectManager;
 import org.yoqu.cms.core.model.User;
 import org.yoqu.cms.core.util.JSONUtil;
@@ -42,8 +44,20 @@ public class FinalCMS extends Controller {
         renderText("{result:'json error'}");
     }
 
-    public void renderJSONSuccess() throws JSONException {
-        renderJson(JSONUtil.writeSuccess().toString());
+    public void renderJSONSuccess() {
+        try {
+            renderJson(JSONUtil.writeSuccess().toString());
+        } catch (JSONException e) {
+            renderJSONError();
+        }
+    }
+
+    public void renderJSONObject(String resultStatus, Object object) throws JSONException {
+        JSONObject result = new JSONObject();
+        result.put("result", resultStatus);
+        JSONObject data=new JSONObject( JsonKit.toJson(object));
+        result.put("data",data);
+        renderJson(result.toString());
     }
 
     public void renderJSONFail(String information) throws JSONException {
