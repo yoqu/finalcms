@@ -17,6 +17,22 @@ public abstract class BaseFile<M extends BaseFile<M>> extends Model<M> implement
 		return get("id");
 	}
 
+	public void setName(java.lang.String name) {
+		set("name", name);
+	}
+
+	public java.lang.String getName() {
+		return get("name");
+	}
+
+	public void setSize(java.lang.String size) {
+		set("size", size);
+	}
+
+	public java.lang.String getSize() {
+		return get("size");
+	}
+
 	public void setPath(java.lang.String path) {
 		set("path", path);
 	}

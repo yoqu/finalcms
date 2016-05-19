@@ -21,6 +21,8 @@ import org.yoqu.cms.core.model.User;
 import org.yoqu.cms.core.util.JSONUtil;
 import org.yoqu.cms.core.util.StringUtils;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -63,7 +65,6 @@ public class NodeController extends FinalCMS {
 
     @Before(POST.class)
     public void doCreate() {
-
         Node node = getModel(Node.class);
         node.setCreateDate(new Date());
         node.setUpdateDate(new Date());
@@ -72,58 +73,66 @@ public class NodeController extends FinalCMS {
         try {
             if (node.save()) {
                 if (isParaExists("files")) {
-                    String[] ids = getPara("files").split(",");
-                    for (int i = 0; i < ids.length; i++) {
-                        File f = File.dao.findById(ids[i]);
-                        f.setFid(node.getId());
-                        f.setModule("node");
-                        f.save();
-                    }
+                    File.dao.updateFile(getPara("files"), "node", node.getId());
                 }
                 redirect("/admin/node");
             } else {
                 renderText("save fail.");
-                deleteUploadFile();
+                deleteUploadFiles();
             }
         } catch (Exception ex) {
-            deleteUploadFile();
+            node.delete();
+            deleteUploadFiles();
             renderJSONError();
         }
+    }
 
-
+    public void doUpdate() {
+        Node node = getModel(Node.class);
+        if (node.update()) {
+            if (isParaExists("files")) {
+                //需要新增文件的
+                File.dao.updateFile(getPara("files"), "node", node.getId());
+                //需要删除的文件.
+                List<File> oldFiles = File.dao.findDeleteFile(getPara("files"), node.getId());
+                if (oldFiles.size() > 0) {
+                    for (File f : oldFiles) {
+                        deleteUploadFile(f.getId());
+                    }
+                }
+            } else {
+                List<File> files = node.getListFile();
+                for (File file : files) {
+                    deleteUploadFile(file.getId());
+                }
+            }
+            redirect("/admin/node");
+        } else {
+            renderText("save fail.");
+        }
     }
 
     /**
      * 删除上传的文件
      */
-    private void deleteUploadFile() {
+    private void deleteUploadFiles() {
         if (isParaExists("files")) {
             String[] ids = getPara("files").split(",");
-            for (int i = 1; i < ids.length; i++) {
-                File f = File.dao.findById(ids[i]);
-                if (f != null) {
-                    String baseUploadPath;
-                    if (PathKit.isAbsolutelyPath(JFinal.me().getConstants().getBaseUploadPath())) {
-                        baseUploadPath = JFinal.me().getConstants().getBaseUploadPath();
-                    } else {
-                        baseUploadPath = PathKit.getWebRootPath() + java.io.File.separator + JFinal.me().getConstants().getBaseUploadPath();
-                    }
-                    baseUploadPath += java.io.File.separator + f.getPath();
-                    java.io.File removeFile = new java.io.File(baseUploadPath);
-                    if (!removeFile.delete()) {
-                        //删除失败处理....
-                        continue;
-                    }
-                }
-                File.dao.deleteById(ids[i]);
+            for (int i = 0; i < ids.length; i++) {
+                deleteUploadFile(Integer.parseInt(ids[i]));
             }
         }
     }
 
+    /**
+     * 上传文件
+     */
     public void doUploadFile() {
         UploadFile uploadFile = getFile("file");
         File file = new File();
-        file.setPath(uploadFile.getFileName());
+        file.setPath(uploadFile.getUploadPath());
+        file.setName(uploadFile.getFileName());
+        file.setSize(String.valueOf(uploadFile.getFile().length()));
         file.setUploadTime(new Date());
         file.setFid(-1);
         file.save();
@@ -141,9 +150,22 @@ public class NodeController extends FinalCMS {
             return;
         }
         int id = getParaToInt("id");
-        if (File.dao.deleteById(id)) {
+        if (deleteUploadFile(id)) {
             renderJSONSuccess();
 
+        } else {
+            renderJSONError();
+        }
+    }
+
+    public void loadFiles() {
+        if (isParaExists("id")) {
+            List<File> files = File.dao.find("select * from file where module='node' and fid=?", getPara("id"));
+            try {
+                renderJSONObject(Constant.SUCCESS, files);
+            } catch (JSONException e) {
+                renderJSONError();
+            }
         } else {
             renderJSONError();
         }
@@ -169,14 +191,6 @@ public class NodeController extends FinalCMS {
         render("/admin/node/edit.html");
     }
 
-    public void doUpdate() {
-        Node node = getModel(Node.class);
-        if (node.update()) {
-            redirect("/admin/node");
-        } else {
-            renderText("save fail.");
-        }
-    }
 
     public void doDelete() {
         Integer nid = getParaToInt("id");
@@ -191,4 +205,6 @@ public class NodeController extends FinalCMS {
             }
         }
     }
+
+
 }

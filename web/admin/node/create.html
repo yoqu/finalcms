@@ -39,7 +39,7 @@
                                 </div>
                                 <div style="height: 450px;" class="input-field col s12">
                                     <label for="nodecontent" class="">内容：</label>
-                                    <div id="editormd" style="z-index: 10000;">
+                                    <div id="editormd">
                                     <textarea id="nodecontent" class="materialize-textarea"
                                               name="node.content">请输入内容...</textarea>
                                     </div>
@@ -81,11 +81,35 @@
             multiple: false,
             dragDrop: false,
             maxFileCount: 1,
+            showDelete: true,
             fileName: "file",
-            onSuccess: function (files, data, xhr, pd) {
+            deleteCallback: function (data, pd) {
                 console.log(data);
                 if (data['result'] == "SUCCESS") {
-                    console.log(data);
+                    var files = $("#files").val();
+                    console.log(files);
+                    var fid = data['data']['id'];
+                    if (files != "" && files != null) {
+                        if(files.indexOf(","+fid)!=-1){
+                            files=files.replace(","+fid,"");
+                        }
+                        if(files.indexOf(fid+",")!=-1){
+                            files=files.replace(fid+",","");
+                        }
+                        if(files.indexOf(fid)!=-1){
+                            files=files.replace(fid,"");
+                        }
+                    }
+                    console.log(files);
+                    $("#files").val(files);
+                    $.post("/admin/node/doDeleteFile",{id:fid},function(result){
+                        console.log(result);
+                    });
+                }
+
+            },
+            onSuccess: function (files, data, xhr, pd) {
+                if (data['result'] == "SUCCESS") {
                     var files = $("#files").val();
                     if (files != "" && files != null) {
                         files += "," + data['data']['id'];
@@ -94,7 +118,6 @@
                         files = data['data']['id'];
                     }
                     $("#files").val(files);
-                    console.log(files);
                 }
             },
         });
@@ -129,6 +152,7 @@
                 return ["undo", "redo", "uppercase", "lowercase", "|", "h1", "bold", "hr", "list-ul", "list-ol", "link", "reference-link", "code", "preformatted-text", "code-block", "table", "||", "watch", "fullscreen", "preview"]
             }
         });
+        $("#editormd").css("z-index", "10000");
     });
 </script>
 </@script>

@@ -2,6 +2,8 @@
 <@head>
 <link rel="stylesheet" href="${site_url}admin/css/custom/custom.min.css" type="text/css">
 <link rel="stylesheet" href="${site_url}admin/js/plugins/markdown-js/css/editormd.min.css"/>
+<link rel="stylesheet" href="${site_url}admin/js/plugins/tags/jquery.tagsinput.min.css"/>
+<link href="${site_url}admin/js/plugins/upload//uploadfile.css" rel="stylesheet">
 </@head>
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- START CONTENT -->
@@ -36,7 +38,8 @@
                     <div class="card-panel">
                         <h4 class="header2">新建内容</h4>
                         <div class="row">
-                            <form class="col s12" method="post" action="${site_url}admin/node/doUpdate">
+                            <form class="col s12 update-form" method="post" action="${site_url}admin/node/doUpdate"
+                                  id="${node.id}">
                                 <input value="${node.id}" name="node.id" type="hidden">
                                 <div class="input-field col s12">
                                     <label for="title" class="">标题：</label>
@@ -45,7 +48,7 @@
                                 </div>
                                 <div style="height: 450px;" class="input-field col s12">
                                     <label for="nodecontent" class="">内容：</label>
-                                    <div  id="editormd" style="z-index: 10000;">
+                                    <div id="editormd" style="z-index: 10000;">
                                     <textarea id="nodecontent" class="materialize-textarea"
                                               name="node.content">${node.content}</textarea>
                                     </div>
@@ -53,6 +56,11 @@
                                 <div class="input-field col s12">
                                     <label>标签</label>
                                     <input id="tags" name="node.tags" type="text" value="${node.tags}">
+                                </div>
+                                <input type="hidden" name="files" id="files">
+                                <div class="input-field col s12">
+                                    <div id="singleupload">上传
+                                    </div>
                                 </div>
                                 <div class="input-field col s12">
                                     <button class="btn cyan waves-effect waves-light right" type="submit">创建
@@ -73,8 +81,99 @@
 <#include "/admin/layout/layout_footer.html" />
 <@script>
 <script type="text/javascript" src="/admin/js/plugins/markdown-js/editormd.min.js"></script>
+<script src="/admin/js/plugins/upload/jquery.uploadfile.min.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/jquery-validation/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/admin/js/plugins/tags/jquery.tagsinput.min.js"></script>
 <script type="text/javascript">
     $(function () {
+        $("#singleupload").uploadFile({
+            url: "/admin/node/doUploadFile",
+            multiple: false,
+            dragDrop: false,
+            maxFileCount: 1,
+            showDelete: true,
+            fileName: "file",
+            onLoad: function (obj) {
+                console.log(obj)
+                $.get("/admin/node/loadFiles", {id: $(".update-form").attr("id")}, function (data) {
+                    console.log(data);
+                    if (data['result'] == "SUCCESS") {
+                        var files = $("#files").val();
+                        for (var i = 0; i < data['data'].length; i++) {
+                            if (files != "" && files != null) {
+                                files += "," + data['data'][i]['id'];
+                            }
+                            else {
+                                files = data['data'][i]['id'];
+                            }
+                            obj.createProgress(data['data'][i]['name'], data['data'][i]['path'], data['data'][i]['size']);
+                        }
+                        $("#files").val(files);
+                    }
+                   return data;
+                });
+                console.log(obj)
+            },
+            deleteCallback: function (data, pd) {
+                if (data['result'] == "SUCCESS") {
+                    var files = $("#files").val();
+                    console.log(files);
+                    var fid = data['data']['id'];
+                    if (files != "" && files != null) {
+                        if (files.indexOf("," + fid) != -1) {
+                            files = files.replace("," + fid, "");
+                        }
+                        if (files.indexOf(fid + ",") != -1) {
+                            files = files.replace(fid + ",", "");
+                        }
+                        if (files.indexOf(fid) != -1) {
+                            files = files.replace(fid, "");
+                        }
+                    }
+                    console.log(files);
+                    $("#files").val(files);
+                    $.post("/admin/node/doDeleteFile", {id: fid}, function (result) {
+                        console.log(result);
+                    });
+                }
+            },
+            onSuccess: function (files, data, xhr, pd) {
+                if (data['result'] == "SUCCESS") {
+                    var files = $("#files").val();
+                    if (files != "" && files != null) {
+                        files += "," + data['data']['id'];
+                    }
+                    else {
+                        files = data['data']['id'];
+                    }
+                    $("#files").val(files);
+                }
+            },
+        });
+
+        $('#tags').tagsInput({width: 'auto'});
+        $("#node").validate({
+            rules: {
+                "node.title": {
+                    required: true,
+                }
+            },
+            messages: {
+                "node.title": {
+                    required: "请输入标题",
+                }
+            },
+            errorElement: 'div',
+            errorPlacement: function (error, element) {
+                var placement = $(element).data('error');
+                if (placement) {
+                    $(placement).append(error)
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+
         var editor = editormd("editormd", {
             path: "/admin/js/plugins/markdown-js/lib/", // Autoload modules mode, codemirror, marked... dependents libs path
             watch: false,
@@ -82,6 +181,7 @@
                 return ["undo", "redo", "uppercase", "lowercase", "|", "h1", "bold", "hr", "list-ul", "list-ol", "link", "reference-link", "code", "preformatted-text", "code-block", "table", "||", "watch", "fullscreen", "preview"]
             }
         });
+        $("#editormd").css("z-index", "10000");
     });
 </script>
 </@script>
