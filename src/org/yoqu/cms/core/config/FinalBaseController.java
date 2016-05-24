@@ -7,7 +7,7 @@ import com.jfinal.kit.PathKit;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.yoqu.cms.core.admin.config.InjectManager;
+import org.yoqu.cms.admin.config.InjectManager;
 import org.yoqu.cms.core.model.File;
 import org.yoqu.cms.core.model.User;
 import org.yoqu.cms.core.util.JSONUtil;
@@ -19,7 +19,7 @@ import java.util.List;
  * @date 2016/5/11 0011
  * @description 系统核心类，包含了系统的常规页面渲染等等等方法
  */
-public abstract class FinalCMS extends Controller {
+public  class FinalBaseController extends Controller {
 
     /**
      * 获取后台登录用户

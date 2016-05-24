@@ -1,16 +1,14 @@
-package org.yoqu.cms.core.admin.modules.role;
+package org.yoqu.cms.admin.modules.role;
 
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
-import org.yoqu.cms.core.admin.Constant.SystemVariable;
+import org.yoqu.cms.core.config.SystemVariable;
 import org.yoqu.cms.core.aop.InvokeAfter;
 import org.yoqu.cms.core.aop.InvokeBefore;
 import org.yoqu.cms.core.config.Constant;
 import org.yoqu.cms.core.model.Role;
 import org.yoqu.cms.core.model.RolePermission;
-import org.yoqu.cms.core.model.Url;
-import org.yoqu.cms.core.model.User;
 import org.yoqu.cms.core.util.FinalProxy;
 
 import java.util.List;

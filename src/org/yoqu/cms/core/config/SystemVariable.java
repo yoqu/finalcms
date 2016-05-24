@@ -1,4 +1,4 @@
-package org.yoqu.cms.core.admin.Constant;
+package org.yoqu.cms.core.config;
 
 import org.yoqu.cms.core.model.Dictionary;
 

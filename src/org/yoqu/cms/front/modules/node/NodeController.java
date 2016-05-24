@@ -1,20 +1,16 @@
-package org.yoqu.cms.core.front.modules.node;
+package org.yoqu.cms.front.modules.node;
 
 import org.yoqu.cms.core.config.Constant;
-import org.yoqu.cms.core.config.FinalCMS;
-import org.yoqu.cms.core.model.Menu;
-import org.yoqu.cms.core.model.MenuType;
+import org.yoqu.cms.core.config.FinalBaseController;
 import org.yoqu.cms.core.model.Node;
 import org.yoqu.cms.core.util.StringUtils;
-
-import java.util.List;
 
 /**
  * @author yoqu
  * @date 2016/5/12 0012
  * @description
  */
-public class NodeController extends FinalCMS {
+public class NodeController extends FinalBaseController {
 
     public void index() {
         if (getPara() != null) {

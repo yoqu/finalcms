@@ -115,6 +115,7 @@
                 console.log(obj)
             },
             deleteCallback: function (data, pd) {
+                console.log(data);
                 if (data['result'] == "SUCCESS") {
                     var files = $("#files").val();
                     console.log(files);

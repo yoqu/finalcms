@@ -1,17 +1,16 @@
-package org.yoqu.cms.core.admin.modules.people;
+package org.yoqu.cms.admin.modules.people;
 
 import com.jfinal.aop.Before;
-import com.jfinal.core.Controller;
 import com.jfinal.ext.interceptor.POST;
 import com.jfinal.plugin.activerecord.Page;
 import org.json.JSONException;
-import org.yoqu.cms.core.admin.modules.user.UserInvoke;
+import org.yoqu.cms.admin.modules.user.UserInvoke;
+import org.yoqu.cms.core.aop.SiteTitle;
 import org.yoqu.cms.core.config.AuthManagerInterceptor;
-import org.yoqu.cms.core.config.FinalCMS;
+import org.yoqu.cms.core.config.FinalBaseController;
 import org.yoqu.cms.core.model.Role;
 import org.yoqu.cms.core.model.User;
 import org.yoqu.cms.core.util.JSONUtil;
-import org.yoqu.cms.core.aop.SiteTitle;
 
 import java.util.Date;
 import java.util.List;
@@ -19,7 +18,7 @@ import java.util.List;
 /**
  * Created by yoqu on 2016/4/20 0020.
  */
-public class PeopleController extends FinalCMS {
+public class PeopleController extends FinalBaseController {
 
     @SiteTitle("用户管理")
     public void index() {

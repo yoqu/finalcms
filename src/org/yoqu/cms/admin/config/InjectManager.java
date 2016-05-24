@@ -1,8 +1,8 @@
-package org.yoqu.cms.core.admin.config;
+package org.yoqu.cms.admin.config;
 
 import com.jfinal.core.Controller;
 import com.jfinal.log.Log;
-import org.yoqu.cms.core.admin.Constant.SystemVariable;
+import org.yoqu.cms.core.config.SystemVariable;
 import org.yoqu.cms.core.aop.InvokeBefore;
 import org.yoqu.cms.core.config.Constant;
 import org.yoqu.cms.core.util.FinalProxy;

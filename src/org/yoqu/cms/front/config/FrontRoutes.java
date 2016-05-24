@@ -1,8 +1,8 @@
-package org.yoqu.cms.core.front.config;
+package org.yoqu.cms.front.config;
 
 import com.jfinal.config.Routes;
-import org.yoqu.cms.core.front.modules.index.IndexController;
-import org.yoqu.cms.core.front.modules.node.NodeController;
+import org.yoqu.cms.front.modules.index.IndexController;
+import org.yoqu.cms.front.modules.node.NodeController;
 
 /**
  * @author yoqu

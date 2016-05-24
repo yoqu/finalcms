@@ -1,7 +1,5 @@
 package org.yoqu.cms.core.config;
 
-import org.yoqu.cms.core.admin.config.InjectManager;
-
 /**
  * Created by yoqu on 2016/4/4 0004.
  */

@@ -1,21 +1,18 @@
-package org.yoqu.cms.core.admin.modules.menu;
+package org.yoqu.cms.admin.modules.menu;
 
-import com.jfinal.core.*;
-import org.yoqu.cms.core.config.Constant;
-import org.yoqu.cms.core.config.FinalCMS;
+import org.yoqu.cms.core.config.FinalBaseController;
 import org.yoqu.cms.core.model.Menu;
 import org.yoqu.cms.core.model.MenuType;
 import org.yoqu.cms.core.util.StringUtils;
 
 import java.util.List;
-import java.util.regex.Pattern;
 
 /**
  * @author yoqu
  * @date 2016/5/9 0009
  * @description
  */
-public class MenuController extends FinalCMS {
+public class MenuController extends FinalBaseController {
 
     public void index() {
         if (getPara() != null) {

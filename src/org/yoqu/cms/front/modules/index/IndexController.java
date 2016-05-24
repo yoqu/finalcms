@@ -1,9 +1,9 @@
-package org.yoqu.cms.core.front.modules.index;
+package org.yoqu.cms.front.modules.index;
 
 import com.jfinal.plugin.activerecord.Page;
-import org.yoqu.cms.core.admin.modules.node.NodeInvoke;
+import org.yoqu.cms.admin.modules.node.NodeInvoke;
 import org.yoqu.cms.core.aop.SiteTitle;
-import org.yoqu.cms.core.config.FinalCMS;
+import org.yoqu.cms.core.config.FinalBaseController;
 import org.yoqu.cms.core.model.Node;
 
 /**
@@ -11,7 +11,7 @@ import org.yoqu.cms.core.model.Node;
  * @date 2016/5/12 0012
  * @description
  */
-public class IndexController extends FinalCMS {
+public class IndexController extends FinalBaseController {
 
     @SiteTitle("首页")
     public void index() {

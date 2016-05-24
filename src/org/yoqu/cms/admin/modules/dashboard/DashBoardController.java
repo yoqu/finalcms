@@ -1,13 +1,14 @@
-package org.yoqu.cms.core.admin.modules.dashboard;
+package org.yoqu.cms.admin.modules.dashboard;
 
 import com.jfinal.core.ActionKey;
 import com.jfinal.core.Controller;
 import org.yoqu.cms.core.aop.SiteTitle;
+import org.yoqu.cms.core.config.FinalBaseController;
 
 /**
  * Created by yoqu on 2016/4/18 0018.
  */
-public class DashBoardController extends Controller {
+public class DashBoardController extends FinalBaseController {
     @SiteTitle("主页面板")
     public void index() {
         render("/admin/dashboard.html");

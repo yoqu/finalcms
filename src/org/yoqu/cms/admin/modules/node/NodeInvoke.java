@@ -1,8 +1,8 @@
-package org.yoqu.cms.core.admin.modules.node;
+package org.yoqu.cms.admin.modules.node;
 
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Page;
-import org.yoqu.cms.core.admin.Constant.SystemVariable;
+import org.yoqu.cms.core.config.SystemVariable;
 import org.yoqu.cms.core.aop.InvokeBefore;
 import org.yoqu.cms.core.config.Constant;
 import org.yoqu.cms.core.model.Node;

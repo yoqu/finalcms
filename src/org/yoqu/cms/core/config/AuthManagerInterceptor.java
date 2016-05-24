@@ -3,9 +3,9 @@ package org.yoqu.cms.core.config;
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
 import com.jfinal.core.Controller;
-import org.yoqu.cms.core.admin.config.InjectManager;
-import org.yoqu.cms.core.admin.modules.role.RoleInvoke;
-import org.yoqu.cms.core.admin.modules.user.UserInvoke;
+import org.yoqu.cms.admin.config.InjectManager;
+import org.yoqu.cms.admin.modules.role.RoleInvoke;
+import org.yoqu.cms.admin.modules.user.UserInvoke;
 import org.yoqu.cms.core.model.RolePermission;
 import org.yoqu.cms.core.model.User;
 

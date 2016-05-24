@@ -1,14 +1,13 @@
-package org.yoqu.cms.core.admin.modules.user;
+package org.yoqu.cms.admin.modules.user;
 
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Clear;
-import com.jfinal.core.Controller;
 import com.jfinal.ext.interceptor.POST;
 import org.json.JSONException;
 import org.yoqu.cms.core.aop.SiteTitle;
 import org.yoqu.cms.core.config.AuthManagerInterceptor;
 import org.yoqu.cms.core.config.Constant;
-import org.yoqu.cms.core.config.FinalCMS;
+import org.yoqu.cms.core.config.FinalBaseController;
 import org.yoqu.cms.core.model.Role;
 import org.yoqu.cms.core.model.User;
 import org.yoqu.cms.core.util.JSONUtil;
@@ -20,7 +19,7 @@ import java.util.List;
  * Created by yoqu on 2016/4/13 0013.
  */
 
-public class UserController extends FinalCMS {
+public class UserController extends FinalBaseController {
 
     public void index() {
         render("/admin/login.html");

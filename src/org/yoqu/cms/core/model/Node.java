@@ -1,6 +1,6 @@
 package org.yoqu.cms.core.model;
 
-import org.yoqu.cms.core.admin.modules.user.UserInvoke;
+import org.yoqu.cms.admin.modules.user.UserInvoke;
 import org.yoqu.cms.core.model.base.BaseNode;
 
 import java.util.List;

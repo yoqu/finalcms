@@ -1,12 +1,18 @@
-package org.yoqu.cms.core.admin.config;
+package org.yoqu.cms.admin.config;
 
+import org.yoqu.cms.admin.modules.dashboard.DashBoardController;
+import org.yoqu.cms.admin.modules.menu.MenuController;
+import org.yoqu.cms.admin.modules.node.NodeController;
+import org.yoqu.cms.admin.modules.people.PeopleController;
+import org.yoqu.cms.admin.modules.role.RoleController;
+import org.yoqu.cms.admin.modules.user.UserController;
 import com.jfinal.config.Routes;
-import org.yoqu.cms.core.admin.modules.dashboard.DashBoardController;
-import org.yoqu.cms.core.admin.modules.menu.MenuController;
-import org.yoqu.cms.core.admin.modules.node.NodeController;
-import org.yoqu.cms.core.admin.modules.people.PeopleController;
-import org.yoqu.cms.core.admin.modules.role.RoleController;
-import org.yoqu.cms.core.admin.modules.user.UserController;
+import org.yoqu.cms.admin.modules.dashboard.DashBoardController;
+import org.yoqu.cms.admin.modules.menu.MenuController;
+import org.yoqu.cms.admin.modules.node.NodeController;
+import org.yoqu.cms.admin.modules.people.PeopleController;
+import org.yoqu.cms.admin.modules.role.RoleController;
+import org.yoqu.cms.admin.modules.user.UserController;
 
 import java.util.HashMap;
 import java.util.Map;

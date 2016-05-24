@@ -1,13 +1,14 @@
-package org.yoqu.cms.core.admin.modules.systemsetting;
+package org.yoqu.cms.admin.modules.systemsetting;
 
 import org.yoqu.cms.core.aop.SiteTitle;
+import org.yoqu.cms.core.config.FinalBaseController;
 
 /**
  * @author yoqu
  * @date 2016/5/16 0016
  * @description
  */
-public class SettingController {
+public class SettingController extends FinalBaseController {
 
     @SiteTitle("内容设置")
     public void node(){

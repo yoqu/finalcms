@@ -108,7 +108,6 @@ public class FinalProxy implements Interceptor {
             inv.invoke();
             return;
         }
-
         //判断该方法是否注解和hookName匹配，有注解代表它可以被回调执行方法.
         if (inv.getMethod().isAnnotationPresent(InvokeBefore.class)) {
             InvokeBefore invoke = inv.getMethod().getAnnotation(InvokeBefore.class);

@@ -1,28 +1,18 @@
-package org.yoqu.cms.core.admin.modules.node;
+package org.yoqu.cms.admin.modules.node;
 
 import com.jfinal.aop.Before;
-import com.jfinal.config.Constants;
-import com.jfinal.config.JFinalConfig;
-import com.jfinal.core.Controller;
-import com.jfinal.core.JFinal;
 import com.jfinal.ext.interceptor.POST;
-import com.jfinal.kit.PathKit;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.upload.UploadFile;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.yoqu.cms.core.admin.modules.user.UserInvoke;
 import org.yoqu.cms.core.aop.SiteTitle;
 import org.yoqu.cms.core.config.Constant;
-import org.yoqu.cms.core.config.FinalCMS;
+import org.yoqu.cms.core.config.FinalBaseController;
 import org.yoqu.cms.core.model.File;
 import org.yoqu.cms.core.model.Node;
-import org.yoqu.cms.core.model.User;
-import org.yoqu.cms.core.util.JSONUtil;
 import org.yoqu.cms.core.util.StringUtils;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -31,7 +21,7 @@ import java.util.List;
  * @date 2016/5/6 0006
  * @description
  */
-public class NodeController extends FinalCMS {
+public class NodeController extends FinalBaseController {
 
     public void index() {
         if (getPara() != null) {
@@ -57,7 +47,7 @@ public class NodeController extends FinalCMS {
             render("/admin/node/nodeList.html");
         }
     }
-
+        
     @SiteTitle("创建内容")
     public void create() {
         render("/admin/node/create.html");
