@@ -38,52 +38,19 @@
             </div>
             <div class="divider"></div>
             <div class="row">
-                <div class="col s12 m8 l9">
+                <div class="col s12 m8 l8 offset-l3 offset-m3" style="min-height: 400px;">
                     <div class="dd" id="nestable3">
                         <ol class="dd-list">
                             <li class="dd-item dd3-item" data-id="13">
-                                <div class="dd-handle dd3-handle">Drag</div>
+                                <div class="dd-handle dd3-handle"></div>
                                 <div class="dd3-content">首页 <span class="right"><a href="#!">编辑</a></span></div>
                             </li>
                             <li class="dd-item dd3-item" data-id="14">
-                                <div class="dd-handle dd3-handle">Drag</div>
+                                <div class="dd-handle dd3-handle"></div>
                                 <div class="dd3-content">模块</div>
                             </li>
                         </ol>
                     </div>
-                </div>
-
-
-                <div class="col s12 m8 l12" style="min-height: 400px;">
-                    <table class="striped">
-                        <thead>
-                        <tr>
-                            <th data-field="id">Id</th>
-                            <th data-field="name">名称</th>
-                            <th data-field="author">路径</th>
-                            <th data-field="operate">操作</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-
-
-                        <#list menuList as menu>
-                            <tr id="${menu.id}">
-                                <td>${menu.id}</td>
-                                <td>${menu.name}</td>
-                                <td>${menu.url}</td>
-                                <td>
-                                    <span class="edit"><a href="${site_url}admin/menu/edit/${menu.id}" title="编辑"><i
-                                            class="mdi-image-edit"></i></a></span>
-                                <span class="delete">
-                                    <a href="#" title="删除" onclick="deleteMenuItem(${menu.id})"><i
-                                            class="mdi-action-delete"></i></a></span>
-                                </td>
-                            </tr>
-                        </#list>
-                        </tbody>
-                    </table>
                     <div class="input-field col s12">
                         <button class="btn cyan waves-effect waves-light right" id="btnsave" type="button">保存
                             <i class="mdi-content-send right"></i>
@@ -110,5 +77,6 @@
             console.log($('#nestable3').nestable('serialize'));
         });
     });
+
 </script>
 </@script>

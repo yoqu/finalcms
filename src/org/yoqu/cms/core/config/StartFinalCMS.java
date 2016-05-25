@@ -7,7 +7,7 @@ import com.jfinal.kit.PathKit;
  * Created by yoqu on 2016/4/21 0021.
  */
 public class StartFinalCMS {
-    private static int START_PORT = 80;//项目启动端口
+    private static int START_PORT = 8080;//项目启动端口
 
     //项目启动
     public static void main(String[] args) {

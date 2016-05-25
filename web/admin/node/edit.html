@@ -92,51 +92,60 @@
             dragDrop: false,
             maxFileCount: 1,
             showDelete: true,
+            returnType:"json",
             fileName: "file",
             onLoad: function (obj) {
-                console.log(obj)
-                $.get("/admin/node/loadFiles", {id: $(".update-form").attr("id")}, function (data) {
-                    console.log(data);
-                    if (data['result'] == "SUCCESS") {
-                        var files = $("#files").val();
-                        for (var i = 0; i < data['data'].length; i++) {
-                            if (files != "" && files != null) {
-                                files += "," + data['data'][i]['id'];
+                console.log(obj);
+                var result;
+                $.ajax({
+                    url:"/admin/node/loadFiles",
+                    data:{id: $(".update-form").attr("id")},
+                    success:function (data) {
+                        console.log(data);
+                        if (data['result'] == "SUCCESS") {
+                            var files = $("#files").val();
+                            for (var i = 0; i < data['data'].length; i++) {
+                                if (files != "" && files != null) {
+                                    files += "," + data['data'][i]['id'];
+                                }
+                                else {
+                                    files = data['data'][i]['id'];
+                                }
+                                obj.createProgress(data);
                             }
-                            else {
-                                files = data['data'][i]['id'];
-                            }
-                            obj.createProgress(data['data'][i]['name'], data['data'][i]['path'], data['data'][i]['size']);
+                            $("#files").val(files);
                         }
-                        $("#files").val(files);
-                    }
-                   return data;
+                        result=data;
+                    },
+                    async:false,
                 });
-                console.log(obj)
+                console.log(result);
+                return result;
             },
             deleteCallback: function (data, pd) {
                 console.log(data);
-                if (data['result'] == "SUCCESS") {
-                    var files = $("#files").val();
-                    console.log(files);
-                    var fid = data['data']['id'];
-                    if (files != "" && files != null) {
-                        if (files.indexOf("," + fid) != -1) {
-                            files = files.replace("," + fid, "");
-                        }
-                        if (files.indexOf(fid + ",") != -1) {
-                            files = files.replace(fid + ",", "");
-                        }
-                        if (files.indexOf(fid) != -1) {
-                            files = files.replace(fid, "");
-                        }
-                    }
-                    console.log(files);
-                    $("#files").val(files);
-                    $.post("/admin/node/doDeleteFile", {id: fid}, function (result) {
-                        console.log(result);
-                    });
-                }
+                console.log(pd);
+//                if (data['result'] == "SUCCESS") {
+//                    var files = $("#files").val();
+//                    console.log(files);
+//                    var fid = data['data']['id'];
+//                    if (files != "" && files != null) {
+//                        if (files.indexOf("," + fid) != -1) {
+//                            files = files.replace("," + fid, "");
+//                        }
+//                        if (files.indexOf(fid + ",") != -1) {
+//                            files = files.replace(fid + ",", "");
+//                        }
+//                        if (files.indexOf(fid) != -1) {
+//                            files = files.replace(fid, "");
+//                        }
+//                    }
+//                    console.log(files);
+//                    $("#files").val(files);
+//                    $.post("/admin/node/doDeleteFile", {id: fid}, function (result) {
+//                        console.log(result);
+//                    });
+//                }
             },
             onSuccess: function (files, data, xhr, pd) {
                 if (data['result'] == "SUCCESS") {
