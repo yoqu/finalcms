@@ -101,33 +101,57 @@
                         </div>
                     </div>
                 </li>
-                <li class="bold"><a href="${site_url}admin/dashboard" class="waves-effect waves-cyan"><i
-                        class="mdi-action-dashboard"></i>面板</a>
-                </li>
-                <li class="bold"><a href="${site_url}admin/menu" class="waves-effect waves-cyan"><i
-                        class="mdi-navigation-menu"></i>菜单</a>
-                </li>
-                <li class="bold"><a href="${site_url}admin/role" class="waves-effect waves-cyan"><i
-                        class="mdi-action-perm-contact-cal"></i>权限</a>
-                </li>
-                <li class="bold"><a href="${site_url}admin/node" class="waves-effect waves-cyan"><i
-                        class="mdi-content-drafts"></i>内容管理</a>
-                </li>
-                <li class="no-padding">
-                    <ul class="collapsible collapsible-accordion">
-                        <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i
-                                class="mdi-action-account-circle"></i>用户</a>
-                            <div class="collapsible-body" style="">
-                                <ul>
-                                    <li><a href="${site_url}admin/people">用户管理</a>
-                                    </li>
-                                    <li><a href="${site_url}admin/people/create">添加用户</a>
-                                    </li>
-                                </ul>
-                            </div>
+                <!--左侧菜单-->
+                <#list site_left_menus as menu>
+                    <#if menu.getMenuList()??>
+                        <li class="no-padding">
+                            <ul class="collapsible collapsible-accordion">
+                                <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i
+                                        class="${menu.remark!""}"></i>${menu.name}</a>
+                                    <div class="collapsible-body" style="">
+                                        <ul>
+                                            <#list menu.getMenuList() as childMenu>
+                                            <li><a href="${childMenu.url}">${childMenu.name}</a>
+                                            </li>
+                                            </#list>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
                         </li>
-                    </ul>
-                </li>
+                        <#else>
+                            <li class="bold"><a href="${menu.url}" class="waves-effect waves-cyan">
+                                <#if menu.remark??><i class="${menu.remark}"></i></#if>
+                                ${menu.name}</a>
+                            </li>
+                    </#if>
+
+                </#list>
+
+                <!--<li class="bold"><a href="${site_url}admin/menu" class="waves-effect waves-cyan"><i-->
+                        <!--class="mdi-navigation-menu"></i>菜单</a>-->
+                <!--</li>-->
+                <!--<li class="bold"><a href="${site_url}admin/role" class="waves-effect waves-cyan"><i-->
+                        <!--class="mdi-action-perm-contact-cal"></i>权限</a>-->
+                <!--</li>-->
+                <!--<li class="bold"><a href="${site_url}admin/node" class="waves-effect waves-cyan"><i-->
+                        <!--class="mdi-content-drafts"></i>内容管理</a>-->
+                <!--</li>-->
+                <!--<li class="no-padding">-->
+                    <!--<ul class="collapsible collapsible-accordion">-->
+                        <!--<li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i-->
+                                <!--class="mdi-action-account-circle"></i>用户</a>-->
+                            <!--<div class="collapsible-body" style="">-->
+                                <!--<ul>-->
+                                    <!--<li><a href="${site_url}admin/people">用户管理</a>-->
+                                    <!--</li>-->
+                                    <!--<li><a href="${site_url}admin/people/create">添加用户</a>-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</li>-->
             </ul>
             <a href="#" data-activates="slide-out"
                class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i

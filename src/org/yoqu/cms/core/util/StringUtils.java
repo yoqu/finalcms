@@ -11,7 +11,7 @@ public class StringUtils {
 
 
     /**
-     * 判断是否是数字
+     * 判断是否是数字,是数字返回真，否则返回假
      *
      * @param value
      * @return

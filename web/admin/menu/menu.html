@@ -33,22 +33,44 @@
         <div class="section">
             <div class="caption">
                 <div class="s12 m6 l4">
-                    <a class="btn waves-effect teal waves-light" href="/admin/menu/create/${menuType.id}">新建</a>
+                    <a class="btn waves-effect teal waves-light" href="/admin/menu/item/create">新建</a>
                 </div>
             </div>
             <div class="divider"></div>
             <div class="row">
                 <div class="col s12 m8 l8 offset-l3 offset-m3" style="min-height: 400px;">
-                    <div class="dd" id="nestable3">
+                    <div class="dd" id="menu" value="${menuType.id}">
                         <ol class="dd-list">
-                            <li class="dd-item dd3-item" data-id="13">
-                                <div class="dd-handle dd3-handle"></div>
-                                <div class="dd3-content">首页 <span class="right"><a href="#!">编辑</a></span></div>
-                            </li>
-                            <li class="dd-item dd3-item" data-id="14">
-                                <div class="dd-handle dd3-handle"></div>
-                                <div class="dd3-content">模块</div>
-                            </li>
+                            <#if menuList.size()==0>
+                                没有记录..
+                                <#else>
+                                    <#list menuList as menu>
+                                        <li class="dd-item dd3-item" data-id="${menu.id}">
+                                            <div class="dd-handle dd3-handle"></div>
+                                            <div class="dd3-content">${menu.name}<span class="right"><a href="/admin/menu/item/edit/${menu.id}">编辑</a></span></div>
+                                            <#if menu.getMenuList()??>
+                                                <ol class="dd-list">
+                                                    <#list menu.getMenuList() as childMenu>
+                                                    <li class="dd-item dd3-item" data-id="${childMenu.id}">
+                                                        <div class="dd-handle dd3-handle"></div>
+                                                        <div class="dd3-content">${childMenu.name}<span class="right"><a href="/admin/menu/item/edit/${childMenu.id}">编辑</a></span></div>
+                                                        <#if childMenu.getMenuList()??>
+                                                            <ol class="dd-list">
+                                                                <#list childMenu.getMenuList() as secondMenu>
+                                                                    <li class="dd-item dd3-item" data-id="${secondMenu.id}">
+                                                                        <div class="dd-handle dd3-handle"></div>
+                                                                        <div class="dd3-content">${secondMenu.name}<span class="right"><a href="/admin/menu/item/edit/${secondMenu.id}">编辑</a></span></div>
+                                                                    </li>
+                                                                </#list>
+                                                            </ol>
+                                                        </#if>
+                                                    </li>
+                                                    </#list>
+                                                </ol>
+                                            </#if>
+                                        </li>
+                                    </#list>
+                            </#if>
                         </ol>
                     </div>
                     <div class="input-field col s12">
@@ -71,12 +93,36 @@
 <script>
 
     $(document).ready(function () {
-        $('#nestable3').nestable();
+        $('#menu').nestable();
         $("#btnsave").click(function (e) {
-            alert("asd");
-            console.log($('#nestable3').nestable('serialize'));
+            var data = $('#menu').nestable('serialize');
+            var jsonData = JSON.stringify(data);
+            console.log(data);
+            $.ajax({
+                type:"post",
+                url:"/admin/menu/saveMenuItem",
+                data:{data:jsonData,menuType:$('#menu').attr("value")},
+                beforeSend: function () {
+                    FinalDialog.show();
+                },
+                complete: function (XMLHttpRequest, status) {
+                    if (status == 'timeout') { //超时,status还有success,error等值的情况
+                        swal("请求超时");
+                    }
+                    FinalDialog.close();
+                },
+                success: function (data) {
+                    console.log(data);
+                    if (data['result'] == "SUCCESS") {
+                        Materialize.toast('保存成功', 4000);
+                    } else {
+                        Materialize.toast('保存失败', 4000)
+                    }
+                }
+            });
         });
     });
 
 </script>
+<script src="/admin/js/plugins/iconselect/jquery.qqFace.js"></script>
 </@script>

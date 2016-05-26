@@ -11,6 +11,7 @@ import org.yoqu.cms.admin.config.InjectManager;
 import org.yoqu.cms.core.model.File;
 import org.yoqu.cms.core.model.User;
 import org.yoqu.cms.core.util.JSONUtil;
+import org.yoqu.cms.core.util.StringUtils;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ import java.util.List;
  * @date 2016/5/11 0011
  * @description 系统核心类，包含了系统的常规页面渲染等等等方法
  */
-public  class FinalBaseController extends Controller {
+public class FinalBaseController extends Controller {
 
     /**
      * 获取后台登录用户
@@ -48,6 +49,10 @@ public  class FinalBaseController extends Controller {
 
     public void renderJSONError() {
         renderText("{result:'json error'}");
+    }
+
+    public void renderJSONError(String information) {
+        renderText("{result:'json error',info:'" + information + "'}");
     }
 
     public void renderJSONSuccess() {
@@ -96,5 +101,16 @@ public  class FinalBaseController extends Controller {
             }
         }
         return File.dao.deleteById(id);
+    }
+
+    /**
+     * 检查是否有url参数，并且为数字。否则渲染404页面.没有返回真，有返回假
+     */
+    public boolean isParaIsNumberBlank(){
+        if (getPara() == null || !StringUtils.isNumbervalue(getPara())) {
+            renderNotFound();
+            return true;
+        }
+        return false;
     }
 }

@@ -2,6 +2,7 @@ package org.yoqu.cms.core.config;
 
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
+import com.jfinal.core.Const;
 import com.jfinal.core.Controller;
 import org.yoqu.cms.admin.config.InjectManager;
 import org.yoqu.cms.admin.modules.role.RoleInvoke;
@@ -26,7 +27,10 @@ public class AuthManagerInterceptor implements Interceptor {
      * @return
      */
     public static boolean webServiceAuth(Controller controller) {
-        if (controller.getSessionAttr(Constant.ONLINE_USER) != null) {
+        if (controller.getCookie(Constant.ONLINE_USER) != null) {
+            if (controller.getSessionAttr(Constant.ONLINE_USER)==null){
+                controller.setSessionAttr(Constant.ONLINE_USER,User.dao.findFirst("select * from user where id=? and is_delete=0",controller.getCookie(Constant.ONLINE_USER)));
+            }
             return true;
         } else {
             return false;
@@ -41,8 +45,11 @@ public class AuthManagerInterceptor implements Interceptor {
      */
     public static boolean webUserPermissionCheck(Controller controller) {
         String uri = controller.getRequest().getRequestURI();
-        User user = controller.getSessionAttr(Constant.ONLINE_USER);
-        int rid = user.getRole().getId();
+
+//        User user = controller.getSessionAttr(Constant.ONLINE_USER);
+//        int rid = user.getRole().getId();
+        int rid = Integer.parseInt(controller.getCookie(Constant.ROLE));
+
         if (rid == 1) {
             return true;
         }
@@ -111,6 +118,7 @@ public class AuthManagerInterceptor implements Interceptor {
         InjectManager.getInstance().injectAnnotation(inv.getMethod(), inv.getController());//inject
         if (uri.startsWith("/admin")) {//compare user access back-end page or front page.
             if (webServiceAuth(inv.getController())) {
+                InjectManager.getInstance().injectAdminVariable(inv.getController());
                 InjectManager.getInstance().injectPersonalVariable(inv.getController());//inject user variable into page.
                 if (webUserPermissionCheck(inv.getController())) {
                     inv.invoke();

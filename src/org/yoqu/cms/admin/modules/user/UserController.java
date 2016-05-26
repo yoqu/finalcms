@@ -55,6 +55,7 @@ public class UserController extends FinalBaseController {
             try {
                 renderJson(JSONUtil.writeSuccess());
                 setCookie(Constant.ONLINE_USER, user.getId().toString(), 100000);
+                setCookie(Constant.ROLE,user.getRole().getId().toString(),100000);
                 redirect("/admin/dashboard");
             } catch (JSONException e) {
                 JSONUtil.writeJSONError(this);

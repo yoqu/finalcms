@@ -44,13 +44,13 @@
                             </div>
                         </div>
                         <#else>
-                            <div class="collection">
+                            <div class="collection waves-color-demo">
                                 <a href="#!" class="collection-header">
                                     <h4>菜单</h4>
                                 </a>
                                 <#list menuTypeList as menuType>
-                                    <a href="${site_url}admin/menu/${menuType.id}"
-                                       class="collection-item">${menuType.name}</a>
+                                <div class="collection-item">${menuType.name}<a href="${site_url}admin/menu/doDelete/${menuType.id}" class="waves-effect btn secondary-content yellow darken-4">删除</a><a href="${site_url}admin/menu/edit/${menuType.id}" class="waves-effect btn secondary-content ">编辑</a><a href="${site_url}admin/menu/${menuType.id}" class="waves-effect btn secondary-content white black-text">查看</a>
+                                </div>
                                 </#list>
                             </div>
                     </#if>

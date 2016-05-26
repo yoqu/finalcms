@@ -25,7 +25,7 @@ Invoke注解用于方法体上，例如User模块下的Userinvoke类中的某一
 
 ## Hook使用说明
    1.在模块目录中把你要实现hook 的类加上@Hook注解
-   2.新增一个方法，方法名称命名为[方法名][HookName](Class... ParameterTypes),例如我在UserController中加入一个PageInject_Before的Hook.
+   2.新增一个方法，方法名称命名为[className][HookName](Class... ParameterTypes),例如我在UserController中加入一个PageInject_Before的Hook.
     ``` void userControllerPageInject__Before(Controller controller)```
     ***注意*** 方法的首字母应该小写.
 

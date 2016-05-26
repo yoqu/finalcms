@@ -9,6 +9,7 @@ import com.jfinal.kit.StrKit;
 import org.yoqu.cms.core.aop.Hook;
 import org.yoqu.cms.core.aop.InvokeAfter;
 import org.yoqu.cms.core.aop.InvokeBefore;
+import org.yoqu.cms.core.config.FinalBaseController;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -22,9 +23,6 @@ public class FinalProxy implements Interceptor {
 
     private Object returnValue = null;
 
-    public static FinalProxy getInstance() {
-        return new FinalProxy();
-    }
 
     /**
      * 创建代理
@@ -50,7 +48,7 @@ public class FinalProxy implements Interceptor {
     public Set<Class<?>> loadInvokes() throws ClassNotFoundException, InstantiationException, IllegalAccessException {
         //开始递归扫描modules包,筛选使用Hook注解的Class
         Set<Class<?>> calssList = ClassPathScanHandler.getPackageAllClasses(
-                "org.yoqu.cms.core.admin.modules", true, Hook.class);
+                "org.yoqu.cms.admin.modules", true, Hook.class);
         return calssList;
     }
 
@@ -61,7 +59,7 @@ public class FinalProxy implements Interceptor {
                 if (args != null && returnValue == null) {
                     Class[] parameterTypes = new Class[args.length];
                     for (int i = 0; i < args.length; i++) {
-                        if (args[i].getClass().getSuperclass().equals(Controller.class)) {
+                        if (args[i].getClass().getSuperclass().equals(FinalBaseController.class)) {
                             parameterTypes[i] = args[i].getClass().getSuperclass();
                         } else {
                             parameterTypes[i] = args[i].getClass();

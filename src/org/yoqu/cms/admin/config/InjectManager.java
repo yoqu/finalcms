@@ -38,6 +38,10 @@ public class InjectManager {
         injectOtherVariable(controller);
     }
 
+    @InvokeBefore("AdminPageInject_Before")
+    public void injectAdminVariable(Controller controller){
+
+    }
     public void injectPersonalVariable(Controller controller) {
         injectOnlineUser(controller);//inject system Online User variable..
     }
@@ -62,6 +66,7 @@ public class InjectManager {
     }
 
     private void injectOnlineUser(Controller controller) {
+//        controller.getCookie()
         controller.setAttr(Constant.ONLINE_USER, controller.getSessionAttr(Constant.ONLINE_USER));
     }
 

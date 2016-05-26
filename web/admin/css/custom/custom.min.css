@@ -1,6 +1,9 @@
 .input-field .select-wrapper {
     margin-left: 3rem;
 }
+#menu .input-field .select-wrapper {
+    margin-left: 0;
+}
 .input-field div.error{
     position: relative;
     top: -1rem;
