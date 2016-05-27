@@ -66,7 +66,22 @@ public class Menu extends BaseMenu<Menu> {
         }
         return newMenus;
     }
-
+    /**
+     * 使用递归循环迭代更新菜单进行排序.第一次传递的fid为-1.
+     *
+     * @param arrays
+     * @param fid
+     * @throws JSONException
+     */
+    public void updateMenu(JSONArray arrays, int fid) throws JSONException {
+        for (int i = 0; i < arrays.length(); i++) {
+            JSONObject item = arrays.getJSONObject(i);
+            sortMenuItem(item.getInt("id"), fid);
+            if (!item.isNull("children")) {
+                updateMenu(item.getJSONArray("children"), item.getInt("id"));
+            }
+        }
+    }
     private List<Menu> insertChild(List<Menu> menuList, Menu menu) {
         for (int i = 0; i < menuList.size(); i++) {
             if (menuList.get(i).getId() == menu.getFid()) {

@@ -2,14 +2,18 @@ package org.yoqu.cms.admin.config;
 
 import com.jfinal.core.Controller;
 import com.jfinal.log.Log;
+import com.jfinal.plugin.ehcache.CacheKit;
+import com.jfinal.plugin.ehcache.IDataLoader;
 import org.yoqu.cms.core.config.SystemVariable;
 import org.yoqu.cms.core.aop.InvokeBefore;
 import org.yoqu.cms.core.config.Constant;
+import org.yoqu.cms.core.model.Dictionary;
 import org.yoqu.cms.core.util.FinalProxy;
 import org.yoqu.cms.core.aop.SiteTitle;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by yoqu on 2016/4/4 .
@@ -22,15 +26,15 @@ public class InjectManager {
         if (injectManager == null) {
             synchronized (InjectManager.class) {
                 injectManager = (InjectManager) new FinalProxy().createProxy(InjectManager.class);
-                injectManager.init();
+//                injectManager.init();
             }
         }
         return injectManager;
     }
-
-    private void init() {
-        SystemVariable.init();//初始化参数
-    }
+//
+//    private void init() {
+//        SystemVariable.init();//初始化参数
+//    }
 
     @InvokeBefore("PageInject_Before")
     public void injectCommonVariable(Controller controller) {
@@ -39,9 +43,10 @@ public class InjectManager {
     }
 
     @InvokeBefore("AdminPageInject_Before")
-    public void injectAdminVariable(Controller controller){
+    public void injectAdminVariable(Controller controller) {
 
     }
+
     public void injectPersonalVariable(Controller controller) {
         injectOnlineUser(controller);//inject system Online User variable..
     }
@@ -59,8 +64,9 @@ public class InjectManager {
      * @param controller
      */
     private void injectSystemVariable(Controller controller) {
-
-        for (HashMap.Entry<String, String> item : SystemVariable.systemConstant.entrySet()) {
+        //使用缓存储存系统变量..
+        HashMap<String, String> dictionaries = SystemVariable.getMap();
+        for (HashMap.Entry<String, String> item : dictionaries.entrySet()) {
             controller.setAttr(item.getKey().trim(), item.getValue().trim());
         }
     }

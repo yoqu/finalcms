@@ -100,7 +100,7 @@
             console.log(data);
             $.ajax({
                 type:"post",
-                url:"/admin/menu/saveMenuItem",
+                url:"/admin/menu/sortMenuItem",
                 data:{data:jsonData,menuType:$('#menu').attr("value")},
                 beforeSend: function () {
                     FinalDialog.show();

@@ -22,6 +22,7 @@ import java.util.List;
  */
 public class FinalBaseController extends Controller {
 
+
     /**
      * 获取后台登录用户
      *
@@ -113,4 +114,5 @@ public class FinalBaseController extends Controller {
         }
         return false;
     }
+
 }

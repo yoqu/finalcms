@@ -66,10 +66,10 @@ public class FinalProxy implements Interceptor {
                         }
                     }
                     try {
-                        Method method = hook.getMethod(StrKit.firstCharToLowerCase(hook.getSimpleName()) + currentHookName, parameterTypes);
+                        Method method = hook.getMethod(StrKit.firstCharToLowerCase(hook.getSimpleName()) +"_"+currentHookName, parameterTypes);
                         if (method.getParameterCount() == args.length) {
                             Object object = Enhancer.enhance(hook);
-                            LogKit.info("Before Method Hook     : " + hook.getName() + " > " + StrKit.firstCharToLowerCase(hook.getSimpleName()) + currentHookName);
+                            LogKit.info("Before Method Hook     : " + hook.getName() + " > " + StrKit.firstCharToLowerCase(hook.getSimpleName()) +"_"+ currentHookName);
                             method.invoke(object, args);
                         } else {
                             LogKit.error("Method Hook parameter not match.");
@@ -82,7 +82,7 @@ public class FinalProxy implements Interceptor {
                 //after执行
                 if (returnValue != null) {
                     try {
-                        Method method = hook.getMethod(StrKit.firstCharToLowerCase(hook.getSimpleName()) + currentHookName, returnValue.getClass());
+                        Method method = hook.getMethod(StrKit.firstCharToLowerCase(hook.getSimpleName()) +"_"+currentHookName, returnValue.getClass());
                         Object object = Enhancer.enhance(hook);
                         LogKit.info("After Method Hook     : " + hook.getName() + " > " + StrKit.firstCharToLowerCase(hook.getSimpleName()) + currentHookName);
                         method.invoke(object, returnValue);

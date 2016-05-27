@@ -1,0 +1,70 @@
+<#include "/admin/layout/layout_header.html"/>
+<@head>
+<link rel="stylesheet" href="${site_url}admin/css/custom/custom.min.css" type="text/css">
+</@head>
+<!-- //////////////////////////////////////////////////////////////////////////// -->
+<!-- START CONTENT -->
+<section id="content">
+
+    <!--breadcrumbs start-->
+    <div id="breadcrumbs-wrapper">
+        <!-- Search for small screen -->
+        <div class="header-search-wrapper grey hide-on-large-only">
+            <i class="mdi-action-search active"></i>
+            <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <h5 class="breadcrumbs-title">系统变量</h5>
+                    <ol class="breadcrumbs">
+                        <li><a href="${site_url}admin/dashboard">主面板</a></li>
+                        <li><a href="#!">系统设置</a></li>
+                        <li><a href="#">系统变量</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs end-->
+
+    <!--start container-->
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <div class="col s12 push-l3 l6">
+                    <div class="card-panel">
+                        <div class="row">
+                            <form class="col s12" method="post" action="${site_url}admin/setting/systemVariable/save">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="site_name" name="site_name" type="text" value="${variables.get("site_name")}">
+                                        <label>网站名称</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="page_size" name="page_size" type="text" value="${variables.get("page_size")}">
+                                        <label>每页条目</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <button class="btn cyan waves-effect waves-light right" type="submit">保存
+                                            <i class="mdi-content-send right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end container-->
+</section>
+<!-- END CONTENT -->
+
+<#include "/admin/layout/layout_footer.html" />
+<@script></@script>

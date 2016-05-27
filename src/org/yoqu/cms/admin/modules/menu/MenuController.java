@@ -120,11 +120,11 @@ public class MenuController extends FinalBaseController {
     /**
      * 保存菜单排序..
      */
-    public void saveMenuItem() {
+    public void sortMenuItem() {
         String jsonData = getPara("data");
         try {
             JSONArray arrays = new JSONArray(jsonData);
-            updateMenu(arrays, -1);
+            MenuInvoke.getInstance().sortMenuItem(arrays, -1);
         } catch (JSONException e) {
             renderJSONError("json数据格式不正确.");
         }
@@ -146,7 +146,7 @@ public class MenuController extends FinalBaseController {
         Menu menu = getModel(Menu.class);
         menu.setIsDelete(0);
         menu.setFid(-1);
-        if (menu.save()){
+        if (MenuInvoke.getInstance().saveMenuItem(menu)){
             redirect("/admin/menu/"+menu.getType());
         }
         else{
@@ -172,28 +172,12 @@ public class MenuController extends FinalBaseController {
     public void doItemEdit() {
         Menu menu = getModel(Menu.class);
         if (menu.getId() != null) {
-            menu.update();
+            MenuInvoke.getInstance().updateMenuItem(menu);
             redirect("/admin/menu/" + menu.getType());
         }
     }
     /***************************菜单item操作end*************************/
-/*************************下面均为Menu操作方法.非操作url.****************************************/
-    /**
-     * 使用递归循环迭代更新菜单记录.第一次传递的fid为-1.
-     *
-     * @param arrays
-     * @param fid
-     * @throws JSONException
-     */
-    private void updateMenu(JSONArray arrays, int fid) throws JSONException {
-        for (int i = 0; i < arrays.length(); i++) {
-            JSONObject item = arrays.getJSONObject(i);
-            Menu.dao.sortMenuItem(item.getInt("id"), fid);
-            if (!item.isNull("children")) {
-                updateMenu(item.getJSONArray("children"), item.getInt("id"));
-            }
-        }
-    }
+
 
 
 }

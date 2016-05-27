@@ -5,14 +5,9 @@ import org.yoqu.cms.admin.modules.menu.MenuController;
 import org.yoqu.cms.admin.modules.node.NodeController;
 import org.yoqu.cms.admin.modules.people.PeopleController;
 import org.yoqu.cms.admin.modules.role.RoleController;
+import org.yoqu.cms.admin.modules.setting.SettingController;
 import org.yoqu.cms.admin.modules.user.UserController;
 import com.jfinal.config.Routes;
-import org.yoqu.cms.admin.modules.dashboard.DashBoardController;
-import org.yoqu.cms.admin.modules.menu.MenuController;
-import org.yoqu.cms.admin.modules.node.NodeController;
-import org.yoqu.cms.admin.modules.people.PeopleController;
-import org.yoqu.cms.admin.modules.role.RoleController;
-import org.yoqu.cms.admin.modules.user.UserController;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,6 +36,7 @@ public class AdminRoutes extends Routes {
         paths.put(basePath + "role", RoleController.class);
         paths.put(basePath + "menu", MenuController.class);
         paths.put(basePath + "node", NodeController.class);
+        paths.put(basePath+"setting", SettingController.class);
     }
 
     @Override

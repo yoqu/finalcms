@@ -4,6 +4,7 @@ import com.jfinal.config.*;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
+import com.jfinal.plugin.ehcache.EhCachePlugin;
 import org.yoqu.cms.admin.config.AdminRoutes;
 import org.yoqu.cms.front.config.FrontRoutes;
 import org.yoqu.cms.core.model._MappingKit;
@@ -16,10 +17,9 @@ public class AppConfig extends JFinalConfig {
         PropKit.use("database_config.txt");
         // set app dev Mode debug
         me.setDevMode(PropKit.getBoolean("devMode", false));
-
+        me.setError404View("/admin/404.html");
         FinalProxy finalProxy = new FinalProxy();
     }
-
 
     @Override
     public void configRoute(Routes me) {
@@ -36,7 +36,7 @@ public class AppConfig extends JFinalConfig {
         ActiveRecordPlugin activeRecordPlugin = new ActiveRecordPlugin(c3p0Plugin);
         me.add(activeRecordPlugin);
         _MappingKit.mapping(activeRecordPlugin);
-
+        me.add(new EhCachePlugin("res/ehcache.xml"));
     }
 
     @Override
