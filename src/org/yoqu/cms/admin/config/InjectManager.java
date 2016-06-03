@@ -26,15 +26,10 @@ public class InjectManager {
         if (injectManager == null) {
             synchronized (InjectManager.class) {
                 injectManager = (InjectManager) new FinalProxy().createProxy(InjectManager.class);
-//                injectManager.init();
             }
         }
         return injectManager;
     }
-//
-//    private void init() {
-//        SystemVariable.init();//初始化参数
-//    }
 
     @InvokeBefore("PageInject_Before")
     public void injectCommonVariable(Controller controller) {
@@ -72,7 +67,6 @@ public class InjectManager {
     }
 
     private void injectOnlineUser(Controller controller) {
-//        controller.getCookie()
         controller.setAttr(Constant.ONLINE_USER, controller.getSessionAttr(Constant.ONLINE_USER));
     }
 

@@ -117,6 +117,7 @@ public class MenuController extends FinalBaseController {
         }
     }
     /***************************菜单item操作start*************************/
+
     /**
      * 保存菜单排序..
      */
@@ -177,7 +178,4 @@ public class MenuController extends FinalBaseController {
         }
     }
     /***************************菜单item操作end*************************/
-
-
-
 }
