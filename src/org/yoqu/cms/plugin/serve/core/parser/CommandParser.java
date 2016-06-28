@@ -1,10 +1,10 @@
-package org.yoqu.cms.plugin.serve.parser;
+package org.yoqu.cms.plugin.serve.core.parser;
 
 import org.apache.mina.core.session.IoSession;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.yoqu.cms.plugin.serve.MessageHandlerCenter;
-import org.yoqu.cms.plugin.serve.parser.exception.CommandMessageTypeException;
+import org.yoqu.cms.plugin.serve.core.MessageHandler;
+import org.yoqu.cms.plugin.serve.core.parser.exception.CommandMessageTypeException;
 
 /**
  * @author yoqu
@@ -14,9 +14,9 @@ import org.yoqu.cms.plugin.serve.parser.exception.CommandMessageTypeException;
 public class CommandParser implements Parser {
 
     private final String TYPE_LOGIN = "login";
-    private MessageHandlerCenter handler;
+    private MessageHandler handler;
 
-    public CommandParser(MessageHandlerCenter handler) {
+    public CommandParser(MessageHandler handler) {
         this.handler = handler;
     }
 

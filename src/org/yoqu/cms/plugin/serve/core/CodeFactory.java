@@ -1,4 +1,4 @@
-package org.yoqu.cms.plugin.serve;
+package org.yoqu.cms.plugin.serve.core;
 
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.codec.ProtocolCodecFactory;

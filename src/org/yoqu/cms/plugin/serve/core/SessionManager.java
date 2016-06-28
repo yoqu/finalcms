@@ -1,7 +1,7 @@
-package org.yoqu.cms.plugin.serve;
+package org.yoqu.cms.plugin.serve.core;
 
-import java.util.Collections;
-import java.util.Comparator;
+import org.yoqu.cms.plugin.serve.core.config.ClientSession;
+
 import java.util.LinkedList;
 
 /**
@@ -35,16 +35,15 @@ public class SessionManager {
         sessions.remove(clientSession);
     }
 
-    public  void removeSession(int index){
-        sessions.remove(index);
+    public  void removeSession(int id){
+        sessions.remove(id);
     }
 
-    public ClientSession getSessionById(Long id){
-        for (ClientSession session:sessions){
-            if(session.getId()==id){
-                return session;
-            }
-        }
-        return null;
+    /**
+     * 获取当前session的数量
+     * @return
+     */
+    public int getSize(){
+        return sessions.size();
     }
 }

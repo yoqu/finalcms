@@ -2,7 +2,11 @@ package org.yoqu.cms.plugin;
 
 import com.jfinal.log.Log;
 import com.jfinal.plugin.IPlugin;
+import org.yoqu.cms.plugin.serve.MyserveConfig;
 import org.yoqu.cms.plugin.serve.SocketService;
+import org.yoqu.cms.plugin.serve.core.config.Constant;
+import org.yoqu.cms.plugin.serve.core.config.Routes;
+import org.yoqu.cms.plugin.serve.core.config.ServeConfig;
 
 /**
  * @author yoqu
@@ -16,17 +20,24 @@ public class SocketPlugin implements IPlugin {
 //        SocketService socketService=new SocketService();
 //        socketService.start();
 //    }
-
+    public SocketService socketService;
+    private Constant constant=new Constant();
+    private Routes routes=new Routes();
     @Override
     public boolean start() {
-        System.out.println("start socket..");
-        log.info("start socket plugin..");
-        return SocketService.getInstance().start();
+        return socketService.start();
+    }
+
+    public void initService(){
+        socketService=new SocketService();
+        ServeConfig config=new MyserveConfig();
+        config.configConstant(constant);
+        config.configRoute(routes);
     }
 
     @Override
     public boolean stop() {
         log.info("stop socket plugin..");
-        return SocketService.getInstance().stop();
+        return socketService.stop();
     }
 }

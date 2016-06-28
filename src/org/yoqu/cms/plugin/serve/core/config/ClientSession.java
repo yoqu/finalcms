@@ -1,4 +1,4 @@
-package org.yoqu.cms.plugin.serve;
+package org.yoqu.cms.plugin.serve.core.config;
 
 import org.apache.mina.core.session.IoSession;
 

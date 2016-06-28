@@ -8,7 +8,12 @@ import org.apache.mina.transport.socket.SocketAcceptor;
 import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.yoqu.cms.plugin.serve.parser.CommandParser;
+import org.yoqu.cms.plugin.serve.core.CodeFactory;
+import org.yoqu.cms.plugin.serve.core.MessageHandler;
+import org.yoqu.cms.plugin.serve.core.ServiceHandler;
+import org.yoqu.cms.plugin.serve.core.SessionManager;
+import org.yoqu.cms.plugin.serve.core.config.ServeConfig;
+import org.yoqu.cms.plugin.serve.core.parser.CommandParser;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -27,7 +32,6 @@ public class SocketService {
     private static SocketService service;
     private ServiceHandler handler;
 
-
     private ServiceHandler getHandler() throws NullPointerException{
         if(handler==null)
             throw new NullPointerException("请确认是否执行开始方法");
@@ -36,33 +40,10 @@ public class SocketService {
         }
     }
 
-    public static SocketService getInstance(){
-        if(service==null){
-            synchronized (SocketService.class){
-                log.info("start construct SocketService.");
-                String hostname= PropKit.use("socket_config.txt").get("hostname",null);
-                log.info("hostName:{}"+hostname);
-                int port=PropKit.use("socket_config.txt").getInt("port",8888);
-                log.info("port:{}"+port);
-                service=new SocketService(port,hostname);
-            }
-        }
-        return service;
-    }
+  public SocketService(ServeConfig config) {
+        handler=new ServiceHandler(new CommandParser(new MessageHandler()));
 
-    private SocketService() {
-        handler=new ServiceHandler(new CommandParser(new MessageHandlerCenter()));
         acceptor = new NioSocketAcceptor();
-        sessionManager = SessionManager.getInstance();
-    }
-    private SocketService(int port) {
-        this();
-        this.port = port;
-    }
-
-    private SocketService(int port, String hostname) {
-        this(port);
-        this.hostname = hostname;
     }
 
     public boolean start() {
@@ -82,14 +63,6 @@ public class SocketService {
             return false;
         }
         return true;
-    }
-
-    public SocketAcceptor getAcceptor() {
-        return this.acceptor;
-    }
-
-    public SessionManager getSessionManager() {
-        return this.sessionManager;
     }
 
     public boolean stop(){

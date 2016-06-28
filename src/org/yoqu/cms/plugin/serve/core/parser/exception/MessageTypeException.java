@@ -1,4 +1,4 @@
-package org.yoqu.cms.plugin.serve.parser.exception;
+package org.yoqu.cms.plugin.serve.core.parser.exception;
 
 /**
  * @author yoqu

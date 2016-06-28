@@ -1,6 +1,5 @@
-package org.yoqu.cms.plugin.serve;
+package org.yoqu.cms.plugin.serve.core;
 
-import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.mina.core.future.CloseFuture;
 import org.apache.mina.core.future.IoFuture;
 import org.apache.mina.core.future.IoFutureListener;
@@ -9,13 +8,8 @@ import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.util.StringUtils;
-import org.yoqu.cms.plugin.serve.parser.CommandParser;
-import org.yoqu.cms.plugin.serve.parser.Parser;
-import org.yoqu.cms.plugin.serve.parser.exception.MessageTypeException;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import org.yoqu.cms.plugin.serve.core.parser.Parser;
+import org.yoqu.cms.plugin.serve.core.parser.exception.MessageTypeException;
 
 public class ServiceHandler extends IoHandlerAdapter {
 
@@ -72,7 +66,9 @@ public class ServiceHandler extends IoHandlerAdapter {
                 if (future instanceof CloseFuture) {
                     ((CloseFuture) future).setClosed();
                     log.info("sessionClosed CloseFuture setClosed-->{}," + future.getSession().getId());
-                    SessionManager.getInstance().removeSession(SessionManager.getInstance().getSessionById(future.getSession().getId()));
+                    if (future.getSession().getAttribute("id") != null) {
+                        SessionManager.getInstance().removeSession((int) future.getSession().getAttribute("id"));
+                    }
                 }
             }
         });
