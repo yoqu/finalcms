@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=idea
+Terminal=false
+Name=idea
+Exec=/home/yoqu/develop/idea/bin/idea.sh
+Type=Application
+Icon=/home/yoqu/develop/idea/bin/idea.png

@@ -19,4 +19,6 @@ public class StringUtils {
     public static boolean isNumbervalue(String value) {
         return Pattern.compile("^\\d+$").matcher(value).find();
     }
+
+
 }

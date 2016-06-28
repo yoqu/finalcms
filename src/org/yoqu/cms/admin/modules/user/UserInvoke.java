@@ -34,6 +34,7 @@ public class UserInvoke {
         user.save();
     }
 
+    @SuppressWarnings("ConfusingArgumentToVarargsMethod")
     @InvokeBefore("FindUser_Before")
     @InvokeAfter("FindUser_After")
     public List<User> finduserByNamePasswordOrName(String... parameters) {

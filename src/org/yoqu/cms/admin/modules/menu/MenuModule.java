@@ -23,7 +23,7 @@ public class MenuModule extends Module {
 
     /**
      * 通过Hook注入菜单
-     *
+     * @see org.yoqu.cms.admin.config.InjectManager
      * @param controller
      */
     public void menuModule_AdminPageInject_Before(FinalBaseController controller) {

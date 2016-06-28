@@ -16,7 +16,8 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by yoqu on 2016/4/4 .
+ * The class is render page inject system variables.
+ * out PageInject Hooks to System.//PageInject_Before AdminPageInject_Before
  */
 public class InjectManager {
     private static final Log log = Log.getLog(InjectManager.class);

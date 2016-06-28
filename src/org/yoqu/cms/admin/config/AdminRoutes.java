@@ -30,15 +30,18 @@ public class AdminRoutes extends Routes {
     }
 
     public void initPaths() {
-        paths.put(basePath + "user", UserController.class);
-        paths.put(basePath + "dashboard", DashBoardController.class);
-        paths.put(basePath + "people", PeopleController.class);
-        paths.put(basePath + "role", RoleController.class);
-        paths.put(basePath + "menu", MenuController.class);
-        paths.put(basePath + "node", NodeController.class);
-        paths.put(basePath+"setting", SettingController.class);
+        paths.put(getUrlModel("user"), UserController.class);
+        paths.put(getUrlModel("dashboard"), DashBoardController.class);
+        paths.put(getUrlModel("people"), PeopleController.class);
+        paths.put(getUrlModel("role"), RoleController.class);
+        paths.put(getUrlModel("menu"), MenuController.class);
+        paths.put(getUrlModel("node"), NodeController.class);
+        paths.put(getUrlModel("setting"), SettingController.class);
     }
 
+    public String getUrlModel(String model){
+        return basePath+"model";
+    }
     @Override
     public void config() {
         for (Map.Entry<String, Class> item : paths.entrySet()) {
