@@ -1,5 +1,6 @@
 package org.yoqu.cms.plugin;
 
+import com.jfinal.kit.PropKit;
 import com.jfinal.log.Log;
 import com.jfinal.plugin.IPlugin;
 import org.yoqu.cms.plugin.serve.MyserveConfig;
@@ -15,24 +16,42 @@ import org.yoqu.cms.plugin.serve.core.config.ServeConfig;
  */
 public class SocketPlugin implements IPlugin {
 
-    private static final Log log=Log.getLog(SocketPlugin.class);
-//    public static void main(String[] args){
-//        SocketService socketService=new SocketService();
-//        socketService.start();
-//    }
+    private static final Log log = Log.getLog(SocketPlugin.class);
     public SocketService socketService;
-    private Constant constant=new Constant();
-    private Routes routes=new Routes();
+    private Constant constant = new Constant();
+    private Routes routes = new Routes();
+
     @Override
     public boolean start() {
+        if (!initService())
+            return false;
         return socketService.start();
     }
 
-    public void initService(){
-        socketService=new SocketService();
-        ServeConfig config=new MyserveConfig();
-        config.configConstant(constant);
-        config.configRoute(routes);
+    public boolean initService() {
+        String configName = PropKit.use("socket_config.txt").get("config");
+        try {
+            Class classz = Class.forName(configName);
+            Object temp = classz.newInstance();
+            if (temp instanceof ServeConfig != true) {
+                log.error("config class must extends ServeConfig,Please confirm.");
+                return false;
+            }
+            ServeConfig config = (ServeConfig) temp;
+            config.configConstant(constant);
+            config.configRoute(routes);
+            socketService = new SocketService(config);
+            return true;
+        } catch (ClassNotFoundException e) {
+            log.error("config class not define or socket_config.txt exclude config property");
+            return false;
+        } catch (InstantiationException e) {
+            log.error("constructor method exception.Please check your constructor method.");
+            return false;
+        } catch (IllegalAccessException e) {
+            log.error("method,field access exception,Please checked.");
+            return false;
+        }
     }
 
     @Override

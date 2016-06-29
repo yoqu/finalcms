@@ -15,37 +15,20 @@ import java.util.concurrent.Future;
 public class javaTest {
 
     public static void main(String[] args) {
-        ExecutorService excetors= Executors.newSingleThreadExecutor();
-        List<Runnable> tasks=new ArrayList<>();
-        tasks.add(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("task1");
+        try {
+            Object menuclass=Class.forName(Menu.class.getName()).newInstance();
+            if(menuclass instanceof MenuArray){
+                System.out.println("true.");
+            }else{
+                System.out.println("false.");
             }
-        });
-        tasks.add(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("task2");
-            }
-        });
-        tasks.add(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("task3");
-            }
-        });
-        for (Runnable task :tasks){
-            Future future=excetors.submit(task);
-            try {
-                System.out.println(future.get());
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
         }
-        excetors.shutdown();
     }
 
 

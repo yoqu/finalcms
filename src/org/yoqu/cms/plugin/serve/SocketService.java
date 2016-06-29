@@ -28,8 +28,6 @@ public class SocketService {
     private int port = 8888;
     private String hostname;
     private SocketAcceptor acceptor;
-    private SessionManager sessionManager;
-    private static SocketService service;
     private ServiceHandler handler;
 
     private ServiceHandler getHandler() throws NullPointerException{
@@ -41,8 +39,9 @@ public class SocketService {
     }
 
   public SocketService(ServeConfig config) {
-        handler=new ServiceHandler(new CommandParser(new MessageHandler()));
-
+        hostname=config.getConstant().hostname;
+        port=config.getConstant().port;
+        handler=new ServiceHandler(new CommandParser(config.getRoutes()));
         acceptor = new NioSocketAcceptor();
     }
 

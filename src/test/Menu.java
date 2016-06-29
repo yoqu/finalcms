@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by yoqu on 16-5-24.
  */
-public class Menu implements Serializable {
+public class Menu  implements Serializable {
     public int id;
     public int fid;
     public String name;

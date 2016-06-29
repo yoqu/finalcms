@@ -6,7 +6,8 @@ package org.yoqu.cms.plugin.serve.core.config;
  * @description
  */
 public class Constant {
-    public String server="localhost";
+    public String hostname="localhost";
     public int port=888;
+
 
 }

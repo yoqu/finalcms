@@ -10,8 +10,11 @@ import org.yoqu.cms.plugin.serve.core.config.ClientSession;
  * @date 2016/6/23 0023
  * @description
  */
-public class MessageHandler {
+public abstract class MessageHandler {
 
+    public void init(IoSession session){
+        this.session=session;
+    };
     private IoSession session;//current session.
 
     public Object loginHandler(JSONObject message){
@@ -34,6 +37,8 @@ public class MessageHandler {
             return writeError("invalid char.");
         }
     }
+
+    public abstract Object handler(JSONObject message);
 
     public IoSession getSession() {
         return session;
