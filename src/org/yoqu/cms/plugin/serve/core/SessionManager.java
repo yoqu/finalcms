@@ -24,6 +24,9 @@ public class SessionManager {
     private LinkedList<ClientSession> sessions=new LinkedList<>();
 
     public void addSession(ClientSession clientSession){
+        clientSession.setId((long) (getSize()+1));
+        clientSession.getSession().setAttribute("id",getSize()+1);
+        clientSession.getSession().setAttribute("clientSession", clientSession);
         sessions.add(clientSession);
     }
 
@@ -46,4 +49,5 @@ public class SessionManager {
     public int getSize(){
         return sessions.size();
     }
+
 }

@@ -11,34 +11,24 @@ import org.yoqu.cms.plugin.serve.core.config.ClientSession;
  * @description
  */
 public abstract class MessageHandler {
+    protected JSONObject message;
+    protected IoSession session;//current session.
+    private String type;
 
-    public void init(IoSession session){
-        this.session=session;
-    };
-    private IoSession session;//current session.
-
-    public Object loginHandler(JSONObject message){
-        ClientSession clientSession =new ClientSession();
-        clientSession.setSession(session);
-        try {
-            clientSession.setUsername(message.getString("username"));
-            clientSession.setPassword(message.getString("password"));
-            if(message.has("address")){
-                clientSession.setAddress(message.getString("address"));
-            }
-            int newSize=SessionManager.getInstance().getSize()+1;
-            clientSession.setId((long)newSize);
-            clientSession.setSession(session);
-            session.setAttribute("clientSession",clientSession);
-            session.setAttribute("id",newSize);
-            SessionManager.getInstance().addSession(clientSession);
-            return writeSuccess();
-        } catch (JSONException e) {
-            return writeError("invalid char.");
-        }
+    public String getType() {
+        return type;
     }
 
-    public abstract Object handler(JSONObject message);
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void init(IoSession session, String type, JSONObject message) {
+        this.session = session;
+        this.type = type;
+        this.message = message;
+    }
+
 
     public IoSession getSession() {
         return session;
@@ -48,19 +38,19 @@ public abstract class MessageHandler {
         this.session = session;
     }
 
-    public String writeSuccess() throws JSONException {
-        JSONObject result= new JSONObject();
-        result.put("result","suceess");
-        result.put("type","login");
+    public String writeSuccess(String type) throws JSONException {
+        JSONObject result = new JSONObject();
+        result.put("result", "suceess");
+        result.put("type", type);
         return result.toString();
     }
 
-    public String writeError(String information){
+    public String writeError(String information) {
 //        JSONObject result= new JSONObject();
 //        result.put("result","error");
 //        result.put("type","login");
 //        result.put("log",information);
-        String result="{result:\"error\",type:\"login\",log:\""+information+"\"}";
+        String result = "{result:\"error\",type:\"login\",log:\"" + information + "\"}";
         return result.toString();
     }
 }

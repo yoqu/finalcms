@@ -1,5 +1,6 @@
 package org.yoqu.cms.plugin.serve;
 
+import org.yoqu.cms.nima.LoginHandler;
 import org.yoqu.cms.plugin.serve.core.config.Constant;
 import org.yoqu.cms.plugin.serve.core.config.Routes;
 import org.yoqu.cms.plugin.serve.core.config.ServeConfig;
@@ -13,7 +14,7 @@ public class MyserveConfig extends ServeConfig {
 
     @Override
     public void configRoute(Routes routes) {
-
+        routes.add("login", LoginHandler.class);
     }
 
     @Override

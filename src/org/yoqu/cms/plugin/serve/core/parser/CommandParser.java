@@ -4,7 +4,10 @@ import com.jfinal.aop.Clear;
 import org.apache.mina.core.session.IoSession;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.yoqu.cms.plugin.serve.core.MessageHandler;
+import org.yoqu.cms.plugin.serve.core.config.Constant;
 import org.yoqu.cms.plugin.serve.core.config.Routes;
 import org.yoqu.cms.plugin.serve.core.parser.exception.CommandMessageTypeException;
 
@@ -16,6 +19,7 @@ import java.lang.reflect.Method;
  * @description
  */
 public class CommandParser implements Parser {
+    private static Logger log= LoggerFactory.getLogger(CommandParser.class);
     private Routes routes;
 
     public CommandParser(Routes handler) {
@@ -54,25 +58,16 @@ public class CommandParser implements Parser {
             String messageType = result.getString("type");
             String[] url = new String[]{null};
             Class<? extends MessageHandler> handlerClassz = routes.get(messageType, url);
-
-//            if (handlerClassz.isAnnotationPresent(Clear.class))
             Method method1 = handlerClassz.getMethod(url[0], null);
             MessageHandler handler = handlerClassz.newInstance();
-            handler.init(session);
-            method1.invoke(handler, null);
-
-//            if (!isAuth(session)) {
-//                if (!messageType.equals(TYPE_LOGIN))
-//                    return handler.writeError("user not auth.");
-//            }
-//
-//            switch (messageType) {
-//                case TYPE_LOGIN:
-//                    message = handler.loginHandler(result);
-//                    break;
-//            }
+            handler.init(session,messageType,result);
+            message=method1.invoke(handler, null);
             return message;
-        } catch (ClassCastException ex) {
+        }catch (NoSuchMethodException ex){
+            log.error("class method not found,if no define method,Please create public void index"+ Constant.DEFAULT_METHOD+"() method");
+            return "{result:\"error\",type:\"info\",log:\"method define error\"}";
+        }
+        catch (ClassCastException ex) {
             return "{result:\"error\",type:\"login\",log:\"message format error\"}";
         }
 

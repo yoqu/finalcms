@@ -28,6 +28,7 @@ public class Routes {
     public Class<? extends MessageHandler> get(String key,String[] url) {
         Class route = routes.get(key);
         if (route != null) {
+            url[0]=Constant.DEFAULT_METHOD;
             return route;
         }
         int i = key.lastIndexOf(SLASH);
