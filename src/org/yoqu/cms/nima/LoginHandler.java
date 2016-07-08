@@ -1,7 +1,6 @@
 package org.yoqu.cms.nima;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.yoqu.cms.plugin.serve.core.MessageHandler;
 import org.yoqu.cms.plugin.serve.core.SessionManager;
 import org.yoqu.cms.plugin.serve.core.config.ClientSession;
@@ -13,20 +12,28 @@ import org.yoqu.cms.plugin.serve.core.config.ClientSession;
  */
 public class LoginHandler extends MessageHandler {
 
-    public Object index(){
-        ClientSession clientSession = new ClientSession();
-        clientSession.setSession(session);
+    public Object login() {
         try {
-            clientSession.setUsername(message.getString("username"));
-            clientSession.setPassword(message.getString("password"));
+            ClientSession clientSession = new ClientSession(message.getString("username"), message.getString("password"),session);
             if (message.has("address")) {
                 clientSession.setAddress(message.getString("address"));
             }
-            clientSession.setSession(session);
             SessionManager.getInstance().addSession(clientSession);
             return writeSuccess("login");
         } catch (JSONException e) {
             return writeError("invalid char.");
         }
     }
+
+    public Object sendMessage(){
+        return null;
+    }
+
+    public Object getAllUserInfo(){
+
+        return null;
+    }
+
+
+
 }

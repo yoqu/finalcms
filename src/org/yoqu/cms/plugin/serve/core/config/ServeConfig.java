@@ -11,7 +11,4 @@ public abstract class ServeConfig {
 
     public abstract void configConstant(Constant constant);
 
-    public abstract Routes getRoutes();
-
-    public abstract Constant getConstant();
 }

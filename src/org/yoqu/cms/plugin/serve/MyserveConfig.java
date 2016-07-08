@@ -1,5 +1,6 @@
 package org.yoqu.cms.plugin.serve;
 
+import com.jfinal.kit.PropKit;
 import org.yoqu.cms.nima.LoginHandler;
 import org.yoqu.cms.plugin.serve.core.config.Constant;
 import org.yoqu.cms.plugin.serve.core.config.Routes;
@@ -14,21 +15,13 @@ public class MyserveConfig extends ServeConfig {
 
     @Override
     public void configRoute(Routes routes) {
-        routes.add("login", LoginHandler.class);
+        routes.add("user", LoginHandler.class);
     }
 
     @Override
     public void configConstant(Constant constant) {
-
+        constant.port=PropKit.use("socket_config.txt").getInt("port");
+        constant.hostname=PropKit.use("socket_config.txt").get("hostname");
     }
 
-    @Override
-    public Routes getRoutes() {
-        return null;
-    }
-
-    @Override
-    public Constant getConstant() {
-        return null;
-    }
 }

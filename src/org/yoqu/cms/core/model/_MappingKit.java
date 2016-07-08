@@ -16,6 +16,7 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 public class _MappingKit {
 
 	public static void mapping(ActiveRecordPlugin arp) {
+		arp.addMapping("client", "id", Client.class);
 		arp.addMapping("comment", "id", Comment.class);
 		arp.addMapping("dictionary", "id", Dictionary.class);
 		arp.addMapping("dictionary_type", "id", DictionaryType.class);

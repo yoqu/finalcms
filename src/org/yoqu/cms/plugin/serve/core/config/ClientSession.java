@@ -15,9 +15,21 @@ public class ClientSession {
     private String password;
     private boolean isActive;
 
+    public ClientSession(IoSession session){
 
+    }
+
+    public ClientSession(String username,String password,IoSession session){
+        this.username=username;
+        this.password=password;
+        this.session=session;
+    }
     public IoSession getSession() {
         return session;
+    }
+
+    public void writeMessage(Object object){
+        session.write(object);
     }
     public void setSession(IoSession session) {
         this.session = session;

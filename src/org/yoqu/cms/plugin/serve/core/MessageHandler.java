@@ -29,7 +29,6 @@ public abstract class MessageHandler {
         this.message = message;
     }
 
-
     public IoSession getSession() {
         return session;
     }
@@ -46,11 +45,10 @@ public abstract class MessageHandler {
     }
 
     public String writeError(String information) {
-//        JSONObject result= new JSONObject();
-//        result.put("result","error");
-//        result.put("type","login");
-//        result.put("log",information);
-        String result = "{result:\"error\",type:\"login\",log:\"" + information + "\"}";
-        return result.toString();
+       return writeError(information,type);
+    }
+
+    public String writeError(String information,String messageType){
+        return "{result:\"error\",type:\""+messageType+"\",log:\"" + information + "\"}";
     }
 }

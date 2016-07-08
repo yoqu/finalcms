@@ -6,8 +6,8 @@ package org.yoqu.cms.plugin.serve.core.config;
  * @description
  */
 public class Constant {
-    public static final String hostname="localhost";
-    public static final int port=888;
+    public static  String hostname="localhost";
+    public static  int port=8888;
     public static final String DEFAULT_METHOD="index";
 
     public static final String JSON_ERROR="{result:\"error\",type:\"info\",log:\"JSON error\"}";

@@ -40,7 +40,7 @@ public class SocketPlugin implements IPlugin {
             ServeConfig config = (ServeConfig) temp;
             config.configConstant(constant);
             config.configRoute(routes);
-            socketService = new SocketService(config);
+            socketService = new SocketService(constant,routes);
             return true;
         } catch (ClassNotFoundException e) {
             log.error("config class not define or socket_config.txt exclude config property");

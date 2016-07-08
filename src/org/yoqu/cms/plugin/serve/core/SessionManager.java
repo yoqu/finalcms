@@ -2,7 +2,7 @@ package org.yoqu.cms.plugin.serve.core;
 
 import org.yoqu.cms.plugin.serve.core.config.ClientSession;
 
-import java.util.LinkedList;
+import java.util.*;
 
 /**
  * @author yoqu
@@ -21,25 +21,27 @@ public class SessionManager {
         return sessionManager;
     }
 
-    private LinkedList<ClientSession> sessions=new LinkedList<>();
+    private HashMap<String,ClientSession> sessions=new HashMap<>();
+
+    private HashSet<ClientSession> clientSessions=new HashSet<>();
 
     public void addSession(ClientSession clientSession){
         clientSession.setId((long) (getSize()+1));
         clientSession.getSession().setAttribute("id",getSize()+1);
         clientSession.getSession().setAttribute("clientSession", clientSession);
-        sessions.add(clientSession);
+        sessions.put(clientSession.getUsername(),clientSession);
     }
 
-    public LinkedList<ClientSession> getSessions(){
-        return this.sessions;
-    }
 
+    public ClientSession getSession(String username){
+        return sessions.get(username);
+    }
     public void removeSession(ClientSession clientSession){
         sessions.remove(clientSession);
     }
 
-    public  void removeSession(int id){
-        sessions.remove(id);
+    public  void removeSession(String username){
+        sessions.remove(username);
     }
 
     /**
@@ -50,4 +52,7 @@ public class SessionManager {
         return sessions.size();
     }
 
+    public Set<Map.Entry<String,ClientSession>> getSessions(){
+        return sessions.entrySet();
+    }
 }

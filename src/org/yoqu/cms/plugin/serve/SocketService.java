@@ -1,6 +1,5 @@
 package org.yoqu.cms.plugin.serve;
 
-import com.jfinal.kit.PropKit;
 import org.apache.mina.core.filterchain.DefaultIoFilterChainBuilder;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
@@ -9,10 +8,9 @@ import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.yoqu.cms.plugin.serve.core.CodeFactory;
-import org.yoqu.cms.plugin.serve.core.MessageHandler;
 import org.yoqu.cms.plugin.serve.core.ServiceHandler;
-import org.yoqu.cms.plugin.serve.core.SessionManager;
-import org.yoqu.cms.plugin.serve.core.config.ServeConfig;
+import org.yoqu.cms.plugin.serve.core.config.Constant;
+import org.yoqu.cms.plugin.serve.core.config.Routes;
 import org.yoqu.cms.plugin.serve.core.parser.CommandParser;
 
 import java.io.IOException;
@@ -38,10 +36,10 @@ public class SocketService {
         }
     }
 
-  public SocketService(ServeConfig config) {
-        hostname=config.getConstant().hostname;
-        port=config.getConstant().port;
-        handler=new ServiceHandler(new CommandParser(config.getRoutes()));
+  public SocketService(Constant constant, Routes routes) {
+        hostname=constant.hostname;
+        port=constant.port;
+        handler=new ServiceHandler(new CommandParser(routes));
         acceptor = new NioSocketAcceptor();
     }
 

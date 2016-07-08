@@ -46,10 +46,6 @@ public class ServiceHandler extends IoHandlerAdapter {
     @Override
     public void sessionCreated(IoSession session) throws Exception {
         log.info("创建一个新连接：{}" + session.getRemoteAddress());
-        //session.write("welcome to the chat room !");
-//        ClientSession clientSession= (ClientSession) session.getAttribute("client");
-//        clientSession.setSession(session);
-//          session.setAttribute("test","mytest");
     }
 
     @Override
@@ -67,7 +63,7 @@ public class ServiceHandler extends IoHandlerAdapter {
                     ((CloseFuture) future).setClosed();
                     log.info("sessionClosed CloseFuture setClosed-->{}," + future.getSession().getId());
                     if (future.getSession().getAttribute("id") != null) {
-                        SessionManager.getInstance().removeSession((int) future.getSession().getAttribute("id"));
+                        SessionManager.getInstance().removeSession((String) future.getSession().getAttribute("username"));
                     }
                 }
             }

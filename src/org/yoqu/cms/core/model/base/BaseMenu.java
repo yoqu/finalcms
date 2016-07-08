@@ -25,14 +25,6 @@ public abstract class BaseMenu<M extends BaseMenu<M>> extends Model<M> implement
 		return get("name");
 	}
 
-	public void setRemark(java.lang.String remark) {
-		set("remark", remark);
-	}
-
-	public java.lang.String getRemark() {
-		return get("remark");
-	}
-
 	public void setType(java.lang.Integer type) {
 		set("type", type);
 	}
