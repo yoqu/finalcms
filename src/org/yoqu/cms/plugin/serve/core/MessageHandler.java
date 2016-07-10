@@ -39,7 +39,7 @@ public abstract class MessageHandler {
 
     public String writeSuccess(String type) throws JSONException {
         JSONObject result = new JSONObject();
-        result.put("result", "suceess");
+        result.put("result", "success");
         result.put("type", type);
         return result.toString();
     }

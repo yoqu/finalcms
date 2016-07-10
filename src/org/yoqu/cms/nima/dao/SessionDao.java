@@ -1,6 +1,5 @@
 package org.yoqu.cms.nima.dao;
 
-import com.jfinal.plugin.activerecord.Db;
 import org.yoqu.cms.core.model.Client;
 import org.yoqu.cms.plugin.serve.core.config.ClientSession;
 
@@ -18,7 +17,7 @@ public class SessionDao {
      *
      * @param session
      */
-    public boolean registerSession(ClientSession session) {
+    public static boolean registerSession(ClientSession session) {
         Client client = new Client();
         client.setUsername(session.getUsername());
         client.setPassword(session.getPassword());
@@ -28,17 +27,22 @@ public class SessionDao {
         return client.save();
     }
 
+    public static boolean isRegistered(String username) {
+        return Client.dao.findFirst("select * from client where username=? and is_delete=0", username) != null ? true : false;
+    }
 
-    public List<Client> getSessionList() {
+    public static List<Client> getSessionList() {
         List<Client> clients = Client.dao.find("select * from client where is_delete=0");
         return clients;
     }
 
-    public boolean login(ClientSession session) {
+    public static boolean login(ClientSession session) {
         Client client = Client.dao.findFirst("select * from client where is_delete=0 and username=? and password=?", session.getUsername(), session.getPassword());
         if (client == null) {
             return false;
         } else {
+            client.setIsActive(1);
+            client.update();
             return true;
         }
     }
@@ -46,18 +50,18 @@ public class SessionDao {
     /**
      * 下线处理
      */
-    public boolean offline(String username) {
+    public static boolean offline(String username) {
         return changeActive(username, 0);
     }
 
     /**
      * 上线处理
      */
-    public boolean online(String username) {
+    public static boolean online(String username) {
         return changeActive(username, 1);
     }
 
-    private boolean changeActive(String username, int isActive) {
+    private static boolean changeActive(String username, int isActive) {
         Client client = Client.dao.findFirst("select * form client where is_delete=0 and username=?", username);
         client.setIsActive(isActive);
         return client.save();

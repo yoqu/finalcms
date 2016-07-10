@@ -16,11 +16,11 @@ public class Notification {
     private static final Logger log= LoggerFactory.getLogger(Notification.class);
     public static void sendBroadcast(String message){
         log.info("sendBroadcast to all session user start");
-        if(SessionManager.getInstance().getSize()==0){
+        if(LoginSessionManager.getInstance().getSize()==0){
             log.info("empty session send broadcast.");
             return ;
         }
-        for(Map.Entry<String,ClientSession> entry: SessionManager.getInstance().getSessions()){
+        for(Map.Entry<String,ClientSession> entry: LoginSessionManager.getInstance().getSessions()){
             entry.getValue().writeMessage(message);
         }
     }
@@ -31,7 +31,7 @@ public class Notification {
     }
 
     public static void sendMessage(String username,String message){
-        ClientSession session =SessionManager.getInstance().getSession(username);
+        ClientSession session =LoginSessionManager.getInstance().getSession(username);
         session.writeMessage(message);
     }
 }

@@ -63,7 +63,7 @@ public class ServiceHandler extends IoHandlerAdapter {
                     ((CloseFuture) future).setClosed();
                     log.info("sessionClosed CloseFuture setClosed-->{}," + future.getSession().getId());
                     if (future.getSession().getAttribute("id") != null) {
-                        SessionManager.getInstance().removeSession((String) future.getSession().getAttribute("username"));
+                        LoginSessionManager.getInstance().removeSession((String) future.getSession().getAttribute("username"));
                     }
                 }
             }

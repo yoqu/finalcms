@@ -1,27 +1,28 @@
 package org.yoqu.cms.plugin.serve.core;
 
+import org.eclipse.jetty.server.SessionManager;
 import org.yoqu.cms.plugin.serve.core.config.ClientSession;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author yoqu
- * @date 2016/7/10 0010
+ * @date 2016/6/21 0021
  * @description
  */
-public class SessionManager {
+public class LoginSessionManager {
     private static LoginSessionManager sessionManager;
     private HashMap<String, ClientSession> sessions = new HashMap<>();
+
     public static LoginSessionManager getInstance() {
         if (sessionManager == null) {
-            synchronized (org.eclipse.jetty.server.SessionManager.class) {
+            synchronized (SessionManager.class) {
                 sessionManager = new LoginSessionManager();
             }
         }
         return sessionManager;
     }
+
     public void addSession(ClientSession clientSession) {
         clientSession.setId((long) (getSize() + 1));
         clientSession.getSession().setAttribute("id", getSize() + 1);
