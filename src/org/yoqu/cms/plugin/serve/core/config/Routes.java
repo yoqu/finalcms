@@ -15,7 +15,7 @@ import java.util.Set;
  * @description
  */
 public class Routes {
-    private static final String SLASH = "/";
+    private static final String SLASH = "-";
 
     private Map<String, Class<? extends MessageHandler>> routes = new HashMap<>();
 

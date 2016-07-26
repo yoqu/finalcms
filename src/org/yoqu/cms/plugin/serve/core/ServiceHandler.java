@@ -56,7 +56,7 @@ public class ServiceHandler extends IoHandlerAdapter {
     @Override
     public void sessionClosed(IoSession session) throws Exception {
         log.info("关闭当前session：{}#{}" + session.getId() + session.getRemoteAddress());
-        CloseFuture closeFuture = session.close(true);
+        CloseFuture closeFuture = session.closeNow();
         closeFuture.addListener(new IoFutureListener<IoFuture>() {
             public void operationComplete(IoFuture future) {
                 if (future instanceof CloseFuture) {

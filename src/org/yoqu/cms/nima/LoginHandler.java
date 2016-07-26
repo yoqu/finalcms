@@ -48,8 +48,6 @@ public class LoginHandler extends MessageHandler {
         } catch (JSONException e) {
             return writeError("invalid char.");
         }
-
-
     }
 
     public Object getAllUserInfo() {

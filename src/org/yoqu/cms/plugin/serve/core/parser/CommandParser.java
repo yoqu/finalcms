@@ -68,6 +68,7 @@ public class CommandParser implements Parser {
 
     }
 
+    @SuppressWarnings("NullArgumentToVariableArgMethod")
     public Object messageInvoke(Class<? extends MessageHandler> handlerClassz, String url, String messageType, JSONObject result, IoSession session) {
         Method method1 = null;
         try {

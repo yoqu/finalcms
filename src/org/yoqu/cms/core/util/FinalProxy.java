@@ -3,7 +3,6 @@ package org.yoqu.cms.core.util;
 import com.jfinal.aop.Enhancer;
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
-import com.jfinal.core.Controller;
 import com.jfinal.kit.LogKit;
 import com.jfinal.kit.StrKit;
 import org.yoqu.cms.core.aop.Hook;
@@ -59,8 +58,9 @@ public class FinalProxy implements Interceptor {
                 if (args != null && returnValue == null) {
                     Class[] parameterTypes = new Class[args.length];
                     for (int i = 0; i < args.length; i++) {
-                        if (args[i].getClass().getSuperclass().equals(FinalBaseController.class)) {
-                            parameterTypes[i] = args[i].getClass().getSuperclass();
+
+                        if (args[i] instanceof FinalBaseController) {
+                            parameterTypes[i] = FinalBaseController.class;
                         } else {
                             parameterTypes[i] = args[i].getClass();
                         }
