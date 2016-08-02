@@ -40,7 +40,7 @@ public class AdminRoutes extends Routes {
     }
 
     public String getUrlModel(String model){
-        return basePath+"model";
+        return basePath + model;
     }
     @Override
     public void config() {
