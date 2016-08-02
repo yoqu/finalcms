@@ -76,7 +76,8 @@ public class FinalProxy implements Interceptor {
                         }
                     } catch (NoSuchMethodException e) {
                         LogKit.error("NoSuchMethodException:  " + e.getMessage());
-                        return;
+                        // 注意 这里是return..[之前 还被这里忽悠了,, 我说访问"http://localhost:8080/admin/menu/1"的时候 怎么缺少一个"NoSuchMethodException:  org.yoqu.cms.admin.modules.menu.MenuModule.menuModule_PageInject_Before(org.yoqu.cms.core.config.FinalBaseController)" ]      --2016.08.02 by 970655147
+                         return;
                     }
                 }
                 //after执行
