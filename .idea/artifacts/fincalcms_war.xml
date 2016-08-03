@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="fincalcms:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/fincalcms_war</output-path>
+    <root id="archive" name="fincalcms_war.war">
+      <element id="artifact" artifact-name="fincalcms:war exploded" />
+    </root>
+  </artifact>
+</component>
