@@ -21,6 +21,7 @@ import java.util.List;
 
 public class UserController extends FinalBaseController {
 
+    @SiteTitle("Login")
     public void index() {
         render("/admin/login.html");
     }

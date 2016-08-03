@@ -51,9 +51,10 @@ public class AuthManagerInterceptor implements Interceptor {
         int rid = Integer.parseInt(controller.getCookie(Constant.ROLE));
 
         // 晕, cookie 还存在, 因此 直接跳过了校验.        --2016.08.02 by 970655147
-//        if (rid == 1) {
-//            return true;
-//        }
+        if (rid == 1) {
+            return true;
+        }
+
         List<RolePermission> rolePermissions = RoleInvoke.getInstance().findRolePermissionByUriRid(uri, rid);
         if (rolePermissions.size() > 0) {
             return true;

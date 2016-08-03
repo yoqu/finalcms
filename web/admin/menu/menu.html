@@ -44,32 +44,27 @@
                             <#if menuList.size()==0>
                                 没有记录..
                                 <#else>
-                                    <#list menuList as menu>
-                                        <li class="dd-item dd3-item" data-id="${menu.id}">
-                                            <div class="dd-handle dd3-handle"></div>
-                                            <div class="dd3-content">${menu.name}<span class="right"><a href="/admin/menu/item/edit/${menu.id}">编辑</a></span></div>
-                                            <#if menu.getMenuList()??>
-                                                <ol class="dd-list">
-                                                    <#list menu.getMenuList() as childMenu>
-                                                    <li class="dd-item dd3-item" data-id="${childMenu.id}">
-                                                        <div class="dd-handle dd3-handle"></div>
-                                                        <div class="dd3-content">${childMenu.name}<span class="right"><a href="/admin/menu/item/edit/${childMenu.id}">编辑</a></span></div>
-                                                        <#if childMenu.getMenuList()??>
-                                                            <ol class="dd-list">
-                                                                <#list childMenu.getMenuList() as secondMenu>
-                                                                    <li class="dd-item dd3-item" data-id="${secondMenu.id}">
-                                                                        <div class="dd-handle dd3-handle"></div>
-                                                                        <div class="dd3-content">${secondMenu.name}<span class="right"><a href="/admin/menu/item/edit/${secondMenu.id}">编辑</a></span></div>
-                                                                    </li>
-                                                                </#list>
-                                                            </ol>
-                                                        </#if>
-                                                    </li>
-                                                    </#list>
-                                                </ol>
-                                            </#if>
-                                        </li>
-                                    </#list>
+                                    <!--展示菜单-->
+                                    <#macro seprateMenu _menuList>
+                                        <!--redundancy check-->
+                                        <!--<#if _menuList?? && _menuList?size gt 0>-->
+                                            <#list _menuList as menu>
+                                                <li class="dd-item dd3-item" data-id="${menu.id}">
+                                                    <div class="dd-handle dd3-handle"></div>
+                                                    <div class="dd3-content">${menu.name}<span class="right"><a href="/admin/menu/item/edit/${menu.id}">编辑</a></span></div>
+
+                                                    <#if menu.getMenuList()?? && menu.getMenuList()?size gt 0>
+                                                        <ol class="dd-list">
+                                                        <@seprateMenu _menuList=menu.getMenuList() />
+                                                        </ol>
+                                                    </#if>
+                                            </#list>
+                                        <!--</#if>-->
+                                    </#macro>
+
+                                    <!-- 调用宏 生成递归树 -->
+                                    <@seprateMenu _menuList=menuList />
+
                             </#if>
                         </ol>
                     </div>
