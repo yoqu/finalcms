@@ -5,10 +5,13 @@ import com.jfinal.aop.Invocation;
 import com.jfinal.core.Const;
 import com.jfinal.core.Controller;
 import org.yoqu.cms.admin.config.InjectManager;
+import org.yoqu.cms.admin.modules.role.RoleAccessInvoke;
 import org.yoqu.cms.admin.modules.role.RoleInvoke;
 import org.yoqu.cms.admin.modules.user.UserInvoke;
+import org.yoqu.cms.core.model.RoleAccess;
 import org.yoqu.cms.core.model.RolePermission;
 import org.yoqu.cms.core.model.User;
+import org.yoqu.cms.core.util.FileNameMatcher;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
@@ -51,16 +54,20 @@ public class AuthManagerInterceptor implements Interceptor {
         int rid = Integer.parseInt(controller.getCookie(Constant.ROLE));
 
         // 晕, cookie 还存在, 因此 直接跳过了校验.        --2016.08.02 by 970655147
-        if (rid == 1) {
-            return true;
+//        if (rid == 1) {
+//            return true;
+//        }
+
+        List<RoleAccess> roleAccesses = RoleAccessInvoke.getInstance().findRoleAccessByRoleId(rid);
+        boolean access = false;
+        for(RoleAccess ra : roleAccesses) {
+            if(FileNameMatcher.match(uri, ra.getAccess()) ) {
+                access = true;
+                break ;
+            }
         }
 
-        List<RolePermission> rolePermissions = RoleInvoke.getInstance().findRolePermissionByUriRid(uri, rid);
-        if (rolePermissions.size() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return access;
     }
 
     /**
