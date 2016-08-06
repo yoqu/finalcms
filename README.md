@@ -45,5 +45,10 @@
 
 [Hook文档](https://github.com/yoqu/finalcms/blob/master/docs/Hook文档.md)
 
+#### 开发环境版本说明:
+* idea 15.0.4
+* jdk1.8
+* tomcat 7.0
+* mysql 5.6
 ##关于
 项目发起者: _yoqu_
