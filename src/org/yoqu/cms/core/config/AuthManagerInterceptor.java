@@ -2,14 +2,14 @@ package org.yoqu.cms.core.config;
 
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
-import com.jfinal.core.Const;
 import com.jfinal.core.Controller;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.yoqu.cms.admin.config.InjectManager;
 import org.yoqu.cms.admin.modules.role.RoleAccessInvoke;
-import org.yoqu.cms.admin.modules.role.RoleInvoke;
 import org.yoqu.cms.admin.modules.user.UserInvoke;
 import org.yoqu.cms.core.model.RoleAccess;
-import org.yoqu.cms.core.model.RolePermission;
 import org.yoqu.cms.core.model.User;
 import org.yoqu.cms.core.util.FileNameMatcher;
 
@@ -21,7 +21,7 @@ import java.util.List;
  * Created by yoqu on 2016/4/19 0019.
  */
 public class AuthManagerInterceptor implements Interceptor {
-
+    private final static Logger logger = LoggerFactory.getLogger(AuthManagerInterceptor.class);
 
     /**
      * 对用户进行登陆验证
@@ -59,6 +59,7 @@ public class AuthManagerInterceptor implements Interceptor {
 //        }
 
         List<RoleAccess> roleAccesses = RoleAccessInvoke.getInstance().findRoleAccessByRoleId(rid);
+        logger.debug("permisson roleAccess list: {}",roleAccesses);
         boolean access = false;
         for(RoleAccess ra : roleAccesses) {
             if(FileNameMatcher.match(uri, ra.getAccess()) ) {

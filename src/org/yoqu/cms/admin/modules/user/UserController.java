@@ -100,8 +100,9 @@ public class UserController extends FinalBaseController {
 
     public void doLogout() {
         setSessionAttr(Constant.ONLINE_USER, null);
+        removeCookie(Constant.ONLINE_USER);
+        removeCookie(Constant.ROLE);
         redirect("/admin/user/login");
     }
-
 
 }

@@ -35,8 +35,8 @@ public class AppConfig extends JFinalConfig {
         me.add(c3p0Plugin);
         ActiveRecordPlugin activeRecordPlugin = new ActiveRecordPlugin(c3p0Plugin);
         me.add(activeRecordPlugin);
-        SocketPlugin socketPlugin=new SocketPlugin();
-        me.add(socketPlugin);
+//        SocketPlugin socketPlugin=new SocketPlugin();
+//        me.add(socketPlugin);
         _MappingKit.mapping(activeRecordPlugin);
         me.add(new EhCachePlugin("res/ehcache.xml"));
     }

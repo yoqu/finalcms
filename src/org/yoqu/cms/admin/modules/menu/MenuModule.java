@@ -34,6 +34,7 @@ public class MenuModule extends Module {
                 return Menu.dao.sortMenu(Menu.dao.findAllMenuByType(MENU_TYPE_LEFT));
             }
         });
+        LogKit.info(menus.toString());
         controller.setAttr(VARIABLE, menus);
     }
 
