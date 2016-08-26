@@ -19,7 +19,6 @@ public class IndexController extends FinalBaseController {
         Page<Node> nodeList = NodeInvoke.getInstance().findNodeByPage(page);
         setAttr("nodeList", nodeList);
         render("/front/index.html");
-        Notification.sendBroadcast("start login ..");
     }
 
     @SiteTitle("yoqu &mdash; 一个简单的javaweb开发者")

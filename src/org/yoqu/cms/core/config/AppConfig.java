@@ -38,7 +38,8 @@ public class AppConfig extends JFinalConfig {
 //        SocketPlugin socketPlugin=new SocketPlugin();
 //        me.add(socketPlugin);
         _MappingKit.mapping(activeRecordPlugin);
-        me.add(new EhCachePlugin("res/ehcache.xml"));
+        String path=this.getClass().getClassLoader().getResource("/").getPath();
+        me.add(new EhCachePlugin(path+"ehcache.xml"));
     }
 
     @Override
