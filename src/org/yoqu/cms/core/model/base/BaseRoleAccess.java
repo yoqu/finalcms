@@ -17,11 +17,11 @@ public abstract class BaseRoleAccess<M extends BaseRoleAccess<M>> extends Model<
 		return get("id");
 	}
 
-	public void setRole(java.lang.Integer role) {
-		set("rId", role);
+	public void setRId(java.lang.Integer rId) {
+		set("rId", rId);
 	}
 
-	public java.lang.Integer getRole() {
+	public java.lang.Integer getRId() {
 		return get("rId");
 	}
 
@@ -34,11 +34,11 @@ public abstract class BaseRoleAccess<M extends BaseRoleAccess<M>> extends Model<
 	}
 
 	public void setIsDelete(java.lang.Integer isDelete) {
-		set("isDelete", isDelete);
+		set("is_delete", isDelete);
 	}
 
 	public java.lang.Integer getIsDelete() {
-		return get("isDelete");
+		return get("is_delete");
 	}
 
 }

@@ -1,6 +1,8 @@
 package org.yoqu.cms.core.config;
 
+import com.jfinal.aop.Interceptor;
 import com.jfinal.config.*;
+import com.jfinal.handler.Handler;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
@@ -11,14 +13,16 @@ import org.yoqu.cms.core.util.AdminHandler;
 import org.yoqu.cms.front.config.FrontRoutes;
 import org.yoqu.cms.plugin.SocketPlugin;
 
+import java.util.List;
+
 public class AppConfig extends JFinalConfig {
+
     @Override
     public void configConstant(Constants me) {
         PropKit.use("database_config.txt");
         // set app dev Mode debug
         me.setDevMode(PropKit.getBoolean("devMode", false));
         me.setError404View("/admin/404.html");
-//        FinalProxy finalProxy = new FinalProxy();
     }
 
     @Override
@@ -44,13 +48,20 @@ public class AppConfig extends JFinalConfig {
 
     @Override
     public void configInterceptor(Interceptors me) {
-        AuthManagerInterceptor authManager = new AuthManagerInterceptor();
-        me.add(authManager);
+        List<Interceptor> interceptors=FinalCms.getInstance().getInterceptors();
+        for (Interceptor interceptor:
+             interceptors) {
+            me.add(interceptor);
+        }
     }
 
     @Override
     public void configHandler(Handlers me) {
-        me.add(new AdminHandler());
+        List<Handler> handlers=FinalCms.getInstance().getHandlers();
+        for (Handler handler: handlers
+             ) {
+            me.add(handler);
+        }
     }
 
     //create C3p0Plugin .

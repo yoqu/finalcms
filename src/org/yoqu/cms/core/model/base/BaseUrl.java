@@ -33,6 +33,14 @@ public abstract class BaseUrl<M extends BaseUrl<M>> extends Model<M> implements 
 		return get("method");
 	}
 
+	public void setController(java.lang.String controller) {
+		set("controller", controller);
+	}
+
+	public java.lang.String getController() {
+		return get("controller");
+	}
+
 	public void setUrl(java.lang.String url) {
 		set("url", url);
 	}

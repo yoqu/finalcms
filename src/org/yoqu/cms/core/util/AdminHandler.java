@@ -1,19 +1,16 @@
 package org.yoqu.cms.core.util;
 
-import com.jfinal.aop.Invocation;
+import com.jfinal.aop.Interceptor;
 import com.jfinal.core.Action;
+import com.jfinal.core.Controller;
 import com.jfinal.core.JFinal;
 import com.jfinal.handler.Handler;
-import com.jfinal.log.Log;
-import com.jfinal.render.Render;
-import com.jfinal.render.RenderException;
-import com.jfinal.render.RenderFactory;
+import org.yoqu.cms.core.config.FinalCms;
+import org.yoqu.cms.core.model.Url;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
 
 /**
  * @author yoqu
@@ -22,11 +19,55 @@ import java.util.stream.Stream;
  */
 public class AdminHandler extends Handler {
 
+    private class ActionMapping {
+        private List<Url> urls;
+
+        public ActionMapping(){
+            buildMapping();
+        }
+        public void buildMapping() {
+            urls = Url.dao.find("select * from url where is_delete=0");
+        }
+
+        public Url get(String target) {
+            for (Url url : urls) {
+                if (FileNameMatcher.match(target,url.getUrl())){
+                    return url;
+                }
+            }
+            return null;
+        }
+    }
+
+    private ActionMapping actionMapping;
+    public AdminHandler() {
+        actionMapping=new ActionMapping();
+    }
 
     @Override
     public void handle(String target, HttpServletRequest request, HttpServletResponse response, boolean[] isHandled) {
+        if (target.indexOf('.') != -1) {
+            return ;
+        }
+        Url url=actionMapping.get(target);
+        if (url==null){
+            next.handle(target, request, response, isHandled);
+            return;
+        }
+        try {
+            String[] urlPara={""};
 
-        next.handle(target, request, response, isHandled);
+            Action action=JFinal.me().getAction(url.getUrl(),urlPara);
+            List<Interceptor> interceptors= FinalCms.getInstance().getInterceptors();
+
+            Controller controller= (Controller) Class.forName(url.getController()).newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 //    public Action getAction(String target) {
