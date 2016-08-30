@@ -1,47 +1,28 @@
-package org.yoqu.cms.core.util;
+package org.yoqu.cms.core.module;
 
-import com.jfinal.aop.Interceptor;
+import com.jfinal.aop.Invocation;
 import com.jfinal.core.Action;
 import com.jfinal.core.Controller;
-import com.jfinal.core.JFinal;
 import com.jfinal.handler.Handler;
-import org.yoqu.cms.core.config.FinalCms;
+import com.jfinal.render.Render;
+import com.jfinal.render.RenderFactory;
 import org.yoqu.cms.core.model.Url;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
 /**
  * @author yoqu
  * @date 2016/5/9 0009
- * @description
+ * @description 该类用户拦截所有模块的请求,将路径的url连接到指定的controller类中执行指定的方法,所有的属性都存入数据库中.
+ *  在数据库中对url进行一个配置
  */
-public class AdminHandler extends Handler {
+public class ModuleHandler extends Handler {
 
-    private class ActionMapping {
-        private List<Url> urls;
+    private ModuleActionMapping actionMapping;
 
-        public ActionMapping(){
-            buildMapping();
-        }
-        public void buildMapping() {
-            urls = Url.dao.find("select * from url where is_delete=0");
-        }
-
-        public Url get(String target) {
-            for (Url url : urls) {
-                if (FileNameMatcher.match(target,url.getUrl())){
-                    return url;
-                }
-            }
-            return null;
-        }
-    }
-
-    private ActionMapping actionMapping;
-    public AdminHandler() {
-        actionMapping=new ActionMapping();
+    public ModuleHandler() {
+        actionMapping=new ModuleActionMapping();
     }
 
     @Override
@@ -55,17 +36,16 @@ public class AdminHandler extends Handler {
             return;
         }
         try {
-            String[] urlPara={""};
-
-            Action action=JFinal.me().getAction(url.getUrl(),urlPara);
-            List<Interceptor> interceptors= FinalCms.getInstance().getInterceptors();
-
-            Controller controller= (Controller) Class.forName(url.getController()).newInstance();
+            Action action=actionMapping.getAction(target);
+            Controller controller= action.getControllerClass().newInstance();
+            controller.setHttpServletRequest(request);
+            controller.setHttpServletResponse(response);
+            new Invocation(action,controller).invoke();
+            Render render = RenderFactory.me().getDefaultRender(action.getViewPath());
+            render.setContext(request, response, null).render();
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

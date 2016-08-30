@@ -2,8 +2,9 @@ package org.yoqu.cms.core.config;
 
 import com.jfinal.aop.Interceptor;
 import com.jfinal.handler.Handler;
-import org.yoqu.cms.core.util.AdminHandler;
+import org.yoqu.cms.core.module.ModuleHandler;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,20 +12,26 @@ import java.util.List;
  */
 public class FinalCms {
 
-    private List<Handler> handlers;
+    private List<Handler> handlers=new ArrayList<>();
 
-    private List<Interceptor> interceptors;
+    private List<Interceptor> interceptors=new ArrayList<>();
 
     public List<Interceptor> getInterceptors() {
         return interceptors;
     }
-    private static FinalCms finalCms;
+    public Interceptor[] getInterceptortoArray(){
+        return interceptors.toArray(new Interceptor[interceptors.size()]);
+    }
+    private static volatile FinalCms finalCms;
 
     public static FinalCms getInstance(){
-        if (finalCms!=null){
-            return finalCms;
-        }else{
-            return new FinalCms();
+        synchronized (FinalCms.class){
+            if (finalCms!=null){
+                return finalCms;
+            }else{
+                finalCms=new FinalCms();
+                return finalCms;
+            }
         }
     }
 
@@ -33,10 +40,11 @@ public class FinalCms {
      */
     public FinalCms(){
         initHandlers();
+        initInterceptor();
     }
     //初始化handler
     public void initHandlers(){
-        Handler handler=new AdminHandler();
+        Handler handler=new ModuleHandler();
         handlers.add(handler);
     }
     public void initInterceptor(){

@@ -9,9 +9,7 @@ import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.plugin.ehcache.EhCachePlugin;
 import org.yoqu.cms.admin.config.AdminRoutes;
 import org.yoqu.cms.core.model._MappingKit;
-import org.yoqu.cms.core.util.AdminHandler;
 import org.yoqu.cms.front.config.FrontRoutes;
-import org.yoqu.cms.plugin.SocketPlugin;
 
 import java.util.List;
 
@@ -29,8 +27,6 @@ public class AppConfig extends JFinalConfig {
     public void configRoute(Routes me) {
         me.add(new AdminRoutes("admin"));
         me.add(new FrontRoutes());
-        //me.add("/admin/login", UserController.class);
-        //admin..
     }
 
     @Override
@@ -39,8 +35,6 @@ public class AppConfig extends JFinalConfig {
         me.add(c3p0Plugin);
         ActiveRecordPlugin activeRecordPlugin = new ActiveRecordPlugin(c3p0Plugin);
         me.add(activeRecordPlugin);
-//        SocketPlugin socketPlugin=new SocketPlugin();
-//        me.add(socketPlugin);
         _MappingKit.mapping(activeRecordPlugin);
         String path=this.getClass().getClassLoader().getResource("/").getPath();
         me.add(new EhCachePlugin(path+"ehcache.xml"));
